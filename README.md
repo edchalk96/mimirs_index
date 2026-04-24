@@ -128,7 +128,6 @@ While the nearly 1:1 ratio between importance and feasibility indicates a well-b
 
 Mimir’s Index will feature a cohesive aesthetic deeply rooted in Norse mythology. Every design element—from typography and color palette to imagery—is intentionally curated to reflect this theme while prioritizing accessibility. By balancing thematic immersion with high readability, the site ensures a seamless experience for anyone looking to engage with the lore, whether for academic study or personal interest.
 
-
 #### *Layout*
 
 To ensure an intuitive user experience and prevent information overload, the site utilizes a streamlined landing page designed for efficient navigation. The home page centers on three primary access points, presented as thematic cards:
@@ -141,14 +140,14 @@ To ensure an intuitive user experience and prevent information overload, the sit
 
 To honor the site's historical purpose, the palette was curated to evoke the atmosphere of the Viking Age while prioritizing a seamless user experience. Consequently, the color scheme for Mimir’s Index bridges the gap between ancient manuscript aesthetics and modern digital accessibility standards.
 
-![Colour Pallete](PLACEHOLDER) 
+![Colour Pallete](./documentation/images/mimirs-index-colour-palette.png)
 Colour pallete was generate using [Coolors](https://coolors.co/)
 
 - **#F8F4E8 | Parchment (Primary Background)**
 
     This off-white colour will be used as the main background colour providing a soft, warm base to reduce eye strain whilst simulating parchment paper, mimicing the look of aged vellum or sheepskin manuscripts.
 
-- **#2C3E50 | Deep Slate (Structural Elements)** 
+- **#2C3E50 | Deep Slate (Structural Elements)**
 
     Used primarily for headers, navigation bars, and UI cards, this shade represents the cold stone of the Nordic mountains. It provides a stable structural framework and offers high contrast for light-colored accents
 
@@ -156,11 +155,11 @@ Colour pallete was generate using [Coolors](https://coolors.co/)
 
     This color is reserved for interactive elements and calls to action (CTAs). While gold symbolizes power and divinity in Norse mythology, it is used here to represent the "wealth of knowledge" and the mystical nature of the artifacts indexed within the site.
 
-- **#333333 | Charcoal (Primary Typography)** 
+- **#333333 | Charcoal (Primary Typography)**
 
     This deep grey serves as the main color for body text. It offers a sharp, authoritative alternative to Deep Slate, ensuring maximum legibility against the Parchment background while maintaining a sophisticated look.
 
-- **#7B241C | Oxide Red (System Alerts & Destructive Actions)** 
+- **#7B241C | Oxide Red (System Alerts & Destructive Actions)**
 
     Reserved strictly for alerts, errors, and "Delete" actions, this deep red mimics the cinnabar ink used for rubrics and emphasis in medieval texts. It provides a clear visual cue for critical interactions while staying within the historical theme.
 
@@ -210,7 +209,13 @@ Please find the detailed wireframes for each page below, including variations fo
 
 - **The Edda Library** | [View](./documentation/wireframes/mimir's-index-the-edda-library.pdf)
 
-- **Entity Profile** | [View]()
+- **The Posts Page** | [View](./documentation/wireframes/mimirs-index-post-page.pdf)
+
+- **The Entity Archive** | [View](./documentation/wireframes/mimirs-index-the-entity-archive.pdf)
+
+- **Entity Profile Page** | [View](./documentation/wireframes/mimirs-index-entity-profile-page.pdf)
+
+- **The Forge** | [View](./documentation/wireframes/mimirs-index-the-forge.pdf)
 
 ---
 
@@ -218,7 +223,33 @@ Please find the detailed wireframes for each page below, including variations fo
 
 ### *Features*
 
-PLACEHOLDER
+#### Header
+
+The site features a persistent header that remains consistent across all pages, ensuring intuitive navigation and a seamless user experience. The header includes links to all primary sections, as well as clear authentication triggers for Login, Logout, and Registration. To enhance usability, active states are applied to navigation links, providing visual feedback to the user regarding their current location within the site hierarchy. Centrally positioned, the project logo serves as a primary visual anchor and functions as an additional link to the landing page, facilitating quick access to the home view from anywhere in the application.
+
+#### Log In/Out and Registration
+
+The platform incorporates a secure User Registration system, enabling visitors to create personalized accounts. Authenticating provides users with the necessary permissions to contribute to the evolving knowledge base, fostering a collaborative community environment. Furthermore, a dedicated Logout function is provided, ensuring users can securely terminate their sessions and maintain account privacy across shared or public devices.
+
+#### Footer/Contact Developer Form
+
+Similar to the header, the site features a persistent footer that ensures a consistent interface across all views. This section displays the site's tagline alongside a direct link to a Developer Contact Form. By providing a streamlined communication channel, the footer empowers contributors to share feedback and propose enhancements. This direct line of communication is vital for the site's community-driven mission, allowing users to actively participate in the evolution and refinement of the Mimir’s Index platform.
+
+#### Edit Functionality
+
+The platform provides authenticated users with the functionality to propose edits to both Lore/Stanza entries and Entity profiles, ensuring the database remains a dynamic and collaborative resource. To maintain the scholarly integrity and accuracy of the content, the site employs a structured moderation workflow where all user contributions are held in a pending state for administrative review. These proposed changes are only committed to the live database and made visible to the public once a site administrator has audited and formally approved the submission, ensuring a consistent standard of quality across the entire index.
+
+#### Comments Section
+
+On the individual text and stanza pages, authenticated users can engage with the content through an integrated commenting system located beneath the primary entry. This feature is designed to foster community interaction, allowing enthusiasts to share insights and discuss specific mythological topics directly. To provide users with full control over their contributions, the system includes a management interface where individuals can edit or delete their own comments at their discretion.
+
+#### Search Functionality (Entities)
+
+Integrated into the Entity Archive is a dedicated search tool that allows users to query specific names to verify their presence within the database and navigate directly to their detailed profiles. Beyond basic discovery, this functionality serves as a vital administrative safeguard; it enables contributors to confirm whether an entity already exists before submitting a new entry, effectively preventing the creation of duplicate records and maintaining the organizational integrity of the archive.
+
+#### The Forge | Create Posts and Entities
+
+The Forge serves as a centralized contribution hub, allowing authenticated users to submit new entries for both The Edda Library and the Entity Index. To maintain the high standard of the platform's content, these submissions are integrated into the site’s moderation pipeline; they remain in a staging phase until they have been reviewed and formally authorized by an administrator, at which point they are committed to the live database.
 
 ---
 
@@ -226,11 +257,52 @@ PLACEHOLDER
 
 ### *Languages Used*
 
-PLACEHOLDER
+- HTML5
+    PLACEHOLDER
+
+- CSS3
+    PLACEHOLDER
+
+- JavaScript
+    PLACEHOLDER
+
+- Python3
+    PLACEHOLDER
 
 ### *Frameworks, Libraries & Programs Used*
 
-PLACEHOLDER
+- Bootstrap (v5.3)
+    PLACEHOLDER
+
+- Font Awesome (v7.2)
+    PLACEHOLDER
+
+- Google Fonts
+    PLACEHOLDER
+
+- Git
+    PLACEHOLDER
+
+- GitHub
+    PLACEHOLDER
+
+- Heroku (v11)
+    PLACEHOLDER
+
+- PostgreSQL (v18.3)
+    PLACEHOLDER
+
+- Django (v6.0.4)
+    PLACEHOLDER
+
+- Canva Online Wireframe Tool
+    PLACEOLDER
+
+- W3 Schools & MDN
+    PLACEHOLDER
+
+- VSCode
+    PLACEHOLDER
 
 ---
 
