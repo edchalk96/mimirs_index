@@ -1,0 +1,1 @@
+web: gunicorn mimirs_index.wsgi
