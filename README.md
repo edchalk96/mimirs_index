@@ -34,7 +34,7 @@ Mimir’s Index serves as a comprehensive digital compendium of Norse mythology,
 
 ## User Experience (UX) | The 5 Planes
 
-PLACEHOLDER
+The development of Mimir’s Index was guided by the core principles of UX design, as established in Jesse James Garrett’s foundational work, The Elements of User Experience. To ensure a robust and user-centric design process, this theoretical framework was supplemented by Code Institute’s learning material and Urooj Qureshi’s practical methodology in [*UX Design using the Five Planes Method*](https://medium.com/designcentered/ux-design-5-planes-method-b1b1d6587c05). Consequently, the project was structured around the following five planes of UX to ensure a logical progression from abstract concept to final interface.
 
 1. The Strategy Plane
 2. The Scope Plane
@@ -257,52 +257,67 @@ The Forge serves as a centralized contribution hub, allowing authenticated users
 
 ### *Languages Used*
 
-- HTML5
-    PLACEHOLDER
+- **HTML5**
 
-- CSS3
-    PLACEHOLDER
+    Provides the semantic structure and foundational framework for the project's content.
 
-- JavaScript
-    PLACEHOLDER
+- **CSS3**
 
-- Python3
-    PLACEHOLDER
+    Employed for comprehensive styling and to ensure fluid responsiveness across all device types.
+
+- **JavaScript**
+
+    Utilized to implement dynamic client-side logic and enhance user interactivity.
+
+- **Python3**
+
+    Serves as the core programming language for developing the site's backend logic and functionality.
 
 ### *Frameworks, Libraries & Programs Used*
 
-- Bootstrap (v5.3)
-    PLACEHOLDER
+- **Bootstrap (v5.3)**
 
-- Font Awesome (v7.2)
-    PLACEHOLDER
+    The primary CSS framework used for rapid layout development and mobile-first responsiveness.
 
-- Google Fonts
-    PLACEHOLDER
+- **Font Awesome (v7.2)**
 
-- Git
-    PLACEHOLDER
+    Integrated to provide a consistent library of scalable vector icons throughout the interface.
 
-- GitHub
-    PLACEHOLDER
+- **Google Fonts**
 
-- Heroku (v11)
-    PLACEHOLDER
+    Utilized to source and manage custom typography, ensuring aesthetic consistency.
 
-- PostgreSQL (v18.3)
-    PLACEHOLDER
+- **Git**
 
-- Django (v6.0.4)
-    PLACEHOLDER
+    Facilitated version control, tracking project history and managing commits via the terminal.
 
-- Canva Online Wireframe Tool
-    PLACEOLDER
+- **GitHub**
 
-- W3 Schools & MDN
-    PLACEHOLDER
+    The cloud-based platform used for hosting the project repository and version history.
 
-- VSCode
-    PLACEHOLDER
+- **Heroku (v11)**
+
+    The cloud platform utilized for the final deployment and hosting of the live application.
+
+- **PostgreSQL (v18.3)**
+
+    The relational database management system used to securely store and manage backend data.
+
+- **Django (v6.0.4)**
+
+    A high-level Python web framework used to streamline development and handle site architecture.
+
+- **Canva Online Wireframe Tool**
+
+    Utilized to design the initial visual blueprints and structural layouts for the user interface.
+
+- **W3 Schools & MDN**
+
+    The primary technical references used for documentation, syntax verification, and coding standards.
+
+- **VSCode**
+
+    The primary Integrated Development Environment (IDE) used for writing, debugging, and managing the source code.
 
 ---
 
