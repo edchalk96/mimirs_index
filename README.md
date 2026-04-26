@@ -363,7 +363,7 @@ Forking the GitHub repository allows you to make a copy of he original repositor
 
 ### Code
 
-- Code Insitute 
+- Code Insitute
 
     Certain elements of the codebase were informed by or adapted from the instructional materials and project walkthroughs provided by Code Institute.
 
