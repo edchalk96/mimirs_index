@@ -17,9 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from home.views import home_page
-from . import views
+from the_edda_library.views import library
+from the_entity_archive.views import archive
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home_page, name='home'),
+    path('the_edda_library/', library, name='the_edda_library'),
+    path('the_entity_archive/', archive, name='the_entity_archive'),
 ]
