@@ -323,9 +323,13 @@ The Forge serves as a centralized contribution hub, allowing authenticated users
 
     The primary Integrated Development Environment (IDE) used for writing, debugging, and managing the source code.
 
-**[RandomKeygen](https://randomkeygen.com/)**
+- **[RandomKeygen](https://randomkeygen.com/)**
 
     This service was utilized to generate a secure, randomized SECRET_KEY for the project's configuration settings.
+
+- **Real Python**
+
+    PLACEHOLDER
 
 ---
 

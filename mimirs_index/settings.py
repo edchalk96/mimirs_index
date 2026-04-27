@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'home',
     'the_edda_library',
     'the_entity_archive',
+    'the_forge',
 ]
 
 MIDDLEWARE = [

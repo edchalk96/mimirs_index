@@ -30,6 +30,7 @@ class Comment(models.Model):
     body = models.TextField()
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
+    # Credit to Tom Dekan for for parent field in creating comments thread - https://tomdekan.com/articles/comment-threads 
     parent = models.ForeignKey('self', null=True, blank=True, related_name='replies', on_delete=models.CASCADE)
 
     class Meta:

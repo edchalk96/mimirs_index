@@ -17,5 +17,10 @@ class Entity(models.Model):
     class Meta:
         ordering = ['entity_name']
 
+    # Credit to Real Python for explanation and use of the @property decorator - https://realpython.com/python-property/
+    @property
+    def lore_count(self):
+        return self.appearances.count()
+
     def __str__(self):
         return self.entity_name

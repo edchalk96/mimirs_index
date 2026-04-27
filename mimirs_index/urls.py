@@ -15,14 +15,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from home.views import home_page
-from the_edda_library.views import library
-from the_entity_archive.views import archive
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home_page, name='home'),
-    path('the_edda_library/', library, name='the_edda_library'),
-    path('the_entity_archive/', archive, name='the_entity_archive'),
+    path('', include('home.urls'), name='home'),
+    path('', include('the_edda_library.urls'), name='the_edda_library-urls'),
+    path('', include('the_entity_archive.urls'), name='the_entity_archive-urls'),
+    path('', include('the_forge.urls'), name='the_forge-urls'),
 ]
