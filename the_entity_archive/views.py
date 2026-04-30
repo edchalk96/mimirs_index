@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+# from .models import Entity
 
 # Create your views here.
-def archive(request):
-    return HttpResponse("Welcome to the Entity Archive!")
+class ArchiveView(generic.TemplateView):
+    template_name = "the_entity_archive/the_entity_archive.html"

@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
 
 # Create your views here.
-def the_forge(request):
-    return HttpResponse("Welcome to The Forge!)")
+class ForgeView(generic.TemplateView):
+    template_name = "the_forge/the_forge.html"

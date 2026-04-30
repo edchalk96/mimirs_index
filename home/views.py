@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views import generic
+# from .models import Lore
 
 # Create your views here.
-def home_page(request):
-    return HttpResponse("Welcome to Mimir's Index!")
+class HomePageView(generic.TemplateView):
+    template_name = "home/index.html"

@@ -19,6 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('summernote/', include('django_summernote.urls')),
     path('', include('home.urls'), name='home'),
     path('', include('the_edda_library.urls'), name='the_edda_library-urls'),
     path('', include('the_entity_archive.urls'), name='the_entity_archive-urls'),
