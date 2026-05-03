@@ -191,7 +191,11 @@ To maintain thematic consistency, all visual assets are carefully selected to al
 
 - **Runic Symbology**: In place of standard bullet points, unordered lists will utilise UTF-8 runic characters (sourced from [W3Schools](https://www.w3schools.com/charsets/ref_utf_runic.asp)). This subtle typographic detail reinforces the norse mythology and ancient manuscript aesthetic in every corner of the interface.
 
-#### ERD??
+#### ERD
+
+![Lore ERD](./documentation/images/lore-erd.png)
+![Entity ERD](./documentation/images/entity-erd.png)
+![Comments ERD](./documentation/images/comments-erd.png)
 
 ---
 

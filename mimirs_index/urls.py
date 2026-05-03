@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('', include('home.urls'), name='home'),
-    path('', include('the_edda_library.urls'), name='library'),
-    path('', include('the_entity_archive.urls'), name='archive'),
-    path('', include('the_forge.urls'), name='forge'),
+    path('library/', include('the_edda_library.urls'), name='library'),
+    path('archive/', include('the_entity_archive.urls'), name='archive'),
+    path('forge/', include('the_forge.urls'), name='forge'),
 ]
