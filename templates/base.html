@@ -1,4 +1,9 @@
-<!-- {% url 'home' as home_url %} -->
+{% load static %}
+
+{% url 'home' as home_url %}
+{% url 'library' as library_url %}
+{% url 'archive' as archive_url %}
+{% url 'forge' as forge_url %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="PLACEHOLDER">
+    <link rel="icon" href="{% static 'images/mimirs-index-logo.png' %}">
     <title>Mimir's Index</title>
 
     <!--Google Fonts-->
@@ -22,7 +27,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
     <!--Custom CSS-->
-
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
 
@@ -33,8 +38,8 @@
         <div class="container-fluid">
             <div class="row navbar">
                 <div class="col-4 navbar-logo">
-                    <a class="navbar-brand text-center " href="index.html">
-                        <img src="PLACEHOLDER" alt="logo" width="50">
+                    <a class="navbar-brand text-center " href="{% url 'home' %}">
+                        <img src="{% static 'images/mimirs-index-logo.png' %}" alt="logo" width="50">
                         <p>Mimir's Index</p>
                     </a>
                 </div>
@@ -45,16 +50,16 @@
                     <div class="collapse navbar-collapse" id="navbar-content">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" href="index.html">Home</a>
+                                <a class="nav-link active" href="{% url 'home' %}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="the_edda_library.html">The Edda Library</a>
+                                <a class="nav-link " href="{% url 'library' %}">The Edda Library</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="the_entity_archive.html">The Entity Archive</a>
+                                <a class="nav-link" href="{% url 'archive' %}">The Entity Archive</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="the_forge.html">The Forge</a>
+                                <a class="nav-link" href="{% url 'forge' %}">The Forge</a>
                             </li>
                         </ul>
                     </div>
