@@ -38,7 +38,7 @@
         <div class="container-fluid">
             <div class="row navbar">
                 <div class="col-4 navbar-logo">
-                    <a class="navbar-brand text-center " href="{% url 'home' %}">
+                    <a class="navbar-brand text-center" href="{% url 'home' %}">
                         <img src="{% static 'images/mimirs-index-logo.png' %}" alt="logo" width="50">
                         <p>Mimir's Index</p>
                     </a>
@@ -50,16 +50,16 @@
                     <div class="collapse navbar-collapse" id="navbar-content">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'home' %}">Home</a>
+                                <a class="nav-link {% if request.path == home_url %}active{% endif %}" href="{% url 'home' %}">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="{% url 'library' %}">The Edda Library</a>
+                                <a class="nav-link {% if request.path == library_url %}active{% endif %}" href="{% url 'library' %}">The Edda Library</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'archive' %}">The Entity Archive</a>
+                                <a class="nav-link {% if request.path == archive_url %}active{% endif %}" href="{% url 'archive' %}">The Entity Archive</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'forge' %}">The Forge</a>
+                                <a class="nav-link {% if request.path == forge_url %}active{% endif %}" href="{% url 'forge' %}">The Forge</a>
                             </li>
                         </ul>
                     </div>

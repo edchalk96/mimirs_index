@@ -14,6 +14,6 @@ def random_lore(request):
 
     if count > 0:
         random_index = random.randint(0, count - 1)
-        random_lore = Lore.objects.prefetch_related('entities').all()[random_index]
+        random_lore = Lore.objects.prefetch_related('entities').filter(status=1)[random_index]
 
     return render(request, 'home/index.html', {'random_lore': random_lore})

@@ -1,10 +1,63 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 
 <!-- Library content starts here -->
 
-    <h1>The Edda Library</h1>
+    <!-- The Edda Library Hero Image -->
+    <div class="container-fluid hero-image-container">
+
+        <!--Text overlay-->
+        <div class="opaque-overlay"></div>
+        <div class="row hero-image-content">
+            <div>
+                <section class="jumbotron text-center text-nowrap">
+                    <h1 class="page-headings">The Edda Library</h1>
+                    <p>A comprehensive archive of the primary text</p>
+                    <p>Select a poem below to view the complete verses and associated lore</p>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edda Library entries cards -->
+    <div class="container-fluid">
+        <div class="row">
+            {% for lore in lore_list %}
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="{% url 'PLACEHOLDER_URL' lore.id %}" class="nav-card">
+                            <img class="card-icon" src="PLACEHOLDER_IMAGE_URL" alt="{{ lore.title }} Icon">
+                            <h5 class="card-title">{{ lore.title }}</h5>
+                            <p class="card-text">Entities: {{ lore.entities.all|join:", " }}</p>
+                            <p class="card-text">{{ lore.excerpt }}</p>
+                            <h5>Read Full Entry</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:3 %}
+        </div>
+        <div class="row">
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% if is_paginated %}
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREVIOUS</a></li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
 
 <!-- Library content ends here -->
 {% endblock content %}
