@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import Lore
+from the_edda_library.models import Lore
 import random
 
 # Create your views here.

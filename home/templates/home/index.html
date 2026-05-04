@@ -74,15 +74,19 @@
                     <p>{{ random_lore.excerpt }}</p>
 
                     <div>
-                        <p>Click a name below to be taken to their profile</p>
+                        <p>The following entities are mentioned:</p>
 
                         {% for entity in random_lore.entities.all %}
-                            <a href="{% url 'archive' entity.id %}">{{ entity.name }}</a>
+                            <a href="{% url 'PLACEHOLDER_URL' entity.id %}">{{ entity.name }}</a>
                         {% empty %}
                             <p>The mists are empty; no entities found</p>
                         {% endfor %}
-
                     </div>
+
+                    <div>
+                        <a class="btn open-scroll-btn" href="{% url 'PLACEHOLDER_URL' random_lore.id %}" role="button">Open the Scroll!</a>
+                    </div>
+
                 {% else %}
                     <p>The library is currently empty. Seek the runes later</p>
                 {% endif %}
