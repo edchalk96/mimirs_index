@@ -24,6 +24,19 @@
 
     <!-- Edda Library entries cards -->
     <div class="container-fluid">
+        <div class="row sorting-wrapper">
+            <form method="get" id="sort-form">
+                <label for="sort">Sort Lore</label>
+
+                <select name="sort" id="sort-select" onchange="this.form.submit()"></select>
+
+                    <option value="newest" {% if current_sort == "newest" %}selected{% endif %}>Newest Entries</option>
+                    <option value="az" {% if current_sort == "az" %}selected{% endif %}>Title: A-Z</option>
+                    <option value="za" {% if current_sort == "za" %}selected{% endif %}>Title: Z-A</option>
+                    <option value="oldest" {% if current_sort == "oldest" %}selected{% endif %}>Oldest Entries</option>
+
+            </form>
+        </div>
         <div class="row">
             {% for lore in lore_list %}
             <div class="col-md-4">
