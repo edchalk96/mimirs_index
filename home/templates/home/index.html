@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 
 <!-- Home content starts here -->
@@ -26,7 +28,7 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="PLACEHOLDER_URL" class="nav-card">
-                            <img class="card-icon" src="PLACEHOLDER" alt="Book Icon">
+                            <img class="card-icon" src="{% static 'images/the-edda-library-icon.png' %}" alt="Book Icon">
                             <h5 class="card-title">The Edda Library</h5>
                             <p class="card-text">Browse Poems and individual Stanzas</p>
                             <p>Open Library</p>
@@ -38,7 +40,7 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="PLACEHOLDER_URL" class="nav-card">
-                            <img class="card-icon" src="PLACEHOLDER" alt="Norse God Icon">
+                            <img class="card-icon" src="{% static 'images/the-entity-archive-icon.png' %}" alt="Norse God Icon">
                             <h5 class="card-title">The Entity Archive</h5>
                             <p class="card-text">Explore Gods, Giants & Entities</p>
                             <p>View Entities</p>
@@ -50,7 +52,7 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="PLACEHOLDER_URL" class="nav-card">
-                            <img class = "card-icon" src="PLACEHOLDER" alt="Anvil and Hammer Icon">
+                            <img class = "card-icon" src="{% static 'images/the-forge-icon.png' %}" alt="Anvil and Hammer Icon">
                             <h5 class="card-title">The Forge</h5>
                             <p class="card-text">Submit New Entries into The Library or The Entity Archive</p>
                             <p>Start Forging</p>
@@ -65,11 +67,25 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="section-heading">From the Archive</h3>
-                <h4>PLACEHOLDER_LORE_TITLE</h4>
-                <p>PLACEHOLDER_LORE_EXCERPT</p>
-                <p>Click a name below to be taken to their profile</p>
-                <a href="PLACEHOLDER">PLACEHOLDER_ENTITY_NAME</a>
+                <h3 class="section-heading">Mimir's Whispers</h3>
+
+                {% if random_lore %}
+                    <h4>{{ random_lore.title }}</h4>
+                    <p>{{ random_lore.excerpt }}</p>
+
+                    <div>
+                        <p>Click a name below to be taken to their profile</p>
+
+                        {% for entity in random_lore.entities.all %}
+                            <a href="{% url 'archive' entity.id %}">{{ entity.name }}</a>
+                        {% empty %}
+                            <p>The mists are empty; no entities found</p>
+                        {% endfor %}
+
+                    </div>
+                {% else %}
+                    <p>The library is currently empty. Seek the runes later</p>
+                {% endif %}
             </div>
         </div>
     </div>

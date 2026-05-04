@@ -151,7 +151,7 @@ Colour pallete was generate using [Coolors](https://coolors.co/)
 
     Used primarily for headers, navigation bars, and UI cards, this shade represents the cold stone of the Nordic mountains. It provides a stable structural framework and offers high contrast for light-colored accents
 
-- **#C9A05F | Burnished Gold (Accents & CTA)**
+- **#D4AF37 | Metallic Gold (Accents & CTA)**
 
     This color is reserved for interactive elements and calls to action (CTAs). While gold symbolizes power and divinity in Norse mythology, it is used here to represent the "wealth of knowledge" and the mystical nature of the artifacts indexed within the site.
 
