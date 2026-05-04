@@ -1,10 +1,73 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 
 <!-- Entity Archive content starts here -->
 
-    <h1>The Entity Archive</h1>
+    <!-- The Entity Archive Hero Image -->
+        <div class="container-fluid hero-image-container">
+            <!--Text overlay-->
+            <div class="opaque-overlay"></div>
+            <div class="row hero-image-content">
+                <div>
+                    <section class="jumbotron text-center text-nowrap">
+                        <h1 class="page-headings">The Entity Archive</h1>
+                        <p>A directory of every entity woven into the Eddas</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+    <!-- Search bar -->
+     <div class="search-container">
+        <form method="get" action=".">
+            <input type="text" name="q" placeholder="Search for a God, Jötunn, Beast etc..." value="{{ search_term }}">
+            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+            {% if search_term %}
+                <a href="{% url 'archive' %}">Clear Search</a>
+            {% endif %}
+        </form>
+     </div>
+
+    <!-- Entity Archive cards -->
+    <div class="container-fluid">
+        <div class="row">
+            {% for entity in entity_list %}
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="{% url 'PLACEHOLDER_URL' entity.id %}" class="nav-card">
+                            <img class="card-icon" src="PLACEHOLDER_IMAGE_URL" alt="{{ entity.name }} Icon">
+                            <h5 class="card-title">{{ entity.name }}</h5>
+                            <p class="card-text">{{ entity.epithets|join:", " }}</p>
+                            <p class="card-text">Lore Entries: {{ entity.lore_count }}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% if forloop.counter|divisibleby:4 %}
+        </div>
+        <div class="row">
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% if is_paginated %}
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREVIOUS</a></li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
 
 <!-- Entity Archive content ends here -->
+
 {% endblock content %}

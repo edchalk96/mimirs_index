@@ -8,7 +8,6 @@
 
     <!-- The Edda Library Hero Image -->
     <div class="container-fluid hero-image-container">
-
         <!--Text overlay-->
         <div class="opaque-overlay"></div>
         <div class="row hero-image-content">
@@ -22,21 +21,20 @@
         </div>
     </div>
 
+    <!-- Sort function -->
+    <div class="row sorting-wrapper">
+        <form method="get" action="." id="sort-form">
+            <label for="sort">Sort Lore</label>
+            <select name="sort" id="sort-select" onchange="this.form.submit()"></select>
+                <option value="newest" {% if current_sort == "newest" %}selected{% endif %}>Newest Entries</option>
+                <option value="az" {% if current_sort == "az" %}selected{% endif %}>Title: A-Z</option>
+                <option value="za" {% if current_sort == "za" %}selected{% endif %}>Title: Z-A</option>
+                <option value="oldest" {% if current_sort == "oldest" %}selected{% endif %}>Oldest Entries</option>
+        </form>
+    </div>
+
     <!-- Edda Library entries cards -->
     <div class="container-fluid">
-        <div class="row sorting-wrapper">
-            <form method="get" id="sort-form">
-                <label for="sort">Sort Lore</label>
-
-                <select name="sort" id="sort-select" onchange="this.form.submit()"></select>
-
-                    <option value="newest" {% if current_sort == "newest" %}selected{% endif %}>Newest Entries</option>
-                    <option value="az" {% if current_sort == "az" %}selected{% endif %}>Title: A-Z</option>
-                    <option value="za" {% if current_sort == "za" %}selected{% endif %}>Title: Z-A</option>
-                    <option value="oldest" {% if current_sort == "oldest" %}selected{% endif %}>Oldest Entries</option>
-
-            </form>
-        </div>
         <div class="row">
             {% for lore in lore_list %}
             <div class="col-md-4">
@@ -73,4 +71,5 @@
     </div>
 
 <!-- Library content ends here -->
+
 {% endblock content %}
