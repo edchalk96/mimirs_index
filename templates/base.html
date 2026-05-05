@@ -83,9 +83,42 @@
     <!--Footer-->
     <footer class="container-fluid">
         <div class="row footer-sections text-center">
+            <!-- Contact Developer modal trigger -->
             <div class="col-sm-3">
-                <a class="" href="PLACEHOLDER"><h6>Contact Developer</h6></a>
+                <a class="modal-btn" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">
+                    <h6>Contact Developer</h6>
+                </a>
             </div>
+
+            <!-- Contact Developer Modal -->
+            <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="contactModalLabel">Send a Raven to the Developer</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <!-- Contact form content -->
+                             <form id="contactForm">
+                                <div class="mb-3">
+                                    <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <textarea name="message" class="form-control" placeholder="Your Message" required></textarea>
+                                </div>
+                                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn">Send Message</button>
+                             </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-sm-3 social-link align-self-center">
                 <a href="https://github.com/edchalk96" target="_blank" aria-label="GitHub link"><i class="fa-brands fa-github"></i></a>
             </div>
