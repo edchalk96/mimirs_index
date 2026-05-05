@@ -27,7 +27,7 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <a href="PLACEHOLDER_URL" class="nav-card">
+                        <a href="{% url 'library' %}" class="nav-card">
                             <img class="card-icon" src="{% static 'images/the-edda-library-icon.png' %}" alt="Book Icon">
                             <h5 class="card-title">The Edda Library</h5>
                             <p class="card-text">Browse Poems and individual Stanzas</p>
@@ -39,7 +39,7 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <a href="PLACEHOLDER_URL" class="nav-card">
+                        <a href="{% url 'archive' %}" class="nav-card">
                             <img class="card-icon" src="{% static 'images/the-entity-archive-icon.png' %}" alt="Norse God Icon">
                             <h5 class="card-title">The Entity Archive</h5>
                             <p class="card-text">Explore Gods, Giants & Entities</p>
@@ -51,7 +51,7 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <a href="PLACEHOLDER_URL" class="nav-card">
+                        <a href="{% url 'forge' %}" class="nav-card">
                             <img class = "card-icon" src="{% static 'images/the-forge-icon.png' %}" alt="Anvil and Hammer Icon">
                             <h5 class="card-title">The Forge</h5>
                             <p class="card-text">Submit New Entries into The Library or The Entity Archive</p>
@@ -77,14 +77,14 @@
                         <p>The following entities are mentioned:</p>
 
                         {% for entity in random_lore.entities.all %}
-                            <a href="{% url 'PLACEHOLDER_URL' entity.id %}">{{ entity.name }}</a>
+                            <a href="{% url 'entity_detail' entity.id %}">{{ entity.name }}</a>
                         {% empty %}
                             <p>The mists are empty; no entities found</p>
                         {% endfor %}
                     </div>
 
                     <div>
-                        <a class="btn open-scroll-btn" href="{% url 'PLACEHOLDER_URL' random_lore.id %}" role="button">Open the Scroll!</a>
+                        <a class="btn open-scroll-btn" href="{% url 'lore_detail' random_lore.slug %}" role="button">Open the Scroll!</a>
                     </div>
 
                 {% else %}

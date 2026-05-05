@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Lore Detail Content -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <img src="{% static 'images/lore_default.jpg' %}" alt="default lore image" class="img-fluid mb-4">
+            <h1 class="">{{ lore.title }}</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <p>{{ lore.content | safe }}</p>
+        </div>
+        <div class="col-md-12">
+            <p>Entities: {{ lore.entities.all|join:", " }}</p>
+            <p>Primary Source: {{ lore.primary_source }}</p>
+            <p>Notes: {{ lore.notes }}</p>
+        </div>
+        <div class="col-md-12">
+            <p>Created on: {{ lore.created_on }}</p>
+            <p>Last updated: {{ lore.updated_on }}</p>
+        </div>
+        <div class="col-md-12">
+            <a href="{% url 'PLACEHOLDER' lore.slug %}" class="btn">Edit Lore</a>
+            <a href="{% url 'PLACEHOLDER' lore.slug %}" class="btn">Delete Lore</a>
+        </div>
+    </div>
+</div>
+
+<div class="container comments-section">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Skaldic Comments</h2>
+            {% for comment in lore.comments.all %}
+                {% if not comment.parent %}
+                    {% include "partials/comment_thread.html" with comment=comment %}
+                {% endif %}
+            {% empty %}
+                <p>No comments yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

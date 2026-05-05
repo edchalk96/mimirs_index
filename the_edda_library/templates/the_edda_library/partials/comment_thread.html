@@ -1,0 +1,7 @@
+<div class="comment-wrapper">
+    <div>
+        <p><strong>{{ comment.author }}</strong>- <small>{{ comment.created_on }}</small></p>
+        <p>{{ comment.content | safe }}</p>
+        <button class="btn">Reply</button>
+    </div>
+</div>

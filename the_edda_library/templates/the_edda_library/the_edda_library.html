@@ -40,7 +40,7 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{% url 'PLACEHOLDER_URL' lore.id %}" class="nav-card">
+                        <a href="{% url 'lore_detail' lore.slug %}" class="nav-card">
                             <img class="card-icon" src="PLACEHOLDER_IMAGE_URL" alt="{{ lore.title }} Icon">
                             <h5 class="card-title">{{ lore.title }}</h5>
                             <p class="card-text">Entities: {{ lore.entities.all|join:", " }}</p>
