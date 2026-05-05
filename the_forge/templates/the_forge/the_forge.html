@@ -1,10 +1,74 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 
 <!-- Forge content starts here -->
 
-    <h1>The Forge</h1>
+    <!-- The Forge Hero Image -->
+        <div class="container-fluid hero-image-container">
+            <!--Text overlay-->
+            <div class="opaque-overlay"></div>
+            <div class="row hero-image-content">
+                <div>
+                    <section class="jumbotron text-center text-nowrap">
+                        <h1 class="page-headings">The Forge</h1>
+                        <p>Wield the tools of the Skald to carve a new Entity into the Ledger or scribe a Verse into the eternal Vault.</p>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+    <!-- Buttons for page specific navigation -->
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <a href="{#lore-entry-section}" class="btn">Forge a Lore Entry</a>                
+            </div>
+            <div class="col-6">
+                <a href="{#entity-entry-section}" class="btn">Forge An Entity</a>                
+            </div>
+        </div>
+    </div>
+
+    <!-- Section for forging a Lore Entry -->
+    <div class="container" id="lore-entry-section">
+        <div class="row">
+            <div class="col-12">
+                <h2>Forge a Lore Entry</h2>
+                <p>Carve a new piece of lore into the eternal Vault.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <form method="post" action="{% url 'PLACEHOLDER_URL' %}">
+                    {% csrf_token %}
+                    <!-- Form fields for forging a Lore Entry will go here -->
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section for forging an Entity -->
+    <div class="container" id="entity-entry-section">
+        <div class="row">
+            <div class="col-12">
+                <h2>Forge an Entity</h2>
+                <p>Wield the tools of the Skald to carve a new Entity into the Ledger.</p>
+            </div>
+        </div>
+
+        <div class="row" id="entity-entry-section">
+            <div class="col-12">
+                <form method="post" action="{% url 'PLACEHOLDER_URL' %}">
+                    {% csrf_token %}
+                    <!-- Form fields for forging an Entity will go here -->
+                </form>
+            </div>
+        </div>
+    </div>
 
 <!-- Forge content ends here -->
 {% endblock content %}
