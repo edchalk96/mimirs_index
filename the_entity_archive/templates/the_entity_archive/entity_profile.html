@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    
+<!-- Entity Profile Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <img src="{% static 'images/entity-default.jpg' %}" alt="default entity image" class="img-fluid mb-4">
+            <h1 class="">{{ entity.name }}</h1>
+            <h3 class="">{{ entity.epithets|join:", " }}</h3>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Biography</h2>
+            <p>{{ entity.biography | safe }}</p>
+        </div>
+        <div class="col-md-12">
+            <p>Created on: {{ entity.created_on }}</p>
+            <p>Last updated: {{ entity.updated_on }}</p>
+        </div>
+        <div class="col-md-12">
+            <a href="{% url 'PLACEHOLDER' entity.name %}" class="btn">Edit Entity</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Lore Appearances</h2>
+            {% for appearance in entity.appearances.all %}
+                <ul class="appearances-list">
+                    <li><p>{{ appearance.lore.title }}</p> | <p>{{ appearance.lore.excerpt }}</p> | <a href="{% url 'lore_detail' appearance.lore.slug %}">View Full Lore</a></li>
+                </ul>
+            {% empty %}
+                <p>No appearances yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

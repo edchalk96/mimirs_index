@@ -1,3 +1,4 @@
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from .models import Entity
 
@@ -20,3 +21,22 @@ class EntityList(generic.ListView):
         context = super().get_context_data(**kwargs)
         context["search_term"] = self.request.GET.get("q", "")
         return context
+    
+def entity_profile(request, name):
+    """
+    View function to display the profile of a specific entity.
+
+    **Context:**
+
+    `entity`
+        An instance of the Entity model that matches the provided name.
+
+    **Template**
+
+    :template:`the_entity_archive/entity_profile.html`
+
+    """
+    queryset = Entity.objects.filter(status=1)
+    entity = get_object_or_404(queryset, name=name)
+
+    return render(request, "the_entity_archive/entity_profile.html", {"entity": entity})

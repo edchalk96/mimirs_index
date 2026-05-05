@@ -39,8 +39,8 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{% url 'PLACEHOLDER_URL' entity.id %}" class="nav-card">
-                            <img class="card-icon" src="PLACEHOLDER_IMAGE_URL" alt="{{ entity.name }} Icon">
+                        <a href="{% url 'entity_profile' entity.name %}" class="nav-card">
+                            <img class="card-icon" src="{% static 'images/entity-default.jpg' %}" alt="{{ entity.name }} Icon">
                             <h5 class="card-title">{{ entity.name }}</h5>
                             <p class="card-text">{{ entity.epithets|join:", " }}</p>
                             <p class="card-text">Lore Entries: {{ entity.lore_count }}</p>
