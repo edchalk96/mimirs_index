@@ -70,10 +70,13 @@
                 <div class="col-4 d-none d-sm-block">
                     {% if user.is_authenticated %}
                         <p id="welcome-message">Skál! {{ user.username }}</p>
-                        <a class="btn float-end account-btn {% if request.path == logout_url %}active{% endif %}" href="{% url 'accounts_logout' %}" role="button">Log Out</a>
+                        {% if user.is_staff %} <!-- Show admin link if user is staff -->
+                            <a class="btn float-end account-btn {% if request.path == '/admin/' %}active{% endif %}" href="{% url 'admin:index' %}" role="button">Admin</a>
+                        {% endif %}
+                        <a class="btn float-end account-btn {% if request.path == logout_url %}active{% endif %}" href="{% url 'account_logout' %}" role="button">Log Out</a>
                     {% else %}
-                        <a class="btn float-end account-btn {% if request.path == login_url %}active{% endif %}" href="{% url 'accounts_login' %}" role="button">Log In</a>
-                        <a class="btn float-end account-btn {% if request.path == signup_url %}active{% endif %}" href="{% url 'accounts_signup' %}" role="button">Register</a>
+                        <a class="btn float-end account-btn {% if request.path == login_url %}active{% endif %}" href="{% url 'account_login' %}" role="button">Log In</a>
+                        <a class="btn float-end account-btn {% if request.path == signup_url %}active{% endif %}" href="{% url 'account_signup' %}" role="button">Register</a>
                     {% endif %}
                 </div>
             </div>
