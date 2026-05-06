@@ -1,6 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
-from .models import Lore, Comment
+from django.contrib import messages
+from .models import Lore
+from .models import Comment
+from .forms import CommentForm
 
 # Create your views here.
 class LoreList(generic.ListView):
@@ -54,12 +57,18 @@ class LoreList(generic.ListView):
     
 def lore_detail(request, slug):
     """
-    View function to display the details of a specific lore entry.
+    View function to display the details of a specific lore entry and its comments.
 
     **Context:**
 
     `lore`
         An instance of the Lore model corresponding to the provided slug.
+
+    `comments`
+        A queryset of all comments associated with the lore entry.
+
+    `comment_count`
+        The number of approved comments for the lore entry.
 
     **Template**
 
@@ -68,5 +77,21 @@ def lore_detail(request, slug):
     """
     queryset = Lore.objects.filter(status=1)
     lore = get_object_or_404(queryset, slug=slug)
+    comments = lore.comments.all().order_by("-created_on")
+    comment_count = lore.comments.filter(approved=True).count()
+    if request.method == "POST":
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.author = request.user
+            comment.lore = lore
+            parent_id = request.POST.get("parent_id")
+            if parent_id:
+                comment.parent = Comment.objects.get(id=parent_id)
+            comment.save()
+            messages.add_message(request, messages.SUCCESS, "Your comment has been submitted and is awaiting approval.")
+            return redirect("lore_detail", slug=lore.slug)
+    else:
+        comment_form = CommentForm()
 
-    return render(request, "the_edda_library/lore_detail.html", {"lore": lore})
+    return render(request, "the_edda_library/lore_detail.html", {"lore": lore, "comments": comments, "comment_count": comment_count, "comment_form": comment_form})

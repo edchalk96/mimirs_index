@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -36,19 +36,42 @@
     </div>
 </div>
 
+<!-- Comments Section - Credit to Tom Dekan (https://tomdekan.com/articles/comment-threads) for creation of comments thread --> 
+
 <div class="container comments-section">
     <div class="row">
         <div class="col-md-12">
             <h2>Skaldic Comments</h2>
-            {% for comment in lore.comments.all %}
+            <strong><i class="fa-solid fa-comments"></i> {{ comment_count }}</strong>
+        </div>
+
+        <!-- Comment Threads -->
+        <div class="col-md-12">
+            {% for comment in comments %}
                 {% if not comment.parent %}
                     {% include "partials/comment_thread.html" with comment=comment %}
                 {% endif %}
             {% empty %}
-                <p>No comments yet.</p>
+                <p>The halls are silent. Be the first to speak.</p>
             {% endfor %}
-            <a href="PLACEHOLDER" class="btn">Add Comment</a>
         </div>
+    </div>
+
+    <!-- Comment Form-->
+    <div class="row">
+        <div class="col-md-8">
+            {% if user.is_authenticated %}
+            <h3>Add a Comment:</h3>
+            <p>Posting as: {{ user.username }}</p>
+            <form method="post" id="commentForm">
+                {% csrf_token %}
+                {{ comment_form|crispy }}
+                <button type="submit" class="btn comment-button">Carve your thoughts</button>
+            </form>
+            {% else %}
+                <p><a href="{% url 'account_login' %}">Log in</a> to share your thoughts.</p>
+            {% endif %}
+        </div>   
     </div>
 </div>
 

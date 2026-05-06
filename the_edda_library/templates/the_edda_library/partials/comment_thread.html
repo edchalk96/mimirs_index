@@ -1,7 +1,41 @@
-<div class="comment-wrapper">
-    <div>
-        <p><strong>{{ comment.author }}</strong>- <small>{{ comment.created_on }}</small></p>
-        <p>{{ comment.content | safe }}</p>
-        <button class="btn">Reply</button>
+{% load static %}
+{% load crispy_forms_tags %}
+
+<div class="comment-wrapper {% if comment.parent %}ms-4 ms-md-5 ps-3{% endif %}" id="comment-{{ comment.id }}">
+    <div class="shadow-sm rounded p-3">
+        <div class="comments {% if not comment.approved and comment.author == user %}faded{% elif not comment.approved %}d-none{% endif %}">
+            <p><strong>{{ comment.author }}</strong>- <small>{{ comment.created_on|timesince }} ago</small></p>
+            <div>
+                <p>{{ comment.body | linebreaks }}</p>
+            </div>
+            {% if not comment.approved and comment.author == user %}
+              <p class="approval">This comment is awaiting approval</p>
+            {% endif %}
+        </div>
+
+        {% if user.is_authenticated %}
+        <div class="mt-2">
+            <button class="btn btn-sm p-0" onclick="toggleReply('{{ comment.id }}')"><i class="fa-solid fa-reply"></i>Reply</button>
+        </div>
+
+        <!-- Inline Reply Form -->
+         <div id="reply-{{ comment.id }}" class="d-none mt-3 p-3 border-top">
+            <form method="post">
+                {% csrf_token %}
+                {{ comment_form|crispy }}
+                <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                <div class="justify-content-end">
+                    <button type="submit" class="btn btn-sm comment-button">Carve your reply</button>
+                </div>
+            </form>
+         </div>
+        {% endif %}
     </div>
+
+    <!-- Recursive Comments -->
+     <div class="replies-container">
+        {% for reply in comment.replies.all %}
+            {% include "partials/comment_thread.html" with comment=reply %}
+        {% endfor %}
+     </div>
 </div>
