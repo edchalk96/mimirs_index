@@ -333,7 +333,15 @@ The Forge serves as a centralized contribution hub, allowing authenticated users
 
 - **Real Python**
 
-    PLACEHOLDER
+    Served as a primary resource for advanced Python tutorials and technical deep-dives to optimize backend logic.
+
+- **Flaticon**
+
+    Utilized to source specialized iconography that was unavailable within standard libraries.
+
+- **Icomoon**
+
+    Employed to convert individual SVG files into optimized SVG sprites for improved site performance and asset management.
 
 ---
 
