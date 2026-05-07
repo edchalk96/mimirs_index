@@ -41,12 +41,20 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row {% if not user.is_authenticated %}guest-view{% endif %}">
             <div class="col-12">
                 <form method="post">
                     {% csrf_token %}
                     {{ lore_form | crispy }}
-                    <button type="submit" name="submit_lore" class="btn forge-btn">Strike the Anvil <svg class="hammer-anvil-icon"><use xlink:href="{% static 'images/hammer-anvil-icon.svg' %}#anvil-icon"></use></svg></button> <!-- Credit to Flaticon for the anvil icon and Icomoon for generating the SVG Sprite then https://www.sitepoint.com/use-svg-image-sprites/ for implementation -->
+
+                    {% if user.is_authenticated %}
+                        <button type="submit" name="submit_lore" class="btn forge-btn">Strike the Anvil <svg class="hammer-anvil-icon"><use xlink:href="{% static 'images/hammer-anvil-icon.svg' %}#anvil-icon"></use></svg></button> <!-- Credit to Flaticon for the anvil icon and Icomoon for generating the SVG Sprite then https://www.sitepoint.com/use-svg-image-sprites/ for implementation -->
+                    {% else %}
+                        <div class="alert alert-info">
+                            <p class="mb-0">Only those sworn to the Allfather may forge lore</p>
+                            <a href="{% url 'account_login'}">Sign in to contribute</a>
+                        </div>
+                    {% endif %}
                 </form>
             </div>
         </div>
@@ -61,13 +69,21 @@
             </div>
         </div>
 
-        <div class="row" id="entity-entry-section">
+        <div class="row {% if not user.is_authenticated %}guest-view{% endif %}">
             <div class="col-12">
                 <form method="post">
                     {% csrf_token %}
                     {{ entity_form | crispy }}
-                    <button type="submit" name="submit_entity" class="btn forge-btn">Strike the Anvil <svg class="hammer-anvil-icon"><use xlink:href="{% static 'images/hammer-anvil-icon.svg' %}#anvil-icon"></use></svg></button> 
-                </form>
+
+                    {% if user.is_authenticated %}
+                        <button type="submit" name="submit_entity" class="btn forge-btn">Strike the Anvil <svg class="hammer-anvil-icon"><use xlink:href="{% static 'images/hammer-anvil-icon.svg' %}#anvil-icon"></use></svg></button> 
+                    {% else %}
+                        <div class="alert alert-info">
+                            <p class="mb-0">Only those sworn to the Allfather may forge lore</p>
+                            <a href="{% url 'account_login'}">Sign in to contribute</a>
+                        </div>
+                    {% endif %}
+                    </form>
             </div>
         </div>
     </div>

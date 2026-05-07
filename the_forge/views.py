@@ -8,12 +8,18 @@ from .forms import ContactDeveloperForm
 
 
 # Create your views here.
-@login_required
 def forge_form(request):
     lore_form = LoreForm()
     entity_form = EntityForm()
 
     if request.method == 'POST':
+
+        #Check if the user is authenticated before processing the form submission
+        if not request.user.is_authenticated:
+            messages.add_message(request, messages.ERROR, "Only those who have declared their oath may enter the Forge. You must sign in or join our kin to share your wisdom and craft your contributions to the saga.")
+            return redirect('login')
+        
+        # Determine which form was submitted based on the name of the submit button
         if 'submit_lore' in request.POST:
             if lore_form.is_valid():
                 lore_form = LoreForm(data=request.POST or None, prefix='lore')
