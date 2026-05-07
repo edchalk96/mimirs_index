@@ -123,10 +123,11 @@
                             <h1 class="modal-title fs-5" id="contactModalLabel">Send a Raven to the Developer</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
 
+                        <div class="modal-body">
                             <!-- Contact form content -->
-                             <form id="contactForm">
+                             <form id="contactForm" method="post" action="{% url 'contact_developer' %}">
+                                {% csrf_token %}
                                 <div class="mb-3">
                                     <input type="text" name="subject" class="form-control" placeholder="Subject" required>
                                 </div>
@@ -137,7 +138,7 @@
                                     <textarea name="message" class="form-control" placeholder="Your Message" required></textarea>
                                 </div>
                                 <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn">Send Message</button>
+                                <button type="submit" class="btn">Send the Raven <i class="fa-solid fa-crow"></i></button>
                              </form>
                         </div>
                     </div>
