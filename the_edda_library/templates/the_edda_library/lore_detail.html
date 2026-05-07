@@ -29,10 +29,55 @@
             <p>Created on: {{ lore.created_on }}</p>
             <p>Last updated: {{ lore.updated_on }}</p>
         </div>
-        <div class="col-md-12">
-            <a href="{% url 'PLACEHOLDER' lore.slug %}" class="btn">Edit Lore</a>
-            <a href="{% url 'PLACEHOLDER' lore.slug %}" class="btn">Delete Lore</a>
+        {% if user.is_authenticated %}
+            <div class="col-md-12">
+                <button class="btn edit-btn" type="button" data-bs-toggle="modal" data-bs-target="#editLoreModal">Update the Lore</button>
+                <button class="btn delete-btn {% if lore.is_deletion_pending %}d-none{% endif %}" type="button" data-bs-toggle="modal" data-bs-target="#deleteLoreModal">Remove from the Library</button>
+            </div>
+        {% endif %}
+        
+        <!-- Modal for editing lore entries -->
+        <div class="modal fade" id="editLoreModal" tabindex="-1" aria-labelledby="editLoreModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="modal-body">
+                            <h5>Re-forging the Lore</h5>
+                            {{ edit_form | crispy }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn forge-btn">Strike the Anvil and Re-forge<svg class="hammer-anvil-icon"><use href="{% static 'images/hammer-anvil-icon.svg' %}#anvil"></use></svg></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
+
+        <!-- Modal for deletion request confirmation -->
+        <div class="modal fade" id="deleteLoreModal" tabindex="-1" aria-labelledby="deleteLoreModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Delete Lore Entry?</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to summon the Valkyries for this lore entry?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn delete-btn" onclick="confirmRemoval()">Delete <i class="fa-solid fa-skull-crossbones"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+         <!-- Hidden form deletion request -->
+        <form action="{% url forge:delete_lore lore.slug %}" id="deleteForm" method="POST" style="display: none;">
+            {% csrf_token %}
+        </form>
     </div>
 </div>
 

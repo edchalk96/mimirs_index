@@ -17,12 +17,13 @@ class Lore(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
     author = models.ForeignKey(User, related_name="user_lore_entries", on_delete=models.PROTECT)
+    is_deletion_pending = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['title']
 
     def __str__(self):
-        return f"{self.title} from {self.primary_source}"
+        return f"{self.title} from {self.primary_source} {'PENDING DELETION' if self.is_deletion_pending else ''}"
 
 class Comment(models.Model):
     lore = models.ForeignKey(Lore, related_name="comments", on_delete=models.CASCADE)

@@ -5,7 +5,7 @@ function toggleReply(id) {
     replyForm.classList.toggle('d-none');
 }
 
-const editButtons = document.getElementsByClassName("btn-edit");
+const editButtons = document.getElementsByClassName("edit-btn");
 const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
 const submitButton = document.getElementById("submitButton");
@@ -24,4 +24,13 @@ for (let button of editButtons) {
         submitButton.innerText = "Update";
         commentForm.setAttribute("action", `edit_comment/${commentId}`);
     })
+}
+
+/** Functionality for deletion of comments */
+for (let button of deleteButtons) {
+    button.addEventListener("click", (e) => {
+        let commentId = e.target.getAttribute("comment_id");
+        deleteConfirm.href = `delete_comment/${commentId}`;
+        deleteModal.show();
+    });
 }

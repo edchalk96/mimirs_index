@@ -3,6 +3,7 @@ from django.views import generic
 from django.contrib import messages
 from .models import Lore, Comment
 from .forms import CommentForm
+from the_forge.forms import LoreForm
 
 # Create your views here.
 class LoreList(generic.ListView):
@@ -56,7 +57,7 @@ class LoreList(generic.ListView):
     
 def lore_detail(request, slug):
     """
-    View function to display the details of a specific lore entry and its comments.
+    View function to display the details of a specific lore entry and its comments as well as functionality to edit.
 
     **Context:**
 
@@ -78,6 +79,9 @@ def lore_detail(request, slug):
     lore = get_object_or_404(queryset, slug=slug)
     comments = lore.comments.all().order_by("-created_on")
     comment_count = lore.comments.filter(approved=True).count()
+
+    edit_form = LoreForm(request.POST or None, instance=lore)
+
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
@@ -90,11 +94,30 @@ def lore_detail(request, slug):
             comment.save()
             messages.add_message(request, messages.SUCCESS, "Your comment has been submitted and is awaiting approval.")
             return redirect("lore_detail", slug=lore.slug)
-    else:
-        comment_form = CommentForm()
+        else:
+            comment_form = CommentForm()
+        if edit_form.is_valid():
+            lore = edit_form.save(commit=False)
+            lore.status = 0
+            lore.save()
+            messages.add_message(request, messages.SUCCESS, "The saga has been re-forged. Awaiting Mimir's approval")
+            return redirect("lore_detail", slug=lore.slug)
+        
+    return render(request, "the_edda_library/lore_detail.html", {"lore": lore, "comments": comments, "comment_count": comment_count, "comment_form": comment_form, "edit_form": edit_form})
 
-    return render(request, "the_edda_library/lore_detail.html", {"lore": lore, "comments": comments, "comment_count": comment_count, "comment_form": comment_form})
 
+def delete_lore(request, slug):
+    """
+    View to submit a lore for deletion by an admin
+    """
+    lore = get_object_or_404(queryset, slug=slug)
+
+    if request.method == "POST":
+        lore.is_deletion_pending = True
+        lore.save()
+        messages.add_message(request, messages.SUCCESS, "Request for removal sent. The Valkyries will now decide its fate.")
+        return redirect("lore_detail", slug=lore.slug)
+    
 
 def comment_edit(request, slug, comment_id):
     """

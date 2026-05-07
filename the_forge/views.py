@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.core.mail import send_mail
 from the_edda_library.forms import LoreForm
 from the_entity_archive.forms import EntityForm
 from .forms import ContactDeveloperForm
+from the_edda_library.models import Lore
 
 
 # Create your views here.
@@ -56,4 +56,6 @@ def contact_developer(request):
         else:
             messages.add_message(request, messages.ERROR, "Ratatoskr is a swift messenger, but it seems your message got tangled in the branches. Please check the form for errors and try again.")
     return redirect(request.META.get('HTTP_REFERER', 'home'))
-        
+
+
+
