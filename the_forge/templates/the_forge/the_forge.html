@@ -48,7 +48,7 @@
                     {{ lore_form | crispy }}
 
                     {% if user.is_authenticated %}
-                        <button type="submit" name="submit_lore" class="btn forge-btn">Strike the Anvil <svg class="hammer-anvil-icon"><use xlink:href="{% static 'images/hammer-anvil-icon.svg' %}#anvil-icon"></use></svg></button> <!-- Credit to Flaticon for the anvil icon and Icomoon for generating the SVG Sprite then https://www.sitepoint.com/use-svg-image-sprites/ for implementation -->
+                        <button type="submit" name="submit_lore" class="btn forge-btn">Strike the Anvil <svg class="hammer-anvil-icon"><use href="{% static 'images/hammer-anvil-icon.svg' %}#anvil"></use></svg></button> <!-- Credit to Flaticon for the anvil icon and Icomoon for generating the SVG Sprite then https://www.sitepoint.com/use-svg-image-sprites/ for implementation -->
                     {% else %}
                         <div class="alert alert-info">
                             <p class="mb-0">Only those sworn to the Allfather may forge lore</p>
@@ -76,7 +76,7 @@
                     {{ entity_form | crispy }}
 
                     {% if user.is_authenticated %}
-                        <button type="submit" name="submit_entity" class="btn forge-btn">Strike the Anvil <svg class="hammer-anvil-icon"><use xlink:href="{% static 'images/hammer-anvil-icon.svg' %}#anvil-icon"></use></svg></button> 
+                        <button type="submit" name="submit_entity" class="btn forge-btn">Strike the Anvil <svg class="hammer-anvil-icon"><use href="{% static 'images/hammer-anvil-icon.svg' %}#anvil"></use></svg></button> 
                     {% else %}
                         <div class="alert alert-info">
                             <p class="mb-0">Only those sworn to the Allfather may forge lore</p>

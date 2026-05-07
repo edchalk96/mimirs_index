@@ -1,8 +1,7 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic
 from django.contrib import messages
-from .models import Lore
-from .models import Comment
+from .models import Lore, Comment
 from .forms import CommentForm
 
 # Create your views here.
@@ -95,3 +94,42 @@ def lore_detail(request, slug):
         comment_form = CommentForm()
 
     return render(request, "the_edda_library/lore_detail.html", {"lore": lore, "comments": comments, "comment_count": comment_count, "comment_form": comment_form})
+
+
+def comment_edit(request, slug, comment_id):
+    """
+    View to enable users to edit their own comments
+    """
+
+    if request.method == "POST":
+        queryset = Lore.objects.filter(status=1)
+        lore = get_object_or_404(queryset, slug=slug)
+        comment = get_object_or_404(Comment, pk=comment_id)
+        comment_form = CommentForm(data=request.POST, instance=comment)
+        if comment_form.is_valid() and comment.author == request.user:
+            comment = comment_form.save(commit=False)
+            comment.lore = lore
+            comment.approved = False
+            comment.save()
+            messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
+        else:
+            messages.add_message(request, messages.ERROR, 'Error updating comment!')
+
+    return redirect("lore_detail", slug=lore.slug)
+
+def comment_delete(request, slug, comment_id):
+    """
+    View to enable users to delete their own comments
+    """
+    queryset = Lore.objects.filter(status=1)
+    lore = get_object_or_404(queryset, slug=slug)
+    comment = get_object_or_404(Comment, pk=comment_id)
+
+    if comment.author == request.user:
+        comment.delete()
+        messages.add_message(request, messages.SUCCESS, 'Comment Deleted!')
+    else:
+        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+
+    return redirect("lore_detail", slug=lore.slug)
+    
