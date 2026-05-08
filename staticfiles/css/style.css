@@ -1,6 +1,43 @@
+/*Credit to: https://www.w3schools.com/css/css3_fonts.asp for font-face code*/
+@font-face {
+    font-family: Norse;
+    src: url(../font/Norse.otf);
+}
+
+@font-face {
+    font-family: NorseBold;
+    src: url(../font/Norse-Bold.otf);
+}
+
 html {
     scroll-behavior: smooth;
 }
+
+/* -- Generic -- */
+
+body {
+    background-color: #F8F4E8;
+}
+
+/* -- Navbar -- */
+
+header nav {
+    font-family: NorseBold, serif;
+    color: #333333;
+}
+
+.navbar-brand img {
+    max-width: 15vh;
+}
+
+
+/* -- Home Page -- */
+
+.card-icon {
+    max-height: 100%;
+    max-width: 100%;
+}
+
 
 .guest-view {
     opacity: 0.6;

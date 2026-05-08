@@ -35,67 +35,70 @@
 </head>
 
 <body>
-    
-    <!--Navbar-->
-    <nav class="navbar-expand-lg navbar-bg">
-        <div class="container-fluid">
-            <div class="row navbar">
-                <div class="col-4 navbar-logo">
-                    <a class="navbar-brand text-center" href="{% url 'home' %}">
-                        <img src="{% static 'images/mimirs-index-logo.png' %}" alt="logo" width="50">
-                        <p>Mimir's Index</p>
-                    </a>
-                </div>
-                <div class="col-4">
-                    <button class="navbar-toggler float-start" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbar-content">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link {% if request.path == home_url %}active{% endif %}" href="{% url 'home' %}">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {% if request.path == library_url %}active{% endif %}" href="{% url 'library' %}">The Edda Library</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {% if request.path == archive_url %}active{% endif %}" href="{% url 'archive' %}">The Entity Archive</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {% if request.path == forge_url %}active{% endif %}" href="{% url 'forge' %}">The Forge</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-4 d-none d-sm-block">
-                    {% if user.is_authenticated %}
-                        <p id="welcome-message">Skál! {{ user.username }}</p>
-                        {% if user.is_staff %} <!-- Show admin link if user is staff -->
-                            <a class="btn float-end account-btn {% if request.path == '/admin/' %}active{% endif %}" href="{% url 'admin:index' %}" role="button">Admin</a>
-                        {% endif %}
-                        <a class="btn float-end account-btn {% if request.path == logout_url %}active{% endif %}" href="{% url 'account_logout' %}" role="button">Log Out</a>
-                    {% else %}
-                        <a class="btn float-end account-btn {% if request.path == login_url %}active{% endif %}" href="{% url 'account_login' %}" role="button">Log In</a>
-                        <a class="btn float-end account-btn {% if request.path == signup_url %}active{% endif %}" href="{% url 'account_signup' %}" role="button">Register</a>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Displaying Django messages -->
-     <div class="container">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                {% for message in messages %}
-                    <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert" id="msg">
-                        {{ message | safe }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <header>
+        <!--Navbar-->
+        <nav class="navbar-expand-lg navbar-bg">
+            <div class="container-fluid">
+                <div class="row navbar">
+                    <div class="col-6 order-1 order-lg-2">
+                        <button class="navbar-toggler float-start" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbar-content">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link {% if request.path == home_url %}active{% endif %}" href="{% url 'home' %}">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% if request.path == library_url %}active{% endif %}" href="{% url 'library' %}">The Edda Library</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% if request.path == archive_url %}active{% endif %}" href="{% url 'archive' %}">The Entity Archive</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link {% if request.path == forge_url %}active{% endif %}" href="{% url 'forge' %}">The Forge</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                {% endfor %}
+                    <div class="col navbar-logo order-2 order-lg-1">
+                        <a class="navbar-brand text-center" href="{% url 'home' %}">
+                            <img src="{% static 'images/mimirs-index-logo.png' %}" alt="logo" width="auto">
+                        </a>
+                    </div>
+                    <div class="col order-3 align-items-center">
+                        {% if user.is_authenticated %}
+                            {% if user.is_staff %} <!-- Show admin link if user is staff -->
+                                <a class="btn account-btn {% if request.path == '/admin/' %}active{% endif %}" href="{% url 'admin:index' %}" role="button">Admin</a>
+                            {% endif %}
+                            <a class="btn account-btn {% if request.path == logout_url %}active{% endif %}" href="{% url 'account_logout' %}" role="button">Log Out</a>
+                            <div>
+                                <p id="welcome-message">Skál! {{ user.username }}</p>
+                            </div>
+                            {% else %}
+                            <a class="btn account-btn {% if request.path == login_url %}active{% endif %}" href="{% url 'account_login' %}" role="button">Log In</a>
+                            <a class="btn account-btn {% if request.path == signup_url %}active{% endif %}" href="{% url 'account_signup' %}" role="button">Register</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Displaying Django messages -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    {% for message in messages %}
+                        <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert" id="msg">
+                            {{ message | safe }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-     </div>
+    </header>
 
     <main>
 

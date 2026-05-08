@@ -175,7 +175,7 @@ Colour pallete was generate using [Coolors](https://coolors.co/)
 
 - **Fallback Strategy**
 
-    To ensure a consistent user experience in the event of an import failure, a robust CSS stack will be implemented. The primary fallback for all text will be Garamond, followed by the generic serif family, ensuring the "manuscript" feel is preserved even under limited connectivity.
+    To ensure a consistent user experience in the event of an import failure, a robust CSS stack will be implemented. The primary fallback for all text will be serif, ensuring the "manuscript" feel is preserved even under limited connectivity.
 
 #### *Imagery & Iconography*
 
