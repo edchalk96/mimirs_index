@@ -44,7 +44,7 @@
                         {% csrf_token %}
                         <div class="modal-body">
                             <h5>Re-forging the Lore</h5>
-                            {{ edit_form | crispy }}
+                            {{ edit_lore_form | crispy }}
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Cancel</button>
@@ -55,12 +55,12 @@
             </div>
         </div>
 
-        <!-- Modal for deletion request confirmation -->
+        <!-- Modal for lore deletion request confirmation -->
         <div class="modal fade" id="deleteLoreModal" tabindex="-1" aria-labelledby="deleteLoreModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel">Delete Lore Entry?</h5>
+                        <h5 class="modal-title" id="deleteLoreModalLabel">Delete Lore Entry?</h5>
                     </div>
                     <div class="modal-body">
                         <p>Are you sure you want to summon the Valkyries for this lore entry?</p>
@@ -74,7 +74,7 @@
         </div>
 
 
-         <!-- Hidden form deletion request -->
+        <!-- Hidden form for lore deletion request -->
         <form action="{% url forge:delete_lore lore.slug %}" id="deleteForm" method="POST" style="display: none;">
             {% csrf_token %}
         </form>

@@ -25,10 +25,55 @@
             <p>Created on: {{ entity.created_on }}</p>
             <p>Last updated: {{ entity.updated_on }}</p>
         </div>
-        <div class="col-md-12">
-            <a href="{% url 'PLACEHOLDER' entity.name %}" class="btn">Edit Entity</a>
-        </div>
+        {% if user.is_authenticated %}
+            <div class="col-md-12">
+                <button class="btn edit-btn" type="button" data-bs-toggle="modal" data-bs-target="#editEntityModal">Update the Entity</button>
+                <button class="btn delete-btn {% if entity.is_deletion_pending %}d-none{% endif %}" type="button" data-bs-toggle="modal" data-bs-target="#deleteEntityModal">Remove from the Archive</button>
+            </div>
+        {% endif %}
     </div>
+
+    <!-- Modal for editing entity entries -->
+        <div class="modal fade" id="editEntityModal" tabindex="-1" aria-labelledby="editEntityModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="modal-body">
+                            <h5>Re-forging the Entity</h5>
+                            {{ edit_entity_form | crispy }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn forge-btn">Strike the Anvil and Re-forge<svg class="hammer-anvil-icon"><use href="{% static 'images/hammer-anvil-icon.svg' %}#anvil"></use></svg></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for entity deletion request confirmation -->
+        <div class="modal fade" id="deleteEntityModal" tabindex="-1" aria-labelledby="deleteEntityModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteEntityModalLabel">Delete Entity Entry?</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to summon the Valkyries for this Entity?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn delete-btn" onclick="confirmRemoval()">Delete <i class="fa-solid fa-skull-crossbones"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidden form for lore deletion request -->
+        <form action="{% url forge:delete_entity entity.name %}" id="deleteForm" method="POST" style="display: none;">
+            {% csrf_token %}
+        </form>
 
     <div class="row">
         <div class="col-md-12">

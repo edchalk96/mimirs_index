@@ -13,6 +13,7 @@ class Entity(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
     author = models.ForeignKey(User, related_name="user_entity_entries", on_delete=models.PROTECT)
+    is_deletion_pending = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['name']

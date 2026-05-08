@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from .models import Entity
+from .forms import EntityForm
 
 # Create your views here.
 class EntityList(generic.ListView):
@@ -24,7 +25,7 @@ class EntityList(generic.ListView):
     
 def entity_profile(request, name):
     """
-    View function to display the profile of a specific entity.
+    View function to display the profile of a specific entity as well suggest edits.
 
     **Context:**
 
@@ -38,5 +39,15 @@ def entity_profile(request, name):
     """
     queryset = Entity.objects.filter(status=1)
     entity = get_object_or_404(queryset, name=name)
+
+    edit_entity_form = EntityForm(request.POST or None, instance=entity)
+
+    if request.method == "POST" and edit_entity_form.is_valid():
+        entity = edit_entity_form.save(commit=False)
+        entity.status = 0
+        entity.save()
+        messages.add_message(request, messages.SUCCESS, "The entity has been re-forged. Awaiting Mimir's approval")
+        return redirect("entity_profile", str=entity.name)
+
 
     return render(request, "the_entity_archive/entity_profile.html", {"entity": entity})

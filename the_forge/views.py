@@ -5,6 +5,7 @@ from the_edda_library.forms import LoreForm
 from the_entity_archive.forms import EntityForm
 from .forms import ContactDeveloperForm
 from the_edda_library.models import Lore
+from the_entity_archive.models import Entity
 
 
 # Create your views here.
@@ -40,6 +41,32 @@ def forge_form(request):
             
     return render(request, 'the_forge/the_forge.html', {'lore_form': lore_form, 'entity_form': entity_form})
 
+
+def delete_lore(request, slug):
+    """
+    View to submit a lore for deletion by an admin
+    """
+    lore = get_object_or_404(Lore, slug=slug)
+
+    if request.method == "POST":
+        lore.is_deletion_pending = True
+        lore.save()
+        messages.add_message(request, messages.SUCCESS, "Request for removal sent. The Valkyries will now decide its fate.")
+        return redirect("lore_detail", slug=lore.slug)
+    
+
+def delete_entity(request, name):
+    """
+    View to submit an entity for deletion by an admin
+    """
+    entity = get_object_or_404(Entity, str=name)
+
+    if request.method == "POST":
+        entity.is_deletion_pending = True
+        entity.save()
+        messages.add_message(request, messages.SUCCESS, "Request for removal sent. The Valkyries will now decide its fate.")
+        return redirect("entity_profile", str=entity.name)
+    
 
 def contact_developer(request):
     if request.method == 'POST':
