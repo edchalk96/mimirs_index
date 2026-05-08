@@ -6,7 +6,7 @@ from django_summernote.admin import SummernoteModelAdmin
 class LoreAdmin(SummernoteModelAdmin):
     summernote_fields = ('content',)
     prepopulated_fields = {'slug': ('title',)}
-    list_display = ('title', 'status', 'author__username', 'is_deletion_pending',)
+    list_display = ('title', 'status', 'author__username', 'is_deletion_pending', 'excerpt',)
     search_fields = ('title', 'primary_source', 'author__username',)
     list_filter = ('status', 'is_deletion_pending',)
     actions = ['approve_deletion', 'publish_lore_entry',]

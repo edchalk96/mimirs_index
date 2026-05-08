@@ -24,4 +24,4 @@ class Entity(models.Model):
         return self.appearances.count()
 
     def __str__(self):
-        return self.name
+        return f"{self.name} {'PENDING DELETION' if self.is_deletion_pending else ''}"
