@@ -21,15 +21,95 @@ body {
 
 /* -- Navbar -- */
 
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    border-bottom-left-radius:8px;
+    border-bottom-right-radius:8px;
+    z-index: 3;
+}
+
 header nav {
     font-family: NorseBold, serif;
     color: #333333;
+    font-size: 25px;
+}
+
+.navbar-toggler {
+    background-color: #2C3E50;
+}
+
+/* Credit https://codingyaar.com/shorts/bootstrap-navbar-toggler-color-change/ for code to change navbar toggler icon elements */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(248, 244, 232, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.nav-link:hover {
+    color: #2C3E50;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: #D4AF37;
+    text-decoration:underline;
+    text-decoration-thickness: 2px;
+}
+
+.navbar-logo {
+    padding: 0;
+}
+
+.navbar-brand {
+    margin-right: 0;
 }
 
 .navbar-brand img {
     max-width: 15vh;
 }
 
+/*Credit to stackoverflow: Adapted from https://stackoverflow.com/questions/64301832/navbar-toggle-direction-in-bootstrap | Adpated from Tails of Valhalla (https://github.com/edchalk96/tails-of-valhalla)*/ 
+@media screen and (max-width:992px) {
+    .navbar-collapse {
+    position: fixed;
+    top: 65px;
+    padding: 0;
+  }
+  
+  .navbar-collapse.collapsing {
+    left: -75%;
+    transition: height 0s ease;
+  }
+  
+  .navbar-collapse.show {
+    left: 0;
+    transition: left 300ms ease-in-out;
+  }
+  
+  .navbar-toggler.collapsed~.navbar-collapse {
+    transition: 500ms ease-in-out;
+  }
+  
+  .nav-link {
+    color: #F8F4E8;
+    padding-bottom: 0;
+    padding-left: 15px;
+  }
+  
+  .nav-link:hover {
+    color: #D4AF37;
+  }
+  
+  #navbar-content {
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(44, 62, 80, 0.75);
+    width: 100vw;
+
+    font-family: 'NorseBold', serif;
+    font-size: large;
+  }
+}
 
 /* -- Home Page -- */
 
