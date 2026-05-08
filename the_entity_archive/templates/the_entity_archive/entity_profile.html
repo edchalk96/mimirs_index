@@ -8,7 +8,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <img src="{% static 'images/entity-default.jpg' %}" alt="default entity image" class="img-fluid mb-4">
+            {% if "placeholder" in entity.featured_image.url %}
+            <img src="{% static 'images/entity-default.jpg' %}" alt="default entity image" class="img-fluid mb-4 entity-detail-image">
+            {% else %}
+            <img src="{{ entity.featured_image.url }}" alt="{{ entity.name }}" class="img-fluid mb-4 entity-detail-image">
+            {% endif %}
             <h1 class="">{{ entity.name }}</h1>
             <h3 class="">{{ entity.epithets|join:", " }}</h3>
         </div>

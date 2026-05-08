@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from the_entity_archive.models import Entity
 from django.utils.text import Truncator
+from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -19,6 +20,7 @@ class Lore(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     author = models.ForeignKey(User, related_name="user_lore_entries", on_delete=models.PROTECT)
     is_deletion_pending = models.BooleanField(default=False)
+    featured_image = CloudinaryField('image', default='placeholder')
 
     def save(self, *args, **kwargs):
         if self.content:

@@ -41,7 +41,11 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="{% url 'lore-detail' lore.slug %}" class="nav-card">
-                            <img class="card-icon" src="{% static 'images/lore-default.jpg' %}" alt="{{ lore.title }} Icon">
+                            {% if "placeholder" in lore.featured_image.url %}
+                            <img class="card-icon" src="{% static 'images/lore-default.jpg' %}" alt="placeholder icon">
+                            {% else %}
+                            <img src="{{ lore.featured_image.url }}" alt="{{ lore.title }} icon">
+                            {% endif %}
                             <h5 class="card-title">{{ lore.title }}</h5>
                             <p class="card-text">Entities: {{ lore.entities.all|join:", " }}</p>
                             <p class="card-text">{{ lore.excerpt }}</p>

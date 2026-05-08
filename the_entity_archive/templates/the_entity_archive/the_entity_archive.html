@@ -40,7 +40,11 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="{% url 'entity_profile' entity.name %}" class="nav-card">
-                            <img class="card-icon" src="{% static 'images/entity-default.jpg' %}" alt="{{ entity.name }} Icon">
+                            {% if "placeholder" in entity.featured_image.url %}
+                            <img src="{% static 'images/entity-default.jpg' %}" alt="placeholder icon">
+                            {% else %}
+                            <img src="{{ entity.featured_image.url }}" alt="{{ entity.name }} icon">
+                            {% endif %}
                             <h5 class="card-title">{{ entity.name }}</h5>
                             <p class="card-text">{{ entity.epithets|join:", " }}</p>
                             <p class="card-text">Lore Entries: {{ entity.lore_count }}</p>

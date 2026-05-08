@@ -1,6 +1,7 @@
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -14,6 +15,7 @@ class Entity(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     author = models.ForeignKey(User, related_name="user_entity_entries", on_delete=models.PROTECT)
     is_deletion_pending = models.BooleanField(default=False)
+    featured_image = CloudinaryField('image', default='placeholder')
 
     class Meta:
         ordering = ['name']
