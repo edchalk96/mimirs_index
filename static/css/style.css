@@ -21,38 +21,68 @@ body {
 
 /* -- Navbar -- */
 
+:root{
+    --logo-size: 10vh;
+
+    --nav-vertical-padding: 1rem;
+
+    --nav-height: calc(var(--logo-size) + var(--nav-vertical-padding));
+}
+
 header {
     position: fixed;
     width: 100%;
     top: 0;
-    border-bottom-left-radius:8px;
-    border-bottom-right-radius:8px;
-    z-index: 3;
+    z-index: 4;
+    background-color: #2C3E50;
+    height: var(--nav-height);
 }
 
 header nav {
     font-family: NorseBold, serif;
-    color: #333333;
-    font-size: 25px;
+    color: #F8F4E8;
 }
 
 .navbar-toggler {
-    background-color: #2C3E50;
+    background-color: #F8F4E8;
 }
 
 /* Credit https://codingyaar.com/shorts/bootstrap-navbar-toggler-color-change/ for code to change navbar toggler icon elements */
 .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(248, 244, 232, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(44, 62, 80, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 var(--bs-navbar-toggler-focus-width) #D4AF37;
+}
+
+.nav-link {
+    color: #F8F4E8;
 }
 
 .nav-link:hover {
-    color: #2C3E50;
+    color: #D4AF37;
 }
 
 .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
     color: #D4AF37;
     text-decoration:underline;
     text-decoration-thickness: 2px;
+}
+
+.account-btn {
+    color: #F8F4E8;
+}
+
+.account-btn:hover {
+    color: #D4AF37;
+}
+
+.account-btn.active {
+    color: #D4AF37;
+    text-decoration:underline;
+    text-decoration-thickness: 2px;
+    border: none;
 }
 
 .navbar-logo {
@@ -64,51 +94,89 @@ header nav {
 }
 
 .navbar-brand img {
-    max-width: 15vh;
+    width: var(--logo-size);
+    height: var(--logo-size);
+}
+
+#navbar-content .nav-link {
+    font-size: 1.75rem;
+}
+
+#account-section .account-btn {
+    font-size: 1.75rem;
+}
+
+#welcome-message {
+    font-size: 1.25rem;
 }
 
 /*Credit to stackoverflow: Adapted from https://stackoverflow.com/questions/64301832/navbar-toggle-direction-in-bootstrap | Adpated from Tails of Valhalla (https://github.com/edchalk96/tails-of-valhalla)*/ 
 @media screen and (max-width:992px) {
-    .navbar-collapse {
-    position: fixed;
-    top: 65px;
-    padding: 0;
-  }
-  
-  .navbar-collapse.collapsing {
-    left: -75%;
-    transition: height 0s ease;
-  }
-  
-  .navbar-collapse.show {
-    left: 0;
-    transition: left 300ms ease-in-out;
-  }
-  
-  .navbar-toggler.collapsed~.navbar-collapse {
-    transition: 500ms ease-in-out;
-  }
-  
-  .nav-link {
-    color: #F8F4E8;
-    padding-bottom: 0;
-    padding-left: 15px;
-  }
-  
-  .nav-link:hover {
-    color: #D4AF37;
-  }
-  
-  #navbar-content {
-    margin-top: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: rgb(44, 62, 80, 0.75);
-    width: 100vw;
 
-    font-family: 'NorseBold', serif;
-    font-size: large;
-  }
+    .navbar-collapse {
+        position: fixed;
+        top: 65px;
+        padding: 0;
+    }
+  
+    .navbar-collapse.collapsing {
+        left: -75%;
+        transition: height 0s ease;
+    }
+  
+    .navbar-collapse.show {
+        left: 0;
+        transition: left 300ms ease-in-out;
+    }
+  
+    .navbar-toggler.collapsed~.navbar-collapse {
+        transition: 500ms ease-in-out;
+    }
+  
+    .nav-link {
+        padding-bottom: 0;
+        padding-left: 1rem;
+        color: #F8F4E8;
+    }
+
+    .account-btn {
+        padding-top: 0.5rem;
+        padding-bottom: 0;
+        color: #F8F4E8;
+        border: none;
+    }
+  
+    .nav-link:hover {
+        color: #D4AF37;
+    }
+  
+    #navbar-content {
+        margin-top: 1rem;
+        padding-top: 1.5rem;
+        padding-bottom: 1rem;
+        background-color: rgb(44, 62, 80, 0.75);
+        width: 100vw;
+        color: #F8F4E8;
+        font-family: 'NorseBold', serif;
+    }
+
+    #navbar-content .nav-link {
+    font-size: 1.25rem;
+    }
+
+    #account-section .account-btn {
+    font-size: 1.25rem;
+    }
+
+    #welcome-message {
+        padding-top: 0.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* Keeps <main> starting below the header whilst fixing the header the top of the page*/
+main {
+    margin-top: calc(var(--nav-height) + 2rem);
 }
 
 /* -- Home Page -- */
