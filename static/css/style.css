@@ -24,7 +24,7 @@ body {
 :root{
     --logo-size: 10vh;
 
-    --nav-vertical-padding: 1rem;
+    --nav-vertical-padding: 2rem;
 
     --nav-height: calc(var(--logo-size) + var(--nav-vertical-padding));
 }
@@ -33,13 +33,13 @@ header {
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 4;
+    z-index: 3;
     background-color: #2C3E50;
     height: var(--nav-height);
 }
 
 header nav {
-    font-family: NorseBold, serif;
+    font-family: Norse, serif;
     color: #F8F4E8;
 }
 
@@ -68,6 +68,7 @@ header nav {
     color: #D4AF37;
     text-decoration:underline;
     text-decoration-thickness: 2px;
+    font-family: NorseBold, serif;
 }
 
 .account-btn {
@@ -108,14 +109,17 @@ header nav {
 
 #welcome-message {
     font-size: 1.25rem;
+    color: #D4AF37; 
+    font-family: NorseBold, serif;
+    text-shadow: 1px 1px 2px #333333, 0 0 25px #D4AF37, 0 0 5px #F8F4E8;
 }
 
 /*Credit to stackoverflow: Adapted from https://stackoverflow.com/questions/64301832/navbar-toggle-direction-in-bootstrap | Adpated from Tails of Valhalla (https://github.com/edchalk96/tails-of-valhalla)*/ 
-@media screen and (max-width:992px) {
+@media screen and (max-width:991.98px) {
 
     .navbar-collapse {
         position: fixed;
-        top: 65px;
+        top: var(--nav-height);
         padding: 0;
     }
   
@@ -136,13 +140,11 @@ header nav {
     .nav-link {
         padding-bottom: 0;
         padding-left: 1rem;
-        color: #F8F4E8;
     }
 
     .account-btn {
         padding-top: 0.5rem;
         padding-bottom: 0;
-        color: #F8F4E8;
         border: none;
     }
   
@@ -151,41 +153,102 @@ header nav {
     }
   
     #navbar-content {
-        margin-top: 1rem;
         padding-top: 1.5rem;
         padding-bottom: 1rem;
         background-color: rgb(44, 62, 80, 0.75);
         width: 100vw;
-        color: #F8F4E8;
-        font-family: 'NorseBold', serif;
     }
 
     #navbar-content .nav-link {
-    font-size: 1.25rem;
+        font-size: 1.25rem;
     }
 
-    #account-section .account-btn {
-    font-size: 1.25rem;
+    #collapsed-account-section .account-btn {
+        font-size: 1.25rem;
+    }
+
+    #welcome-message {
+        padding-top: 0.5rem;
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (max-width:575.98px) {
+    :root {
+        --nav-vertical-padding: 1rem;
+
+            
+        --logo-size: 6vh;
     }
 
     #welcome-message {
         padding-top: 0.5rem;
         font-size: 1rem;
     }
+
+    .navbar-toggler {
+        font-size: medium;
+    }
 }
 
 /* Keeps <main> starting below the header whilst fixing the header the top of the page*/
 main {
-    margin-top: calc(var(--nav-height) + 2rem);
+    margin-top: calc(var(--nav-height));
 }
 
 /* -- Home Page -- */
+
+/* -- Hero Image styling -- */
+
+.hero-image-container {
+    height: calc(100vh - var(--nav-height));
+    max-width: 100%;
+    background: url(../images/yggdrasil-hero-image.png);
+    background-position: center 80%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*Credit to Code Institute for the hero image overlay: Taken from the "Whiskey Drop" course material*/
+.opaque-overlay {
+    position: absolute;
+    left: 0;
+    height: calc(100vh - var(--nav-height));
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-image-content {
+    font-family: 'NorseBold', sans-serif;
+    z-index: 1;
+    color: #ECEFF4;
+    text-shadow: 2px 2px 5px #2E3440, 0 0 25px #ECEFF4, 0 0 5px #ECEFF4;
+}
+
+
+@media screen and (max-width:767.98px){
+    .hero-image-container {
+        height: calc(50vh - var(--nav-height));
+    }
+
+    .opaque-overlay {
+        height: calc(50vh - var(--nav-height));
+    }
+}
+
+/* -- End of Hero Image styling --*/
 
 .card-icon {
     max-height: 100%;
     max-width: 100%;
 }
-
 
 .guest-view {
     opacity: 0.6;

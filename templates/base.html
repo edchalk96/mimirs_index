@@ -50,7 +50,7 @@
                     
                     
                         <!-- Collapsible content -->
-                        <div class="collapse navbar-collapse mt-md-4 mt-lg-0" id="navbar-content">
+                        <div class="collapse navbar-collapse mt-lg-0" id="navbar-content">
                             <ul class="navbar-nav text-start mb-lg-0">
                                 <li class="nav-item">
                                     <a class="nav-link {% if request.path == home_url %}active{% endif %}" href="{% url 'home' %}">Home</a>
@@ -66,7 +66,7 @@
                                 </li>
                             </ul>
 
-                            <div class="d-md-none">
+                            <div class="d-md-none" id="collapsed-account-section">
                                 {% if user.is_authenticated %}
                                     {% if user.is_staff %} <!-- Show admin link if user is staff -->
                                         <div>
@@ -77,7 +77,7 @@
                                             <a class="btn account-btn ps-3 {% if request.path == logout_url %}active{% endif %}" href="{% url 'account_logout' %}" role="button">Log Out</a>
                                         </div>
                                         <div>
-                                            <p id="welcome-message" class="mb-0">Skál! {{ user.username }}</p>
+                                            <p id="welcome-message" class="mb-0 ps-3">Skál! {{ user.username }}</p>
                                         </div>
                                     {% else %}
                                         <div>
@@ -85,7 +85,7 @@
                                             <a class="btn account-btn ps-3 {% if request.path == logout_url %}active{% endif %}" href="{% url 'account_logout' %}" role="button">Log Out</a>
                                         </div>
                                         <div>
-                                            <p id="welcome-message" class="mb-0 ps-3">Skál! {{ user.username }}</p>
+                                            <p id="welcome-message" class="mb-0 ps-3">TEST Skál! {{ user.username }}</p>
                                         </div>
                                     {% endif %}
                                 {% else %}
@@ -103,7 +103,7 @@
                     </div>
 
                     <!-- Logo in navbar -->
-                    <div class="col navbar-logo order-2 order-lg-1 text-end text-lg-start px-2 px-md-0">
+                    <div class="col navbar-logo order-2 order-lg-1 text-end text-lg-start ps-lg-3 px-2 px-md-0">
                         <a class="navbar-brand" href="{% url 'home' %}">
                             <img src="{% static 'images/mimirs-index-logo.png' %}" alt="logo">
                         </a>
@@ -155,7 +155,9 @@
     <main>
 
         {% block content %}
+
         <!-- Page-specific content will be inserted here -->
+
         {% endblock content %}
 
     </main>
