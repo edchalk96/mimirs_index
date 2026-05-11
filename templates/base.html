@@ -163,55 +163,54 @@
     </main>
 
     <!--Footer-->
-    <footer class="container-fluid">
+    <footer class="container-fluid my-3">
         <div class="row footer-sections text-center">
             <!-- Contact Developer modal trigger -->
-            <div class="col-sm-3">
+            <div class="col-sm-4 d-flex justify-content-center align-items-center">
                 <a class="modal-btn" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">
-                    <h6>Contact Developer</h6>
+                    <p>Contact Developer</p>
                 </a>
             </div>
 
             <!-- Contact Developer Modal -->
-            <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="contactModalLabel">Send a Raven to the Developer</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal fade send-raven-modal" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content text-center">
+                        <div class="modal-header justify-content-center position-relative">
+                            <h2 class="modal-title" id="contactModalLabel">Send a Raven to the Developer</h2>
+                            <button type="button" class="btn-close position-absolute end-0 me-1" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
 
                         <div class="modal-body">
                             <!-- Contact form content -->
                              <form id="contactForm" method="post" action="{% url 'contact_developer' %}">
                                 {% csrf_token %}
-                                <div class="mb-3">
-                                    <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                                <div class="mb-3 w-75 mx-auto">
+                                    <input type="text" name="subject" class="form-control text-center" placeholder="Subject" required>
                                 </div>
-                                <div class="mb-3">
-                                    <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                                <div class="mb-3 w-75 mx-auto">
+                                    <input type="email" name="email" class="form-control text-center" placeholder="Your Email" required>
                                 </div>
-                                <div class="mb-3">
-                                    <textarea name="message" class="form-control" placeholder="Your Message" required></textarea>
+                                <div class="mb-3 w-75 mx-auto">
+                                    <textarea name="message" class="form-control text-center" placeholder="Your Message" required></textarea>
                                 </div>
-                                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn">Send the Raven <i class="fa-solid fa-crow"></i></button>
+
+                                <div class="d-flex justify-content-between mt-4">
+                                    <button type="button" class="btn send-raven-btn mx-3" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn send-raven-btn mx-2">Send Raven<i class="fa-solid fa-crow ms-2"></i></button>
+                                </div>
                              </form>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-3 social-link align-self-center">
-                <a href="https://github.com/edchalk96" target="_blank" aria-label="GitHub link"><i class="fa-brands fa-github"></i></a>
+            <div class="col-sm-4 pe-md-2 social-link align-self-center">
+                <a class="px-2" href="https://github.com/edchalk96" target="_blank" aria-label="GitHub link"><i class="fa-brands fa-github"></i></a>
+                <a class="px-2" href="https://discordapp.com/users/1354891849663381557" target="_blank" aria-label="Discord link"><i class="fa-brands fa-discord"></i></a>
             </div>
-            <div class="col-sm-3 social-link align-self-center">
-                <a href="https://discordapp.com/users/1354891849663381557" target="_blank" aria-label="Discord link"><i class="fa-brands fa-discord"></i></a>
-            </div>
-            <div class="col-sm-3">
-                <div class="">
-                    <p>Knowledge is a drink from the well.</p>
-                </div>
+            <div class="col-sm-4 p text-nowrap d-flex justify-content-center align-items-center">
+                <p>Knowledge is a drink from the well.</p>
             </div>
         </div>
     {% block extras %}

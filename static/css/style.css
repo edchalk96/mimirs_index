@@ -191,12 +191,88 @@ header nav {
     }
 }
 
+/*-- Footer styling --*/
+
+footer {
+    color: #333333;
+    font-family: Norse, serif;
+    font-size: 1rem;
+}
+
+.footer-sections a {
+    color: #333333;
+}
+
+.footer-sections a:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    font-size: 1.25rem;
+}
+
+@media screen and (min-width:991.98px) {
+    footer {
+        font-size: 1.5rem;
+    }
+
+    .footer-sections a:hover {
+        font-size: 1.75rem;
+    }
+}
+
+.send-raven-modal .modal-content {
+    background-color: #2C3E50;
+    color: #F8F4E8;
+}
+
+.send-raven-modal .btn-close {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23F8F4E8'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414'/%3e%3c/svg%3e");
+}
+
+#contactForm {
+    font-family: 'EB Garamond', serif;
+}
+
+#contactForm input {
+    background-color: #F8F4E8;
+    color: #333333;
+}
+
+#contactForm textarea {
+    background-color: #F8F4E8;
+    color: #333333;
+}
+
+.send-raven-modal h2 {
+    font-family: NorseBold, serif;
+}
+
+.send-raven-btn {
+    font-family: Norse, serif;
+    background-color: #F8F4E8
+}
+
+.send-raven-btn:hover {
+    background-color: #D4AF37;
+    color: #2C3E50;
+    font-size: 1.25rem;
+}
+
+@media screen and (min-width:767.98px) {
+    .send-raven-btn {
+        font-size: 1.25rem;
+    }
+
+    .send-raven-btn:hover {
+        font-size: 1.5rem;
+    }
+}
+
 /* Keeps <main> starting below the header whilst fixing the header the top of the page*/
 main {
     margin-top: calc(var(--nav-height));
 }
 
-/* -- Home Page -- */
+/* ------ Home Page ------ */
 
 /* -- Hero Image styling -- */
 
@@ -204,7 +280,7 @@ main {
     height: calc(100vh - var(--nav-height));
     max-width: 100%;
     background: url(../images/yggdrasil-hero-image.png);
-    background-position: center 80%;
+    background-position: center 40%;
     background-repeat: no-repeat;
     background-size: cover;
     -webkit-background-size: cover;
@@ -228,10 +304,23 @@ main {
 .hero-image-content {
     font-family: 'NorseBold', sans-serif;
     z-index: 1;
-    color: #ECEFF4;
-    text-shadow: 2px 2px 5px #2E3440, 0 0 25px #ECEFF4, 0 0 5px #ECEFF4;
+    color: #F8F4E8;
+    text-shadow: 2px 2px 5px #333333, 0 0 25px #D4AF37, 0 0 5px #F8F4E8;
+    height: 100%;
+    text-align: center;
+    position: relative;
 }
 
+@media screen and (min-width:767.98px){
+    .hero-image-content p {
+        font-size: 1.75rem;
+    }
+
+    .hero-image-content h1 {
+        padding-bottom: 1rem;
+        font-size: 3rem;
+    }
+}
 
 @media screen and (max-width:767.98px){
     .hero-image-container {
@@ -245,10 +334,109 @@ main {
 
 /* -- End of Hero Image styling --*/
 
+/*-- Navigation cards styling --*/
+
+.nav-card {
+    background-color: #2C3E50;
+    border-radius: 8%;
+    font-family: Norse, serif;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+.nav-card a {
+    color: #F8F4E8;
+}
+
+.nav-card h3 {
+    font-family: NorseBold, serif;
+    margin-bottom: 2rem;
+}
+
+.nav-card p {
+    font-size: 1.25rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.nav-card:hover {
+    box-shadow: rgb(212, 175, 55, 0.8) 0px 20px 30px -10px;
+
+    .nav-link-text {
+        text-decoration: underline;
+        color: #D4AF37;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+}
+
 .card-icon {
     max-height: 100%;
     max-width: 100%;
 }
+
+@media screen and (min-width:767.98px) {
+
+    .nav-card {
+        height: 50vh;
+    }
+
+    .nav-card p {
+    font-size: 1rem;
+    }
+
+    .nav-card:hover {
+        .nav-link-text {
+            font-size: 1.25rem;
+        }
+    }
+}
+
+@media screen and (min-width:991.98px) {
+
+    .nav-card {
+        height: 60vh;
+    }
+
+    .nav-card p {
+    font-size: 1.4rem;
+    }
+
+    .nav-card:hover {
+        .nav-link-text {
+            font-size: 1.6rem;
+        }
+    }
+}
+
+/*-- End of navigation cards styling --*/
+
+/* -- Styling of mimirs whispers --*/
+
+.mimirs-whispers h2 {
+    font-family: NorseBold, serif;
+    color: #333333;
+    padding-top: 0.75rem;
+}
+
+.mimirs-whispers p {
+    font-family: 'EB Garamond', serif;
+    color: #333333;
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+}
+
+.random-lore {
+    border: 3px solid #2C3E50;
+    border-radius: 8px;
+}
+
+@media screen and (min-width:767.98px) {
+    .mimirs-whispers p {
+        font-size: 1.25rem;
+    }
+}
+
+/* End of mimirs whispers --*/
 
 .guest-view {
     opacity: 0.6;

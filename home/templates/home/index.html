@@ -10,67 +10,60 @@
     <div class="container-fluid hero-image-container">
         <!--Text overlay-->
         <div class="opaque-overlay"></div>
-        <div class="row hero-image-content">
-            <div>
-                <section class="jumbotron text-center">
-                    <h1 class="page-headings">Mimir's Index</h1>
-                    <h2>Deconstruct the Lore</h2>
-                    <p>Explore the intricate web of characters, metaphors, and stanzas that define Norse mythology </p>
-                </section>
+        <div class="row hero-image-content h-100">
+            <div class="col-12 d-flex flex-column h-100 pt-3 pt-md-4">
+                <h1>Mimir's Index</h1>
+                <h2>Deconstruct the Lore</h2>
+
+                <p class="mt-auto mb-4 p-md-4">Explore the intricate web of characters, metaphors, and stanzas that define Norse mythology </p>
             </div>
         </div>
     </div>
 
     <!-- Navigation Cards -->
-    <div class="container">
+    <div class="container mt-5 mt-md-3 p-md-0">
         <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <a href="{% url 'library' %}" class="nav-card">
-                            <img class="card-icon" src="{% static 'images/the-edda-library-icon.png' %}" alt="Book Icon">
-                            <h5 class="card-title">The Edda Library</h5>
-                            <p class="card-text">Browse Poems and individual Stanzas</p>
-                            <p>Open Library</p>
-                        </a>
-                    </div>
+            <div class="col-md-4 p-4 p-md-3">
+                <div class="nav-card">
+                    <a href="{% url 'library' %}" class="d-flex flex-column align-items-center text-center text-decoration-none pt-md-3">
+                        <img class="card-icon mb-3" src="{% static 'images/the-edda-library-icon.png' %}" alt="Book Icon">
+                        <h3 class="card-title">The Edda Library</h3>
+                        <p class="card-text">Browse Poems and individual Stanzas</p>
+                        <p class="nav-link-text">Open Library</p>
+                    </a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <a href="{% url 'archive' %}" class="nav-card">
-                            <img class="card-icon" src="{% static 'images/the-entity-archive-icon.png' %}" alt="Norse God Icon">
-                            <h5 class="card-title">The Entity Archive</h5>
-                            <p class="card-text">Explore Gods, Giants & Entities</p>
-                            <p>View Entities</p>
-                        </a>
-                    </div>
+            <div class="col-md-4 p-4 p-md-3">
+                <div class="nav-card">
+                    <a href="{% url 'archive' %}" class="d-flex flex-column align-items-center text-center text-decoration-none pt-md-3">
+                        <img class="card-icon" src="{% static 'images/the-entity-archive-icon.png' %}" alt="Norse God Icon">
+                        <h3 class="card-title">The Entity Archive</h3>
+                        <p class="card-text">Explore Gods, Giants & Entities</p>
+                        <p class="nav-link-text">View Entities</p>
+                    </a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <a href="{% url 'forge' %}" class="nav-card">
-                            <img class = "card-icon" src="{% static 'images/the-forge-icon.png' %}" alt="Anvil and Hammer Icon">
-                            <h5 class="card-title">The Forge</h5>
-                            <p class="card-text">Submit New Entries into The Library or The Entity Archive</p>
-                            <p>Start Forging</p>
-                        </a>
-                    </div>
+            <div class="col-md-4 p-4 p-md-3">
+                <div class="nav-card">
+                    <a href="{% url 'forge' %}" class="d-flex flex-column align-items-center text-center text-decoration-none pt-md-3">
+                        <img class = "card-icon" src="{% static 'images/the-forge-icon.png' %}" alt="Anvil and Hammer Icon">
+                        <h3 class="card-title">The Forge</h3>
+                        <p class="card-text">Submit New Entries into The Library or The Entity Archive</p>
+                        <p class="nav-link-text">Start Forging</p>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- From the Archive section -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="section-heading">Mimir's Whispers</h3>
+    <div class="container mimirs-whispers text-center my-4 pb-2">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-10 random-lore d-flex flex-column align-items-center text-center py-2 px-3">
+                <h2>Mimir's Whispers</h2>
 
                 {% if random_lore %}
-                    <h4>{{ random_lore.title }}</h4>
+                    <h3>{{ random_lore.title }}</h3>
                     <p>{{ random_lore.excerpt }}</p>
 
                     <div>
@@ -88,7 +81,7 @@
                     </div>
 
                 {% else %}
-                    <p>The library is currently empty. Seek the runes later</p>
+                    <p class="pt-md-3">The library is currently empty. Seek the runes later.</p>
                 {% endif %}
             </div>
         </div>
