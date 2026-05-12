@@ -138,7 +138,7 @@
         </nav>
 
         <!-- Displaying Django messages -->
-        <div class="container">
+        <div class="container message-alert">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
                     {% for message in messages %}
@@ -164,9 +164,9 @@
 
     <!--Footer-->
     <footer class="container-fluid my-3">
-        <div class="row footer-sections text-center">
+        <div class="row footer-sections text-center mt-3">
             <!-- Contact Developer modal trigger -->
-            <div class="col-sm-4 d-flex justify-content-center align-items-center">
+            <div class="col-sm-4 d-flex justify-content-center align-items-center mt-3">
                 <a class="modal-btn" href="#" data-bs-toggle="modal" data-bs-target="#contactModal">
                     <p>Contact Developer</p>
                 </a>
@@ -209,12 +209,14 @@
                 <a class="px-2" href="https://github.com/edchalk96" target="_blank" aria-label="GitHub link"><i class="fa-brands fa-github"></i></a>
                 <a class="px-2" href="https://discordapp.com/users/1354891849663381557" target="_blank" aria-label="Discord link"><i class="fa-brands fa-discord"></i></a>
             </div>
-            <div class="col-sm-4 p text-nowrap d-flex justify-content-center align-items-center">
+            <div class="col-sm-4 p text-nowrap d-flex justify-content-center align-items-center mt-3">
                 <p>Knowledge is a drink from the well.</p>
             </div>
         </div>
     {% block extras %}
     {% endblock %}
+
+    <script src="{% static 'js/base.js' %}"></script>
 </body>
 
 </html>
