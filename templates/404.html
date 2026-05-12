@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container text-center d-flex flex-column justify-content-center error-page-content">
+    <div class="row justify-content-center">
+        <div class="col-md-8 pt-4">
+            <h1>404</h1>
+            <h2 class="py-3">You have wandered into the mists...</h2>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <img src="{% static 'images/lost-in-mists.jpg' %}" alt="Lost in the mists" class="img-fluid mb-4 opacity-75 rounded">
+        </div>
+    </div>
+
+    <div class="row justify-content-center px-4">
+        <div class="col-md-8 d-flex justify-content-center">
+            <p>Even Mimir cannot find the lore you seek. This path does not exist in the Nine Realms.</p>
+        </div>
+        <div class="col-md-8 d-flex justify-content-center">
+            <a href="{% url 'home' %}" class="btn">Return to the Path</a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

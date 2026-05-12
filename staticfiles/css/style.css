@@ -13,31 +13,608 @@ html {
     scroll-behavior: smooth;
 }
 
-/* -- Generic -- */
+/*-- Generic --*/
 
 body {
     background-color: #F8F4E8;
 }
 
-/* -- Navbar -- */
+/*-- Bulleted lists markers - Credit to W3 Schools for the Unicode characters: https://www.w3schools.com/charsets/ref_utf_runic.asp --*/
+main {
+    li:nth-child(24n + 1)::marker {
+        content: "\16A0";
+    }
+
+    li:nth-child(24n + 2)::marker {
+        content: "\16A2";
+    }
+
+    li:nth-child(24n + 3)::marker {
+        content: "\16A6";
+    }
+
+    li:nth-child(24n + 4)::marker {
+        content: "\16A8";
+    }
+
+    li:nth-child(24n + 5)::marker {
+        content: "\16B1";
+    }
+
+    li:nth-child(24n + 6)::marker {
+        content: "\16B2";
+    }
+
+    li:nth-child(24n + 7)::marker {
+        content: "\16B7";
+    }
+
+    li:nth-child(24n + 8)::marker {
+        content: "\16B9";
+    }
+
+    li:nth-child(24n + 9)::marker {
+        content: "\16BA";
+    }
+
+    li:nth-child(24n + 10)::marker {
+        content: "\16BE";
+    }
+
+    li:nth-child(24n + 11)::marker {
+        content: "\16C1";
+    }
+
+    li:nth-child(24n + 12)::marker {
+        content: "\16C3";
+    }
+
+    li:nth-child(24n + 13)::marker {
+        content: "\16C7";
+    }
+
+    li:nth-child(24n + 14)::marker {
+        content: "\16C8";
+    }
+
+    li:nth-child(24n + 15)::marker {
+        content: "\16C9";
+    }
+
+    li:nth-child(24n + 16)::marker {
+        content: "\16CA";
+    }
+
+    li:nth-child(24n + 17)::marker {
+        content: "\16CF";
+    }
+
+    li:nth-child(24n + 18)::marker {
+        content: "\16D2";
+    }
+
+    li:nth-child(24n + 19)::marker {
+        content: "\16D6";
+    }
+
+    li:nth-child(24n + 20)::marker {
+        content: "\16D7";
+    }
+
+    li:nth-child(24n + 21)::marker {
+        content: "\16DA";
+    }
+
+    li:nth-child(24n + 22)::marker {
+        content: "\16DC";
+    }
+
+    li:nth-child(24n + 23)::marker {
+        content: "\16DF";
+    }
+
+    li:nth-child(24n)::marker {
+        content: "\16DE";
+    }
+}
+
+/*-- Navbar --*/
+
+:root{
+    --logo-size: 10vh;
+
+    --nav-vertical-padding: 2rem;
+
+    --nav-height: calc(var(--logo-size) + var(--nav-vertical-padding));
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 3;
+    background-color: #2C3E50;
+    height: var(--nav-height);
+}
 
 header nav {
+    font-family: Norse, serif;
+    color: #F8F4E8;
+}
+
+.navbar-toggler {
+    background-color: #F8F4E8;
+}
+
+/* Credit https://codingyaar.com/shorts/bootstrap-navbar-toggler-color-change/ for code to change navbar toggler icon elements */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(44, 62, 80, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='3' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 var(--bs-navbar-toggler-focus-width) #D4AF37;
+}
+
+.nav-link {
+    color: #F8F4E8;
+}
+
+.nav-link:hover {
+    color: #D4AF37;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: #D4AF37;
+    text-decoration:underline;
+    text-decoration-thickness: 2px;
     font-family: NorseBold, serif;
-    color: #333333;
+}
+
+.account-btn {
+    color: #F8F4E8;
+}
+
+.account-btn:hover {
+    color: #D4AF37;
+}
+
+.account-btn.active {
+    color: #D4AF37;
+    text-decoration:underline;
+    text-decoration-thickness: 2px;
+    border: none;
+}
+
+.navbar-logo {
+    padding: 0;
+}
+
+.navbar-brand {
+    margin-right: 0;
 }
 
 .navbar-brand img {
-    max-width: 15vh;
+    width: var(--logo-size);
+    height: var(--logo-size);
+}
+
+#navbar-content .nav-link {
+    font-size: 1.75rem;
+}
+
+#account-section .account-btn {
+    font-size: 1.75rem;
+}
+
+#welcome-message {
+    font-size: 1.25rem;
+    color: #D4AF37; 
+    font-family: NorseBold, serif;
+    text-shadow: 1px 1px 2px #333333, 0 0 25px #D4AF37, 0 0 5px #F8F4E8;
+}
+
+/*Credit to stackoverflow: Adapted from https://stackoverflow.com/questions/64301832/navbar-toggle-direction-in-bootstrap | Adpated from Tails of Valhalla (https://github.com/edchalk96/tails-of-valhalla)*/ 
+@media screen and (max-width:991.98px) {
+
+    .navbar-collapse {
+        position: fixed;
+        top: var(--nav-height);
+        padding: 0;
+    }
+  
+    .navbar-collapse.collapsing {
+        left: -75%;
+        transition: height 0s ease;
+    }
+  
+    .navbar-collapse.show {
+        left: 0;
+        transition: left 300ms ease-in-out;
+    }
+  
+    .navbar-toggler.collapsed~.navbar-collapse {
+        transition: 500ms ease-in-out;
+    }
+  
+    .nav-link {
+        padding-bottom: 0;
+        padding-left: 1rem;
+    }
+
+    .account-btn {
+        padding-top: 0.5rem;
+        padding-bottom: 0;
+        border: none;
+    }
+  
+    .nav-link:hover {
+        color: #D4AF37;
+    }
+  
+    #navbar-content {
+        padding-top: 1.5rem;
+        padding-bottom: 1rem;
+        background-color: rgb(44, 62, 80, 0.75);
+        width: 100vw;
+    }
+
+    #navbar-content .nav-link {
+        font-size: 1.25rem;
+    }
+
+    #collapsed-account-section .account-btn {
+        font-size: 1.25rem;
+    }
+
+    #welcome-message {
+        padding-top: 0.5rem;
+        font-size: 1.25rem;
+    }
+}
+
+@media screen and (max-width:575.98px) {
+    :root {
+        --nav-vertical-padding: 1rem;
+
+            
+        --logo-size: 6vh;
+    }
+
+    #welcome-message {
+        padding-top: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .navbar-toggler {
+        font-size: medium;
+    }
+}
+
+.alert {
+    background-color: #F8F4E8;
+}
+
+#msg {
+    font-family: 'EB Garamond', serif;
+    color: #333333;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+/*-- Footer styling --*/
+
+footer {
+    color: #333333;
+    font-family: Norse, serif;
+    font-size: 1rem;
+}
+
+.footer-sections a {
+    color: #333333;
+}
+
+.footer-sections a:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    font-size: 1.25rem;
+}
+
+@media screen and (min-width:991.98px) {
+    footer {
+        font-size: 1.5rem;
+    }
+
+    .footer-sections a:hover {
+        font-size: 1.75rem;
+    }
+}
+
+.send-raven-modal .modal-content {
+    background-color: #2C3E50;
+    color: #F8F4E8;
+}
+
+.send-raven-modal .btn-close {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23F8F4E8'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414'/%3e%3c/svg%3e");
+}
+
+#contactForm {
+    font-family: 'EB Garamond', serif;
+}
+
+#contactForm input {
+    background-color: #F8F4E8;
+    color: #333333;
+}
+
+#contactForm textarea {
+    background-color: #F8F4E8;
+    color: #333333;
+}
+
+.send-raven-modal h2 {
+    font-family: NorseBold, serif;
+}
+
+.send-raven-btn {
+    font-family: Norse, serif;
+    background-color: #F8F4E8
+}
+
+.send-raven-btn:hover {
+    background-color: #D4AF37;
+    color: #2C3E50;
+    font-size: 1.25rem;
+}
+
+@media screen and (min-width:767.98px) {
+    .send-raven-btn {
+        font-size: 1.25rem;
+    }
+
+    .send-raven-btn:hover {
+        font-size: 1.5rem;
+    }
+}
+
+/* Keeps <main> starting below the header whilst fixing the header the top of the page*/
+main {
+    margin-top: calc(var(--nav-height));
+}
+
+/* ------ Accounts Pages ------*/
+
+.account-content h2 {
+    font-family: NorseBold, serif;
+    color: #2C3E50;
+    text-shadow: 0 0 3px #333333
+}
+
+.account-content p {
+    font-family: 'EB Garamond', serif;
+    color: #333333;
+    font-size: 1.25rem;
+}
+
+.accounts-image img {
+    height: 50vh;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;;
+}
+
+.account-content button {
+    font-family: Norse, serif;
+    font-size: 1.25rem;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;;
+}
+
+.account-content button:hover {
+    font-size: 1.5rem;
+    box-shadow: rgb(212, 175, 55, 0.8) 0px 20px 30px -10px;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    border: none;
+    font-weight: bold;
+}
+
+.account-content label {
+    font-family: Norse, serif;
+}
+
+#id_password_helptext {
+    display: block;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.account-content a {
+    color: #2C3E50;
+    font-family: Norse, serif;
+}
+
+.account-content a:hover {
+    color: #D4AF37;
+    text-shadow: 0 0 1px #333333;
+}
+
+.account-content ul {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.25rem;
+    color: #333333;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 
-/* -- Home Page -- */
+
+/* ------ Home Page ------ */
+
+/* -- Hero Image styling -- */
+
+.hero-image-container {
+    height: calc(100vh - var(--nav-height));
+    max-width: 100%;
+    background: url(../images/yggdrasil-hero-image.png);
+    background-position: center 40%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*Credit to Code Institute for the hero image overlay: Taken from the "Whiskey Drop" course material*/
+.opaque-overlay {
+    position: absolute;
+    left: 0;
+    height: calc(100vh - var(--nav-height));
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-image-content {
+    font-family: 'NorseBold', sans-serif;
+    z-index: 1;
+    color: #F8F4E8;
+    text-shadow: 2px 2px 5px #333333, 0 0 25px #D4AF37, 0 0 5px #F8F4E8;
+    height: 100%;
+    text-align: center;
+    position: relative;
+}
+
+@media screen and (min-width:767.98px){
+    .hero-image-content p {
+        font-size: 1.75rem;
+    }
+
+    .hero-image-content h1 {
+        padding-bottom: 1rem;
+        font-size: 3rem;
+    }
+}
+
+@media screen and (max-width:767.98px){
+    .hero-image-container {
+        height: calc(50vh - var(--nav-height));
+    }
+
+    .opaque-overlay {
+        height: calc(50vh - var(--nav-height));
+    }
+}
+
+/* -- End of Hero Image styling --*/
+
+/*-- Navigation cards styling --*/
+
+.nav-card {
+    background-color: #2C3E50;
+    border-radius: 8%;
+    font-family: Norse, serif;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+.nav-card a {
+    color: #F8F4E8;
+}
+
+.nav-card h3 {
+    font-family: NorseBold, serif;
+    margin-bottom: 2rem;
+}
+
+.nav-card p {
+    font-size: 1.25rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.nav-card:hover {
+    box-shadow: rgb(212, 175, 55, 0.8) 0px 20px 30px -10px;
+
+    .nav-link-text {
+        text-decoration: underline;
+        color: #D4AF37;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+}
 
 .card-icon {
     max-height: 100%;
     max-width: 100%;
 }
 
+@media screen and (min-width:767.98px) {
+
+    .nav-card {
+        height: 50vh;
+    }
+
+    .nav-card p {
+    font-size: 1rem;
+    }
+
+    .nav-card:hover {
+        .nav-link-text {
+            font-size: 1.25rem;
+        }
+    }
+}
+
+@media screen and (min-width:991.98px) {
+
+    .nav-card {
+        height: 60vh;
+    }
+
+    .nav-card p {
+    font-size: 1.4rem;
+    }
+
+    .nav-card:hover {
+        .nav-link-text {
+            font-size: 1.6rem;
+        }
+    }
+}
+
+/*-- End of navigation cards styling --*/
+
+/* -- Styling of mimirs whispers --*/
+
+.mimirs-whispers h2 {
+    font-family: NorseBold, serif;
+    color: #333333;
+    padding-top: 0.75rem;
+}
+
+.mimirs-whispers p {
+    font-family: 'EB Garamond', serif;
+    color: #333333;
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+}
+
+.random-lore {
+    border: 3px solid #2C3E50;
+    border-radius: 8px;
+}
+
+@media screen and (min-width:767.98px) {
+    .mimirs-whispers p {
+        font-size: 1.25rem;
+    }
+}
+
+/* End of mimirs whispers --*/
 
 .guest-view {
     opacity: 0.6;
@@ -51,3 +628,38 @@ header nav {
     vertical-align: middle;
     margin-left: 8px;
 }
+
+/*-- 404 and 505 pages --*/
+
+.error-page-content h1 {
+    font-family: NorseBold, serif;
+    color: #333333;
+}
+
+.error-page-content h2 {
+    font-family: Norse, serif;
+    color: #333333;
+}
+
+.error-page-content p {
+    font-family: 'EB Garamond', serif;
+    color: #333333;
+}
+
+.error-page-content .btn {
+    font-family: Norse, serif;
+    font-size: 1.25rem;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    width: fit-content;
+}
+
+.error-page-content .btn:hover {
+    box-shadow: rgb(212, 175, 55, 0.8) 0px 20px 30px -10px;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    border: none;
+    font-weight: bold;
+}
+

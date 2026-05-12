@@ -343,6 +343,10 @@ The Forge serves as a centralized contribution hub, allowing authenticated users
 
     Employed to convert individual SVG files into optimized SVG sprites for improved site performance and asset management.
 
+- **[Unsplash](https://unsplash.com/)**
+
+    Unsplash was used a source for free stock images where needed.
+
 ---
 
 ## Testing

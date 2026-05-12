@@ -44,6 +44,78 @@ main {
     li:nth-child(24n + 6)::marker {
         content: "\16B2";
     }
+
+    li:nth-child(24n + 7)::marker {
+        content: "\16B7";
+    }
+
+    li:nth-child(24n + 8)::marker {
+        content: "\16B9";
+    }
+
+    li:nth-child(24n + 9)::marker {
+        content: "\16BA";
+    }
+
+    li:nth-child(24n + 10)::marker {
+        content: "\16BE";
+    }
+
+    li:nth-child(24n + 11)::marker {
+        content: "\16C1";
+    }
+
+    li:nth-child(24n + 12)::marker {
+        content: "\16C3";
+    }
+
+    li:nth-child(24n + 13)::marker {
+        content: "\16C7";
+    }
+
+    li:nth-child(24n + 14)::marker {
+        content: "\16C8";
+    }
+
+    li:nth-child(24n + 15)::marker {
+        content: "\16C9";
+    }
+
+    li:nth-child(24n + 16)::marker {
+        content: "\16CA";
+    }
+
+    li:nth-child(24n + 17)::marker {
+        content: "\16CF";
+    }
+
+    li:nth-child(24n + 18)::marker {
+        content: "\16D2";
+    }
+
+    li:nth-child(24n + 19)::marker {
+        content: "\16D6";
+    }
+
+    li:nth-child(24n + 20)::marker {
+        content: "\16D7";
+    }
+
+    li:nth-child(24n + 21)::marker {
+        content: "\16DA";
+    }
+
+    li:nth-child(24n + 22)::marker {
+        content: "\16DC";
+    }
+
+    li:nth-child(24n + 23)::marker {
+        content: "\16DF";
+    }
+
+    li:nth-child(24n)::marker {
+        content: "\16DE";
+    }
 }
 
 /*-- Navbar --*/
@@ -556,3 +628,38 @@ main {
     vertical-align: middle;
     margin-left: 8px;
 }
+
+/*-- 404 and 505 pages --*/
+
+.error-page-content h1 {
+    font-family: NorseBold, serif;
+    color: #333333;
+}
+
+.error-page-content h2 {
+    font-family: Norse, serif;
+    color: #333333;
+}
+
+.error-page-content p {
+    font-family: 'EB Garamond', serif;
+    color: #333333;
+}
+
+.error-page-content .btn {
+    font-family: Norse, serif;
+    font-size: 1.25rem;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    width: fit-content;
+}
+
+.error-page-content .btn:hover {
+    box-shadow: rgb(212, 175, 55, 0.8) 0px 20px 30px -10px;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    border: none;
+    font-weight: bold;
+}
+

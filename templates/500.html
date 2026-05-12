@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="container text-center d-flex flex-column justify-content-center error-page-content">
+    <div class="row justify-content-center">
+        <div class="col-md-8 pt-4">
+            <h1>500</h1>
+            <h2 class="py-3">Loki Has Toyed With the Threads</h2>
+        </div>
+    </div>
+
+    <div class="row justify-content-center px-4">
+        <div class="col-md-8 d-flex justify-content-center">
+            <p>It seems the Trickster God has found a way into our code. He has knotted the threads of fate, causing a ripple of chaos across the Nine Realms.</p>
+        </div>
+        <div class="col-md-8 d-flex justify-content-center px-4">
+            <p>The index is currently tangled. We are working to undo his mischief, but in the meantime, it is best to leave this broken path.</p>
+        </div>
+        <div class="col-md-8 d-flex justify-content-center">
+            <a href="{% url 'home' %}" class="btn"><p>Return Home</p></a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
