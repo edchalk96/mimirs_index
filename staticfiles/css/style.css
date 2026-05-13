@@ -316,16 +316,11 @@ footer {
 .footer-sections a:hover {
     font-family: NorseBold, serif;
     color: #D4AF37;
-    font-size: 1.25rem;
 }
 
 @media screen and (min-width:991.98px) {
     footer {
         font-size: 1.5rem;
-    }
-
-    .footer-sections a:hover {
-        font-size: 1.75rem;
     }
 }
 
@@ -616,9 +611,332 @@ main {
 
 /* End of mimirs whispers --*/
 
+/*------ The Edda Library ------*/
+
+.edda-library-image {
+    height: calc(50vh - var(--nav-height));
+    max-width: 100%;
+    background: url(../images/edda-library-hero-image.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.library-opaque-overlay {
+    position: absolute;
+    left: 0;
+    height: calc(50vh - var(--nav-height));
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.library-image-content {
+    font-family: 'NorseBold', sans-serif;
+    z-index: 1;
+    color: #F8F4E8;
+    text-shadow: 2px 2px 5px #333333, 0 0 25px #2C3E50, 0 0 5px #F8F4E8;
+    height: 100%;
+    text-align: center;
+    position: relative;
+}
+
+@media screen and (min-width:767.98px){
+
+    .edda-library-image {
+    height: calc(60vh - var(--nav-height));
+    }
+
+    .library-opaque-overlay {
+        height: calc(60vh - var(--nav-height));
+    }
+
+    .library-image-content h2 {
+        font-size: 1.75rem;
+    }
+
+    .library-image-content h1 {
+        padding-bottom: 1rem;
+        font-size: 3rem;
+    }
+}
+
+@media screen and (min-width:991.98px){
+
+    .edda-library-image {
+    height: calc(65vh - var(--nav-height));
+    }
+
+    .library-opaque-overlay {
+        height: calc(65vh - var(--nav-height));
+    }
+}
+
+.edda-library-content {
+    font-family: 'EB Garamond', serif;
+    color: #333333;
+}
+
+.edda-library-content h3 {
+    font-family: Norse, serif;
+    color: #333333;
+}
+
+/*------ End of Edda Library ------*/
+
+/*------ Entity Archive ------*/
+
+.entity-archive-image {
+    height: calc(40vh - var(--nav-height));
+    max-width: 100%;
+    background: url(../images/the-entity-archive-hero-image.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.archive-opaque-overlay {
+    position: absolute;
+    left: 0;
+    height: calc(40vh - var(--nav-height));
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.archive-image-content {
+    font-family: 'NorseBold', sans-serif;
+    z-index: 1;
+    color: #F8F4E8;
+    text-shadow: 2px 2px 5px #333333, 0 0 25px #2C3E50, 0 0 5px #F8F4E8;
+    height: 100%;
+    text-align: center;
+    position: relative;
+}
+
+@media screen and (min-width:767.98px){
+
+    .entity-archive-image {
+    height: calc(60vh - var(--nav-height));
+    }
+
+    .archive-opaque-overlay {
+        height: calc(60vh - var(--nav-height));
+    }
+
+    .archive-image-content h2 {
+        font-size: 1.75rem;
+    }
+
+    .archive-image-content h1 {
+        padding-bottom: 1rem;
+        font-size: 3rem;
+    }
+}
+
+@media screen and (min-width:991.98px){
+
+    .entity-archive-image {
+    height: calc(65vh - var(--nav-height));
+    }
+
+    .archive-opaque-overlay {
+        height: calc(65vh - var(--nav-height));
+    }
+}
+
+.entity-archive-content {
+    font-family: 'EB Garamond', serif;
+    color: #333333;
+}
+
+.search-container form {
+    font-size: 1rem;
+}
+
+.search-container input {
+    background-color: #F8F4E8;
+    border-color: #2C3E50;
+}
+
+.search-container button {
+    background-color: #2C3E50;
+    border-color: #F8F4E8;
+    color: #F8F4E8;
+}
+
+.search-container button:hover {
+    border-color: #D4AF37;
+    color: #D4AF37;
+}
+
+@media screen and (min-width:991.98px){
+    .search-container form {
+        font-size: 1.5rem;
+    }
+}
+
+/*------ End of Entity Archive ------*/
+
+/*------ Start of The Forge ------*/
+
+.forge-image {
+    height: calc(40vh - var(--nav-height));
+    max-width: 100%;
+    background: url(../images/the-forge-hero-image.png);
+    background-position: center 35%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.forge-opaque-overlay {
+    position: absolute;
+    left: 0;
+    height: calc(40vh - var(--nav-height));
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.forge-image-content {
+    font-family: 'NorseBold', sans-serif;
+    z-index: 1;
+    color: #F8F4E8;
+    text-shadow: 2px 2px 5px #333333, 0 0 25px #2C3E50, 0 0 5px #F8F4E8;
+    height: 100%;
+    text-align: center;
+    position: relative;
+}
+
+.forge-image-content h2 {
+    font-size: 1rem;
+}
+
+@media screen and (min-width:767.98px){
+
+    .forge-image {
+    height: calc(60vh - var(--nav-height));
+    }
+
+    .forge-opaque-overlay {
+        height: calc(60vh - var(--nav-height));
+    }
+
+    .forge-image-content h2 {
+        font-size: 1.75rem;
+    }
+
+    .forge-image-content h1 {
+        padding-bottom: 1rem;
+        font-size: 3rem;
+    }
+}
+
+@media screen and (min-width:991.98px){
+
+    .forge-image {
+    height: calc(65vh - var(--nav-height));
+    }
+
+    .forge-opaque-overlay {
+        height: calc(65vh - var(--nav-height));
+    }
+}
+
+.forge-content {
+    font-family: 'EB Garamond', serif;
+    color: #333333;
+}
+
+.forge-content a {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1.25rem;
+}
+
+.forge-content a:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+.forge-content button {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1.2rem;
+}
+
+.forge-content button:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+#lore-entry-section, #entity-entry-section {
+    scroll-margin-top: calc(var(--nav-height) + 1.25rem);
+}
+
 .guest-view {
     opacity: 0.6;
     pointer-events: none;
+}
+
+.forge-content h2 {
+    font-family: NorseBold, serif;
+    color: #2C3E50;
+    text-shadow: 0 0 2px #333333
+}
+
+.forge-content p {
+    font-family: Norse, serif;
+    font-size: 1.2rem;
+}
+
+.forge-content label {
+    font-family: Norse, serif;
+}
+
+@media screen and (min-width:991.98px){
+    .forge-content p {
+        font-size: 1.5rem;
+    }
+
+    .forge-content button {
+        font-size: 1.5rem;
+    }
+
+
+    .forge-content label {
+        font-size: 1.25rem;
+    }
+
+    .forge-content a {
+        font-size: 1.5rem;
+    }
 }
 
 .hammer-anvil-icon {
@@ -628,6 +946,19 @@ main {
     vertical-align: middle;
     margin-left: 8px;
 }
+
+#div_id_content textarea {
+    max-height: calc(var(--bs-border-width) + 8rem );
+}
+
+#div_id_notes textarea {
+    max-height: calc(var(--bs-border-width) + 8rem );
+}
+
+#div_id_biography textarea {
+    max-height: calc(var(--bs-border-width) + 8rem );
+}
+/*------ End of The Forge ------*/
 
 /*-- 404 and 505 pages --*/
 
