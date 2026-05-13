@@ -5,7 +5,7 @@ from django import forms
 class LoreForm(forms.ModelForm):
     class Meta:
         model = Lore
-        fields = ['title', 'content', 'entities', 'primary_source', 'notes',]
+        fields = ['title', 'featured_image', 'content', 'entities', 'primary_source', 'notes',]
 
         
 class CommentForm(forms.ModelForm):

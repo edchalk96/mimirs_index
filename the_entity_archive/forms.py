@@ -4,4 +4,4 @@ from django import forms
 class EntityForm(forms.ModelForm):
     class Meta:
         model = Entity
-        fields = ['name', 'epithets', 'biography',]
+        fields = ['name', 'featured_image', 'epithets', 'biography',]

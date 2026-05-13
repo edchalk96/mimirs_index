@@ -4,26 +4,22 @@
 
 {% block content %}
 
-<!-- Forge content starts here -->
-
-    <!-- The Forge Hero Image -->
-        <div class="container-fluid hero-image-container">
-            <!--Text overlay-->
-            <div class="opaque-overlay"></div>
-            <div class="row hero-image-content">
-                <div>
-                    <section class="jumbotron text-center text-nowrap">
-                        <h1 class="page-headings">The Forge</h1>
-                        <p>Wield the tools of the Skald to carve a new Entity into the Ledger or scribe a Verse into the eternal Vault.</p>
-                    </section>
-                </div>
+    <!-- Forge content starts here -->
+    <div class="container-fluid forge-image">
+        <!--Text overlay-->
+        <div class="forge-opaque-overlay"></div>
+        <div class="row forge-image-content">
+            <div class="col-12 d-flex flex-column py-3 py-md-4 mt-lg-3 mb-lg-5 justify-content-between">
+                <h1>The Forge</h1>
+                <h2 class="px-2 px-md-4">Wield the tools of the Skald to carve a new Entity into the Ledger or scribe a Verse into the eternal Vault.</h2>
             </div>
         </div>
+    </div>
 
     <!-- Buttons for page specific navigation -->
-    <div class="container">
-        <div class="row">
-            <div class="col-6">
+    <div class="container forge-content text-center my-4">
+        <div class="row justify-content-center">
+            <div class="col-6 justify-content-center">
                 <a href="#lore-entry-section" class="btn">Forge a Lore Entry</a>                
             </div>
             <div class="col-6">
@@ -33,16 +29,16 @@
     </div>
 
     <!-- Section for forging a Lore Entry -->
-    <div class="container" id="lore-entry-section">
-        <div class="row">
-            <div class="col-12">
+    <div class="container forge-content text-center py-4" id="lore-entry-section">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
                 <h2>Forge a Lore Entry</h2>
                 <p>Carve a new piece of lore into the eternal Vault.</p>
             </div>
         </div>
 
-        <div class="row {% if not user.is_authenticated %}guest-view{% endif %}">
-            <div class="col-12">
+        <div class="row {% if not user.is_authenticated %}guest-view{% endif %} justify-content-center">
+            <div class="col-md-8">
                 <form method="post">
                     {% csrf_token %}
                     {{ lore_form | crispy }}
@@ -61,16 +57,16 @@
     </div>
 
     <!-- Section for forging an Entity -->
-    <div class="container" id="entity-entry-section">
-        <div class="row">
-            <div class="col-12">
+    <div class="container forge-content text-center py-4" id="entity-entry-section">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
                 <h2>Forge an Entity</h2>
                 <p>Wield the tools of the Skald to carve a new Entity into the Ledger.</p>
             </div>
         </div>
 
-        <div class="row {% if not user.is_authenticated %}guest-view{% endif %}">
-            <div class="col-12">
+        <div class="row {% if not user.is_authenticated %}guest-view{% endif %} justify-content-center">
+            <div class="col-md-8">
                 <form method="post">
                     {% csrf_token %}
                     {{ entity_form | crispy }}

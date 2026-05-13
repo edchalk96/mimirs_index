@@ -20,7 +20,7 @@ class Lore(models.Model):
     status = models.IntegerField(choices=STATUS, default=0)
     author = models.ForeignKey(User, related_name="user_lore_entries", on_delete=models.PROTECT)
     is_deletion_pending = models.BooleanField(default=False)
-    featured_image = CloudinaryField('image', default='placeholder')
+    featured_image = CloudinaryField('image', default='placeholder', blank=True)
 
     def save(self, *args, **kwargs):
         if self.content:
