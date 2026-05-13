@@ -5,35 +5,32 @@
 {% block content %}
 
 <!-- Entity Archive content starts here -->
+    <div class="container-fluid entity-archive-image">
+        <!--Text overlay-->
+        <div class="archive-opaque-overlay"></div>
+        <div class="row archive-image-content">
+            <div class="col-12 d-flex flex-column py-3 py-md-4 mt-lg-3 mb-lg-5 justify-content-between">
+                <h1>The Entity Archive</h1>
+                <h2 class="px-4">A directory of every entity woven into the Eddas</h2>
+            </div>
+        </div>
+    </div>
 
-    <!-- The Entity Archive Hero Image -->
-        <div class="container-fluid hero-image-container">
-            <!--Text overlay-->
-            <div class="opaque-overlay"></div>
-            <div class="row hero-image-content">
-                <div>
-                    <section class="jumbotron text-center text-nowrap">
-                        <h1 class="page-headings">The Entity Archive</h1>
-                        <p>A directory of every entity woven into the Eddas</p>
-                    </section>
-                </div>
+    <div class="container-fluid entity-archive-content">
+        <!-- Search bar -->
+        <div class="search-container row text-center justify-content-center mt-4">
+            <div class="col-md-8">
+                <form method="get" action=".">
+                    <input type="text" name="q" placeholder="Search for a God, Jötunn, Beast etc..." value="{{ search_term }}" size="28">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    {% if search_term %}
+                        <a href="{% url 'archive' %}">Clear Search</a>
+                    {% endif %}
+                </form>
             </div>
         </div>
 
-    <!-- Search bar -->
-     <div class="search-container">
-        <form method="get" action=".">
-            <input type="text" name="q" placeholder="Search for a God, Jötunn, Beast etc..." value="{{ search_term }}">
-            <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-
-            {% if search_term %}
-                <a href="{% url 'archive' %}">Clear Search</a>
-            {% endif %}
-        </form>
-     </div>
-
-    <!-- Entity Archive cards -->
-    <div class="container-fluid">
+        <!-- Entity Archive cards -->
         <div class="row">
             {% for entity in entity_list %}
             <div class="col-md-4">

@@ -672,7 +672,7 @@ main {
     }
 }
 
-@media screen and (min-width:767.98px){
+@media screen and (min-width:991.98px){
 
     .edda-library-image {
     height: calc(65vh - var(--nav-height));
@@ -693,19 +693,107 @@ main {
     color: #333333;
 }
 
-/* @media screen and (max-width:767.98px){
-    .edda-library-image {
-        height: calc(50vh - var(--nav-height));
+/*------ End of Edda Library ------*/
+
+/*------ Entity Archive ------*/
+
+.entity-archive-image {
+    height: calc(40vh - var(--nav-height));
+    max-width: 100%;
+    background: url(../images/the-entity-archive-hero-image.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.archive-opaque-overlay {
+    position: absolute;
+    left: 0;
+    height: calc(40vh - var(--nav-height));
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.archive-image-content {
+    font-family: 'NorseBold', sans-serif;
+    z-index: 1;
+    color: #F8F4E8;
+    text-shadow: 2px 2px 5px #333333, 0 0 25px #2C3E50, 0 0 5px #F8F4E8;
+    height: 100%;
+    text-align: center;
+    position: relative;
+}
+
+@media screen and (min-width:767.98px){
+
+    .entity-archive-image {
+    height: calc(60vh - var(--nav-height));
     }
 
-    .library-opaque-overlay {
-        height: calc(50vh - var(--nav-height));
+    .archive-opaque-overlay {
+        height: calc(60vh - var(--nav-height));
     }
-} */
 
-/* .title-image img {
-    max-height: 50vh;
-} */
+    .archive-image-content p {
+        font-size: 1.75rem;
+    }
+
+    .archive-image-content h1 {
+        padding-bottom: 1rem;
+        font-size: 3rem;
+    }
+}
+
+@media screen and (min-width:991.98px){
+
+    .entity-archive-image {
+    height: calc(65vh - var(--nav-height));
+    }
+
+    .archive-opaque-overlay {
+        height: calc(65vh - var(--nav-height));
+    }
+}
+
+.entity-archive-content {
+    font-family: 'EB Garamond', serif;
+    color: #333333;
+}
+
+.search-container form {
+    font-size: 1rem;
+}
+
+.search-container input {
+    background-color: #F8F4E8;
+    border-color: #2C3E50;
+}
+
+.search-container button {
+    background-color: #2C3E50;
+    border-color: #F8F4E8;
+    color: #F8F4E8;
+}
+
+.search-container button:hover {
+    border-color: #D4AF37;
+    color: #D4AF37;
+}
+
+@media screen and (min-width:991.98px){
+    .search-container form {
+        font-size: 1.5rem;
+    }
+}
+
+/*-- End of Entity Archive --*/
 
 .guest-view {
     opacity: 0.6;
