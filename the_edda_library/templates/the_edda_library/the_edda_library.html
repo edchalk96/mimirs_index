@@ -5,36 +5,49 @@
 {% block content %}
 
 <!-- Library content starts here -->
-
-    <!-- The Edda Library Hero Image -->
-    <div class="container-fluid hero-image-container">
-        <!--Text overlay-->
-        <div class="opaque-overlay"></div>
-        <div class="row hero-image-content">
-            <div>
-                <section class="jumbotron text-center text-nowrap">
+    <!-- <div class="container-fluid edda-library-image">
+        <div class="library-opaque-overlay"></div>
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-8">
                     <h1 class="page-headings">The Edda Library</h1>
-                    <p>A comprehensive archive of the primary text</p>
+                    <h2>A comprehensive archive of the primary text</h2>
                     <p>Select a poem below to view the complete verses and associated lore</p>
-                </section>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="container-fluid edda-library-image">
+        <!--Text overlay-->
+        <div class="library-opaque-overlay"></div>
+        <div class="row library-image-content">
+            <div class="col-12 d-flex flex-column py-3 py-md-4 mt-lg-3 mb-lg-5 justify-content-between">
+                <h1>The Edda Library</h1>
+                <h2 class="px-4">A comprehensive archive of the primary text</h2>
             </div>
         </div>
     </div>
 
-    <!-- Sort function -->
-    <div class="row sorting-wrapper">
-        <form method="get" action="." id="sort-form">
-            <label for="sort">Sort Lore</label>
-            <select name="sort" id="sort-select" onchange="this.form.submit()"></select>
-                <option value="newest" {% if current_sort == "newest" %}selected{% endif %}>Newest Entries</option>
-                <option value="az" {% if current_sort == "az" %}selected{% endif %}>Title: A-Z</option>
-                <option value="za" {% if current_sort == "za" %}selected{% endif %}>Title: Z-A</option>
-                <option value="oldest" {% if current_sort == "oldest" %}selected{% endif %}>Oldest Entries</option>
-        </form>
-    </div>
+    <div class="container-fluid edda-library-content">
+        <div class="row text-center justify-content-center mt-3 mt-md-2">
+            <div class="col-md-10">
+                <h3 class="mt-auto mb-4 p-md-4">Explore the intricate web of characters, metaphors, and stanzas that define Norse mythology</h3>
+            </div>
+        </div>
+        <!-- Sort function -->
+        <div class="row sorting-wrapper">
+            <div class="col-md-8 justify-content-start">
+                <form method="get" action="." id="sort-form">
+                    <label for="sort">Sort Lore</label>
+                    <select name="sort" id="sort-select" onchange="this.form.submit()"></select>
+                        <option value="newest" {% if current_sort == "newest" %}selected{% endif %}>Newest Entries</option>
+                        <option value="az" {% if current_sort == "az" %}selected{% endif %}>Title: A-Z</option>
+                        <option value="za" {% if current_sort == "za" %}selected{% endif %}>Title: Z-A</option>
+                        <option value="oldest" {% if current_sort == "oldest" %}selected{% endif %}>Oldest Entries</option>
+                </form>
+            </div>
+        </div>
 
-    <!-- Edda Library entries cards -->
-    <div class="container-fluid">
+        <!-- Edda Library entries cards -->
         <div class="row">
             {% for lore in lore_list %}
             <div class="col-md-4">

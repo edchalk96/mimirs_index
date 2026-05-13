@@ -616,6 +616,97 @@ main {
 
 /* End of mimirs whispers --*/
 
+/*------ The Edda Library ------*/
+
+.edda-library-image {
+    height: calc(50vh - var(--nav-height));
+    max-width: 100%;
+    background: url(../images/edda-library-hero-image.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.library-opaque-overlay {
+    position: absolute;
+    left: 0;
+    height: calc(50vh - var(--nav-height));
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.library-image-content {
+    font-family: 'NorseBold', sans-serif;
+    z-index: 1;
+    color: #F8F4E8;
+    text-shadow: 2px 2px 5px #333333, 0 0 25px #2C3E50, 0 0 5px #F8F4E8;
+    height: 100%;
+    text-align: center;
+    position: relative;
+}
+
+@media screen and (min-width:767.98px){
+
+    .edda-library-image {
+    height: calc(60vh - var(--nav-height));
+    }
+
+    .library-opaque-overlay {
+        height: calc(60vh - var(--nav-height));
+    }
+
+    .library-image-content p {
+        font-size: 1.75rem;
+    }
+
+    .library-image-content h1 {
+        padding-bottom: 1rem;
+        font-size: 3rem;
+    }
+}
+
+@media screen and (min-width:767.98px){
+
+    .edda-library-image {
+    height: calc(65vh - var(--nav-height));
+    }
+
+    .library-opaque-overlay {
+        height: calc(65vh - var(--nav-height));
+    }
+}
+
+.edda-library-content {
+    font-family: 'EB Garamond', serif;
+    color: #333333;
+}
+
+.edda-library-content h3 {
+    font-family: Norse, serif;
+    color: #333333;
+}
+
+/* @media screen and (max-width:767.98px){
+    .edda-library-image {
+        height: calc(50vh - var(--nav-height));
+    }
+
+    .library-opaque-overlay {
+        height: calc(50vh - var(--nav-height));
+    }
+} */
+
+/* .title-image img {
+    max-height: 50vh;
+} */
+
 .guest-view {
     opacity: 0.6;
     pointer-events: none;
