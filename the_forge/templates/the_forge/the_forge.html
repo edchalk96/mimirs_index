@@ -46,9 +46,9 @@
                     {% if user.is_authenticated %}
                         <button type="submit" name="submit_lore" class="btn forge-btn">Strike the Anvil <svg class="hammer-anvil-icon"><use href="{% static 'images/hammer-anvil-icon.svg' %}#anvil"></use></svg></button> <!-- Credit to Flaticon for the anvil icon and Icomoon for generating the SVG Sprite then https://www.sitepoint.com/use-svg-image-sprites/ for implementation -->
                     {% else %}
-                        <div class="alert alert-info">
-                            <p class="mb-0">Only those sworn to the Allfather may forge lore</p>
-                            <a href="{% url 'account_login'}">Sign in to contribute</a>
+                        <div class="alert pb-4">
+                            <p class="mb-3">Only those sworn to the Allfather may forge lore</p>
+                            <a href="{% url 'account_login'}" class="rounded p-2">Sign in to contribute</a>
                         </div>
                     {% endif %}
                 </form>
@@ -65,21 +65,21 @@
             </div>
         </div>
 
-        <div class="row {% if not user.is_authenticated %}guest-view{% endif %} justify-content-center">
+        <div class="row justify-content-center">
             <div class="col-md-8">
-                <form method="post">
+                <form method="post" class="{% if not user.is_authenticated %}guest-view{% endif %}">
                     {% csrf_token %}
                     {{ entity_form | crispy }}
 
                     {% if user.is_authenticated %}
                         <button type="submit" name="submit_entity" class="btn forge-btn">Strike the Anvil <svg class="hammer-anvil-icon"><use href="{% static 'images/hammer-anvil-icon.svg' %}#anvil"></use></svg></button> 
                     {% else %}
-                        <div class="alert alert-info">
-                            <p class="mb-0">Only those sworn to the Allfather may forge lore</p>
-                            <a href="{% url 'account_login'}">Sign in to contribute</a>
+                        <div class="alert pb-4">
+                            <p class="mb-3">Only those sworn to the Allfather may forge lore</p>
+                            <a href="{% url 'account_login'}" class="rounded p-2">Sign in to contribute</a>
                         </div>
                     {% endif %}
-                    </form>
+                </form>
             </div>
         </div>
     </div>

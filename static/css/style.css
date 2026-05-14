@@ -901,8 +901,20 @@ main {
 }
 
 .guest-view {
-    opacity: 0.6;
     pointer-events: none;
+}
+
+.guest-view label {
+    opacity: 0.6;
+}
+
+.guest-view a {
+    pointer-events: all;
+}
+
+.guest-view .alert {
+    border: 4px solid #2C3E50;
+    color: #2C3E50;
 }
 
 .forge-content h2 {
