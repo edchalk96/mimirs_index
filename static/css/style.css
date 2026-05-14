@@ -362,6 +362,16 @@ footer {
     font-size: 1.25rem;
 }
 
+#contactModal a:hover {
+    background-color: #D4AF37;
+    color: #2C3E50;
+    font-size: 1.25rem;
+}
+
+.guest-view button {
+    pointer-events: all;
+}
+
 @media screen and (min-width:767.98px) {
     .send-raven-btn {
         font-size: 1.25rem;

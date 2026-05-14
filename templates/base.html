@@ -183,7 +183,7 @@
 
                         <div class="modal-body">
                             <!-- Contact form content -->
-                             <form id="contactForm" method="post" action="{% url 'contact_developer' %}">
+                             <form id="contactForm" method="post" action="{% url 'contact_developer' %}" class="{% if not user.is_authenticated %}guest-view{% endif %}">
                                 {% csrf_token %}
                                 <div class="mb-3 w-75 mx-auto">
                                     <input type="text" name="subject" class="form-control text-center" placeholder="Subject" required>
@@ -197,7 +197,11 @@
 
                                 <div class="d-flex justify-content-between mt-4">
                                     <button type="button" class="btn send-raven-btn mx-3" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn send-raven-btn mx-2">Send Raven<i class="fa-solid fa-crow ms-2"></i></button>
+                                    {% if user.is_authenticated %}
+                                        <button type="submit" class="btn send-raven-btn mx-2">Send Raven<i class="fa-solid fa-crow ms-2"></i></button>
+                                    {% else %}
+                                        <a href="{% url 'account_login' %}" class="btn send-raven-btn mx-2">Sign In to Send Raven</a>
+                                    {% endif %}
                                 </div>
                              </form>
                         </div>
