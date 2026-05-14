@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from the_edda_library.forms import LoreForm
 from the_entity_archive.forms import EntityForm
 from .forms import ContactDeveloperForm
@@ -71,14 +71,20 @@ def delete_entity(request, name):
 def contact_developer(request):
     if request.method == 'POST':
         contact_form = ContactDeveloperForm(data=request.POST)
+        user_email = request.user.email
+        user_message = request.POST.get('message')
+
         if contact_form.is_valid():
-            send_mail(
-                subject=contact_form.cleaned_data['subject'],
-                message=contact_form.cleaned_data['message'],
-                from_email=contact_form.cleaned_data['email'],
-                recipient_list=['edchalk96@gmail.com'],
-                fail_silently=False,
+            email = EmailMessage(
+                subject= f"New enquiry from {request.user.username}",
+                body= user_message,
+                from_email= None,
+                to= ['mimirsindex@gmail.com'],
+                reply_to= [user_email]
             )
+            
+            email.send()
+            
             messages.add_message(request, messages.SUCCESS, "Ratatoskr has taken flight! Your message is scuttling up the World Tree to the developer's ears—thank you for adding your voice to the branches of our community.")
         else:
             messages.add_message(request, messages.ERROR, "Ratatoskr is a swift messenger, but it seems your message got tangled in the branches. Please check the form for errors and try again.")

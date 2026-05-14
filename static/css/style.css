@@ -345,6 +345,7 @@ footer {
 #contactForm textarea {
     background-color: #F8F4E8;
     color: #333333;
+    min-height: calc(var(--bs-border-width) + 10rem );
 }
 
 .send-raven-modal h2 {
@@ -379,6 +380,12 @@ footer {
 
     .send-raven-btn:hover {
         font-size: 1.5rem;
+    }
+}
+
+@media screen and (min-width:991.98px) {
+    #contactForm textarea {
+        min-height: calc(var(--bs-border-width) + 12rem );
     }
 }
 

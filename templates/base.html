@@ -186,12 +186,6 @@
                              <form id="contactForm" method="post" action="{% url 'contact_developer' %}" class="{% if not user.is_authenticated %}guest-view{% endif %}">
                                 {% csrf_token %}
                                 <div class="mb-3 w-75 mx-auto">
-                                    <input type="text" name="subject" class="form-control text-center" placeholder="Subject" required>
-                                </div>
-                                <div class="mb-3 w-75 mx-auto">
-                                    <input type="email" name="email" class="form-control text-center" placeholder="Your Email" required>
-                                </div>
-                                <div class="mb-3 w-75 mx-auto">
                                     <textarea name="message" class="form-control text-center" placeholder="Your Message" required></textarea>
                                 </div>
 

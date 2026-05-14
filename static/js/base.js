@@ -7,5 +7,5 @@ document.addEventListener("DOMContentLoaded", function() {
             let alert = new bootstrap.Alert(messages);
             alert.close();
         }
-    }, 5000);
+    }, 8000);
 });

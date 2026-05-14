@@ -345,6 +345,7 @@ footer {
 #contactForm textarea {
     background-color: #F8F4E8;
     color: #333333;
+    min-height: calc(var(--bs-border-width) + 10rem );
 }
 
 .send-raven-modal h2 {
@@ -362,6 +363,16 @@ footer {
     font-size: 1.25rem;
 }
 
+#contactModal a:hover {
+    background-color: #D4AF37;
+    color: #2C3E50;
+    font-size: 1.25rem;
+}
+
+.guest-view button {
+    pointer-events: all;
+}
+
 @media screen and (min-width:767.98px) {
     .send-raven-btn {
         font-size: 1.25rem;
@@ -369,6 +380,12 @@ footer {
 
     .send-raven-btn:hover {
         font-size: 1.5rem;
+    }
+}
+
+@media screen and (min-width:991.98px) {
+    #contactForm textarea {
+        min-height: calc(var(--bs-border-width) + 12rem );
     }
 }
 
@@ -901,8 +918,20 @@ main {
 }
 
 .guest-view {
-    opacity: 0.6;
     pointer-events: none;
+}
+
+.guest-view label {
+    opacity: 0.6;
+}
+
+.guest-view a {
+    pointer-events: all;
+}
+
+.guest-view .alert {
+    border: 4px solid #2C3E50;
+    color: #2C3E50;
 }
 
 .forge-content h2 {
