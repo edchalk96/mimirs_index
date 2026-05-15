@@ -29,7 +29,7 @@ class LoreAdmin(SummernoteModelAdmin):
 @admin.register(Comment)
 class CommentAdmin(SummernoteModelAdmin):
     summernote_fields = ('body',)
-    list_display = ('author__username', 'lore__title', 'approved',)
+    list_display = ('author__username', 'lore__title', 'approved', 'body')
     list_filter = ('approved',)
     actions = ['approve_comment',]
 

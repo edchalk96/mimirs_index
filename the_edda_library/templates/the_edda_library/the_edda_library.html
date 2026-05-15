@@ -42,9 +42,9 @@
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{% url 'lore-detail' lore.slug %}" class="nav-card">
+                        <a href="{% url 'lore_detail' lore.slug %}" class="nav-card">
                             {% if "placeholder" in lore.featured_image.url %}
-                            <img class="card-icon" src="{% static 'images/lore-default.jpg' %}" alt="placeholder icon">
+                            <img class="card-icon" src="{% static 'images/lore-default.png' %}" alt="placeholder icon">
                             {% else %}
                             <img src="{{ lore.featured_image.url }}" alt="{{ lore.title }} icon">
                             {% endif %}

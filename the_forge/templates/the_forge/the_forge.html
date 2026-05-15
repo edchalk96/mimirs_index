@@ -39,7 +39,7 @@
 
         <div class="row {% if not user.is_authenticated %}guest-view{% endif %} justify-content-center">
             <div class="col-md-8">
-                <form method="post">
+                <form method="POST">
                     {% csrf_token %}
                     {{ lore_form | crispy }}
 
@@ -67,7 +67,7 @@
 
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <form method="post" class="{% if not user.is_authenticated %}guest-view{% endif %}">
+                <form method="POST" class="{% if not user.is_authenticated %}guest-view{% endif %}">
                     {% csrf_token %}
                     {{ entity_form | crispy }}
 

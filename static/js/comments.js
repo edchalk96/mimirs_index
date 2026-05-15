@@ -1,7 +1,7 @@
 /** Function to toggle a reply in comments thread */
 
 function toggleReply(id) {
-    const replyForm = document.getElementById('reply' + id);
+    const replyForm = document.getElementById('reply-' + id);
     replyForm.classList.toggle('d-none');
 }
 
@@ -11,18 +11,19 @@ const commentForm = document.getElementById("commentForm");
 const submitButton = document.getElementById("submitButton");
 
 const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
-const deleteButtons = document.getElementsByClassName("btn-delete");
+const deleteButtons = document.getElementsByClassName("delete-btn");
 const deleteConfirm = document.getElementById("deleteConfirm");
 
 /** Functionality to edit comments */
 
 for (let button of editButtons) {
     button.addEventListener("click", (e) => {
-        let commentId = e.target.getAttribute("comment_id");
-        let commentContent = document.getElementById(`comment${commentId}`).innerText;
+        let commentId = e.currentTarget.getAttribute("data-comment_id");
+        let commentContent = document.getElementById(`body-${commentId}`).innerText.trim();
         commentText.value = commentContent;
         submitButton.innerText = "Update";
         commentForm.setAttribute("action", `edit_comment/${commentId}`);
+        commentForm.scrollIntoView({ behavior: 'smooth' });
     })
 }
 

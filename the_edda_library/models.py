@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from the_entity_archive.models import Entity
-from django.utils.text import Truncator
+from django.utils.text import Truncator, slugify
 from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -9,7 +9,7 @@ STATUS = ((0, "Draft"), (1, "Published"))
 # Create your models here.
 class Lore(models.Model):
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
     content = models.TextField()
     entities = models.ManyToManyField(Entity, related_name="appearances", blank=True)
     excerpt = models.TextField(editable=False, blank=True)
@@ -23,6 +23,11 @@ class Lore(models.Model):
     featured_image = CloudinaryField('image', default='placeholder', blank=True)
 
     def save(self, *args, **kwargs):
+        #Automated slug field
+        if not self.slug:
+            self.slug = slugify(self.title)
+
+        #Automated excerpt field
         if self.content:
             self.excerpt = Truncator(self.content).words(30, html=True)
         else:

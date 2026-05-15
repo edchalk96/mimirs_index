@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
 {% block content %}
@@ -38,7 +37,7 @@
                     <div class="card-body">
                         <a href="{% url 'entity_profile' entity.name %}" class="nav-card">
                             {% if "placeholder" in entity.featured_image.url %}
-                            <img src="{% static 'images/entity-default.jpg' %}" alt="placeholder icon">
+                            <img src="{% static 'images/entity-default.png' %}" alt="placeholder icon">
                             {% else %}
                             <img src="{{ entity.featured_image.url }}" alt="{{ entity.name }} icon">
                             {% endif %}

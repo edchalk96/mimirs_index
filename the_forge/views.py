@@ -13,7 +13,7 @@ def forge_form(request):
     lore_form = LoreForm()
     entity_form = EntityForm()
 
-    if request.method == 'POST':
+    if request.method == "POST":
 
         #Check if the user is authenticated before processing the form submission
         if not request.user.is_authenticated:
@@ -22,22 +22,22 @@ def forge_form(request):
         
         # Determine which form was submitted based on the name of the submit button
         if 'submit_lore' in request.POST:
+            lore_form = LoreForm(data=request.POST or None)
             if lore_form.is_valid():
-                lore_form = LoreForm(data=request.POST or None, prefix='lore')
                 lore = lore_form.save(commit=False)
                 lore.author = request.user
                 lore.save()
                 messages.add_message(request, messages.SUCCESS, "Your lore entry has been submitted and is awaiting approval.")
-                return redirect('lore_detail', slug=lore.slug)
+                return redirect('home')
             
         elif 'submit_entity' in request.POST:
+            entity_form = EntityForm(data=request.POST or None)
             if entity_form.is_valid():
-                entity_form = EntityForm(data=request.POST or None, prefix='entity')
                 entity = entity_form.save(commit=False)
                 entity.author = request.user
                 entity.save()
-                messages.add_message(request, messages.SUCCESS, "Your entity entry has been submitted and is awaiting approval.")
-                return redirect('entity_profile', str=entity.name)
+                messages.add_message(request, messages.SUCCESS, "Your entity has been submitted and is awaiting approval.")
+                return redirect('home')
             
     return render(request, 'the_forge/the_forge.html', {'lore_form': lore_form, 'entity_form': entity_form})
 
@@ -59,13 +59,13 @@ def delete_entity(request, name):
     """
     View to submit an entity for deletion by an admin
     """
-    entity = get_object_or_404(Entity, str=name)
+    entity = get_object_or_404(Entity, name=name)
 
     if request.method == "POST":
         entity.is_deletion_pending = True
         entity.save()
         messages.add_message(request, messages.SUCCESS, "Request for removal sent. The Valkyries will now decide its fate.")
-        return redirect("entity_profile", str=entity.name)
+        return redirect("entity_profile", entity.name)
     
 
 def contact_developer(request):

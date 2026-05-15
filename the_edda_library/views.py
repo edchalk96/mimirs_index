@@ -7,7 +7,7 @@ from .forms import LoreForm
 
 # Create your views here.
 class LoreList(generic.ListView):
-    model = Lore
+    queryset = Lore.objects.filter(status=1)
     template_name = "the_edda_library/the_edda_library.html"
     paginate_by = 6
 
@@ -78,30 +78,35 @@ def lore_detail(request, slug):
     queryset = Lore.objects.filter(status=1)
     lore = get_object_or_404(queryset, slug=slug)
     comments = lore.comments.all().order_by("-created_on")
-    comment_count = lore.comments.filter(approved=True).count()
-
-    edit_lore_form = LoreForm(request.POST or None, instance=lore)
+    comment_count = lore.comments.filter(approved=True, parent__isnull=True).count()
+    comment_form = CommentForm()
+    edit_lore_form = LoreForm(instance=lore)
 
     if request.method == "POST":
-        comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.author = request.user
-            comment.lore = lore
-            parent_id = request.POST.get("parent_id")
-            if parent_id:
-                comment.parent = Comment.objects.get(id=parent_id)
-            comment.save()
-            messages.add_message(request, messages.SUCCESS, "Your comment has been submitted and is awaiting approval.")
-            return redirect("lore_detail", slug=lore.slug)
-        else:
-            comment_form = CommentForm()
-        if edit_lore_form.is_valid():
-            lore = edit_lore_form.save(commit=False)
-            lore.status = 0
-            lore.save()
-            messages.add_message(request, messages.SUCCESS, "The saga has been re-forged. Awaiting Mimir's approval")
-            return redirect("lore_detail", slug=lore.slug)
+
+        if "submit_comment" in request.POST:
+            comment_form = CommentForm(data=request.POST)
+            if comment_form.is_valid():
+                comment = comment_form.save(commit=False)
+                comment.author = request.user
+                comment.lore = lore
+
+                parent_id = request.POST.get("parent_id")
+                if parent_id:
+                    comment.parent = Comment.objects.get(id=parent_id)
+                comment.save()
+
+                messages.add_message(request, messages.SUCCESS, "Your comment has been submitted and is awaiting approval.")
+                return redirect("lore_detail", slug=lore.slug)
+
+        if "submit_edit_lore" in request.POST:
+            edit_lore_form = LoreForm(data=request.POST, instance=lore)
+            if edit_lore_form.is_valid():
+                lore = edit_lore_form.save(commit=False)
+                lore.status = 0
+                lore.save()
+                messages.add_message(request, messages.SUCCESS, "The saga has been re-forged. Awaiting Mimir's approval")
+                return redirect("lore_detail", slug=lore.slug)
         
     return render(request, "the_edda_library/lore_detail.html", {"lore": lore, "comments": comments, "comment_count": comment_count, "comment_form": comment_form, "edit_lore_form": edit_lore_form})
 
