@@ -72,7 +72,7 @@
                         {% for entity in random_lore.entities.all %}
                             <a href="{% url 'entity_profile' entity.name %}">{{ entity.name }}</a>
                         {% empty %}
-                            <p>The mists are empty; no entities found</p>
+                            <p>The mists are empty | No entities found</p>
                         {% endfor %}
                     </div>
 
