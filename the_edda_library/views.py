@@ -126,7 +126,7 @@ def comment_edit(request, slug, comment_id):
             comment.lore = lore
             comment.approved = False
             comment.save()
-            messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
+            messages.add_message(request, messages.SUCCESS, 'Comment Updated! Pending approval.')
         else:
             messages.add_message(request, messages.ERROR, 'Error updating comment!')
 

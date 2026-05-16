@@ -14,7 +14,7 @@
                 {% endif %}
                 {% if user.is_authenticated and comment.author == user %}
                     <button class="btn edit-btn" data-comment_id="{{ comment.id }}">Edit</button>
-                    <button class="btn delete-btn" comment_id="{{ comment.id }}" type="button" data-bs-toggle="modal" data-bs-target="#deleteCommentModal">Delete</button>
+                    <button class="btn comment-delete-btn" comment_id="{{ comment.id }}" type="button" data-bs-toggle="modal" data-bs-target="#deleteCommentModal">Delete</button>
                 {% endif %}
             </div>
 

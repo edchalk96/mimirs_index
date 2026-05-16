@@ -19,7 +19,7 @@ body {
     background-color: #F8F4E8;
 }
 
-/*-- Bulleted lists markers - Credit to W3 Schools for the Unicode characters: https://www.w3schools.com/charsets/ref_utf_runic.asp --*/
+/*-- Bulleted lists markers except modals- Credit to W3 Schools for the Unicode characters: https://www.w3schools.com/charsets/ref_utf_runic.asp --*/
 main {
     li:nth-child(24n + 1)::marker {
         content: "\16A0";
@@ -116,6 +116,10 @@ main {
     li:nth-child(24n)::marker {
         content: "\16DE";
     }
+}
+
+.modal li::marker, .select2-container li::marker {
+    content: none !important;
 }
 
 /*-- Navbar --*/
@@ -459,8 +463,6 @@ main {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
 }
-
-
 
 /* ------ Home Page ------ */
 

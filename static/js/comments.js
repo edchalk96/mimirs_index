@@ -11,7 +11,7 @@ const commentForm = document.getElementById("commentForm");
 const submitButton = document.getElementById("submitButton");
 
 const deleteModal = new bootstrap.Modal(document.getElementById("deleteCommentModal"));
-const deleteButtons = document.getElementsByClassName("delete-btn");
+const deleteButtons = document.getElementsByClassName("comment-delete-btn");
 const deleteConfirm = document.getElementById("deleteConfirm");
 
 /** Functionality to edit comments */
