@@ -68,14 +68,14 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn cancel-btn" data-bs-dismiss="modal">Cancel</button>
-                        <button type="button" class="btn delete-btn" onclick="confirmRemoval()">Delete <i class="fa-solid fa-skull-crossbones"></i></button>
+                        <button type="submit" form="deleteEntityForm" class="btn delete-btn">Delete <i class="fa-solid fa-skull-crossbones"></i></button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Hidden form for lore deletion request -->
-        <form action="{% url 'delete_entity' entity.name %}" id="deleteForm" method="POST" style="display: none;">
+        <form action="{% url 'delete_entity' entity.name %}" id="deleteEntityForm" method="POST" style="display: none;">
             {% csrf_token %}
         </form>
 
