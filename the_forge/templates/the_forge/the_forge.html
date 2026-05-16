@@ -40,7 +40,7 @@
         <div class="row {% if not user.is_authenticated %}guest-view{% endif %} justify-content-center">
             <div class="col-md-8">
                 {{ lore_form.media }}
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ lore_form | crispy }}
 
@@ -49,7 +49,7 @@
                     {% else %}
                         <div class="alert pb-4">
                             <p class="mb-3">Only those sworn to the Allfather may forge lore</p>
-                            <a href="{% url 'account_login'}" class="rounded p-2">Sign in to contribute</a>
+                            <a href="{% url 'account_login' %}" class="rounded p-2">Sign in to contribute</a>
                         </div>
                     {% endif %}
                 </form>
@@ -68,7 +68,7 @@
 
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <form method="POST" class="{% if not user.is_authenticated %}guest-view{% endif %}">
+                <form method="POST" class="{% if not user.is_authenticated %}guest-view{% endif %}" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ entity_form | crispy }}
 
@@ -77,7 +77,7 @@
                     {% else %}
                         <div class="alert pb-4">
                             <p class="mb-3">Only those sworn to the Allfather may forge lore</p>
-                            <a href="{% url 'account_login'}" class="rounded p-2">Sign in to contribute</a>
+                            <a href="{% url 'account_login' %}" class="rounded p-2">Sign in to contribute</a>
                         </div>
                     {% endif %}
                 </form>

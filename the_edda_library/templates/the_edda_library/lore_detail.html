@@ -45,7 +45,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     {{ edit_lore_form.media }}
-                    <form method="POST">
+                    <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="modal-body">
                             <h5>Re-forging the Lore</h5>
@@ -149,4 +149,7 @@
 
 {% block extras %}
 <script src="{% static 'js/comments.js' %}"></script>
+
+{{ lore.slug|json_script:"lore-slug-data" }}
+<script src="{% static 'js/lore-detail.js' %}"></script>
 {% endblock %}

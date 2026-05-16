@@ -44,7 +44,7 @@ def entity_profile(request, name):
     edit_entity_form = EntityForm(instance=entity)
 
     if request.method == "POST":
-        edit_entity_form = EntityForm(data=request.POST, instance=entity)
+        edit_entity_form = EntityForm(data=request.POST, instance=entity, files=request.FILES)
 
         if edit_entity_form.is_valid():
             entity = edit_entity_form.save(commit=False)

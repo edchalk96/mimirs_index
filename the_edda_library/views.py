@@ -100,11 +100,12 @@ def lore_detail(request, slug):
                 return redirect("lore_detail", slug=lore.slug)
 
         if "submit_edit_lore" in request.POST:
-            edit_lore_form = LoreForm(data=request.POST, instance=lore)
+            edit_lore_form = LoreForm(data=request.POST, instance=lore, files=request.FILES)
             if edit_lore_form.is_valid():
                 lore = edit_lore_form.save(commit=False)
                 lore.status = 0
                 lore.save()
+                edit_lore_form.save_m2m()
                 messages.add_message(request, messages.SUCCESS, "The saga has been re-forged. Awaiting Mimir's approval")
                 return redirect("library")
         

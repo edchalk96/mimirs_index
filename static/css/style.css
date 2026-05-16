@@ -709,6 +709,16 @@ main {
 
 /*------ End of Edda Library ------*/
 
+/* ------ Lore Detail page ------*/
+
+.select2-container--open {
+    z-index: 1065 !important; 
+}
+
+.select2-container {
+    pointer-events: auto !important;
+}
+
 /*------ Entity Archive ------*/
 
 .entity-archive-image {

@@ -22,7 +22,7 @@ def forge_form(request):
         
         # Determine which form was submitted based on the name of the submit button
         if 'submit_lore' in request.POST:
-            lore_form = LoreForm(data=request.POST or None)
+            lore_form = LoreForm(data=request.POST or None, files=request.FILES)
             if lore_form.is_valid():
                 lore = lore_form.save(commit=False)
                 lore.author = request.user
@@ -31,7 +31,7 @@ def forge_form(request):
                 return redirect('home')
             
         elif 'submit_entity' in request.POST:
-            entity_form = EntityForm(data=request.POST or None)
+            entity_form = EntityForm(data=request.POST or None, files=request.FILES)
             if entity_form.is_valid():
                 entity = entity_form.save(commit=False)
                 entity.author = request.user
