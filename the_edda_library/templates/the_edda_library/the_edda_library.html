@@ -22,16 +22,18 @@
                 <h3 class="mt-auto mb-4 p-md-4">Explore the intricate web of characters, metaphors, and stanzas that define Norse mythology</h3>
             </div>
         </div>
+
         <!-- Sort function -->
         <div class="row sorting-wrapper">
             <div class="col-md-8 justify-content-start">
                 <form method="get" action="." id="sort-form">
                     <label for="sort">Sort Lore</label>
-                    <select name="sort" id="sort-select" onchange="this.form.submit()"></select>
+                    <select name="sort" id="sort-select" onchange="this.form.submit()">
                         <option value="newest" {% if current_sort == "newest" %}selected{% endif %}>Newest Entries</option>
                         <option value="az" {% if current_sort == "az" %}selected{% endif %}>Title: A-Z</option>
                         <option value="za" {% if current_sort == "za" %}selected{% endif %}>Title: Z-A</option>
                         <option value="oldest" {% if current_sort == "oldest" %}selected{% endif %}>Oldest Entries</option>
+                    </select>
                 </form>
             </div>
         </div>

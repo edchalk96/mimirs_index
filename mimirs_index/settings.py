@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'django_summernote',
     'cloudinary',
+    'django_select2',
     'home',
     'the_edda_library',
     'the_entity_archive',

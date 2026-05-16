@@ -21,6 +21,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
+    path("select2/", include("django_select2.urls")),
     path('', include('home.urls'), name='home'),
     path('library/', include('the_edda_library.urls'), name='library'),
     path('archive/', include('the_entity_archive.urls'), name='archive'),

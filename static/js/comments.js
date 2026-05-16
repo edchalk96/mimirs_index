@@ -10,7 +10,7 @@ const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
 const submitButton = document.getElementById("submitButton");
 
-const deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
+const deleteModal = new bootstrap.Modal(document.getElementById("deleteCommentModal"));
 const deleteButtons = document.getElementsByClassName("delete-btn");
 const deleteConfirm = document.getElementById("deleteConfirm");
 
@@ -30,7 +30,7 @@ for (let button of editButtons) {
 /** Functionality for deletion of comments */
 for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
-        let commentId = e.target.getAttribute("comment_id");
+        let commentId = e.currentTarget.getAttribute("comment_id");
         deleteConfirm.href = `delete_comment/${commentId}`;
         deleteModal.show();
     });

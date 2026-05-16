@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib import messages
 from .models import Lore, Comment
@@ -106,7 +106,7 @@ def lore_detail(request, slug):
                 lore.status = 0
                 lore.save()
                 messages.add_message(request, messages.SUCCESS, "The saga has been re-forged. Awaiting Mimir's approval")
-                return redirect("lore_detail", slug=lore.slug)
+                return redirect("library")
         
     return render(request, "the_edda_library/lore_detail.html", {"lore": lore, "comments": comments, "comment_count": comment_count, "comment_form": comment_form, "edit_lore_form": edit_lore_form})
 

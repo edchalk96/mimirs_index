@@ -79,15 +79,23 @@
             {% csrf_token %}
         </form>
 
-    <div class="row">
-        <div class="col-md-12">
+    <div class="row justify-content-center">
+        <div class="col-md-12 text-center">
             <h2>Lore Appearances</h2>
-            <ul class="appearances-list">
-                {% for appearance in entity.appearances.all %}
-                <li><p>{{ appearance.lore.title }}</p> | <p>{{ appearance.lore.excerpt }}</p> | <a href="{% url 'lore_detail' appearance.lore.slug %}">View Full Lore</a></li>
-                {% empty %}
-                <p>No appearances yet.</p>
-                {% endfor %}
+            <ul class="appearances-list d-inline-block text-start">
+                {% if entity.appearances.all %}
+                    {% for lore in entity.appearances.all %}
+                        <li class="mb-2">
+                            <div class="d-inline-flex align-items-center">
+                                <p class="mb-0">{{ lore.title }} |</p>
+                                <p class="mb-0">{{ lore.excerpt }} |</p>
+                                <a href="{% url 'lore_detail' lore.slug %}">View Full Lore</a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                {% else %}
+                    <li>This entity has not yet emerged in any known sagas.</li>
+                {% endif %}
             </ul>
         </div>
     </div>

@@ -1,11 +1,12 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from .models import Entity
 from .forms import EntityForm
+from django.contrib import messages
 
 # Create your views here.
 class EntityList(generic.ListView):
-    model = Entity
+    queryset = Entity.objects.filter(status=1)
     template_name = "the_entity_archive/the_entity_archive.html"
     paginate_by = 8
 
@@ -40,14 +41,17 @@ def entity_profile(request, name):
     queryset = Entity.objects.filter(status=1)
     entity = get_object_or_404(queryset, name=name)
 
-    edit_entity_form = EntityForm(request.POST or None, instance=entity)
+    edit_entity_form = EntityForm(instance=entity)
 
-    if request.method == "POST" and edit_entity_form.is_valid():
-        entity = edit_entity_form.save(commit=False)
-        entity.status = 0
-        entity.save()
-        messages.add_message(request, messages.SUCCESS, "The entity has been re-forged. Awaiting Mimir's approval")
-        return redirect("entity_profile", str=entity.name)
+    if request.method == "POST":
+        edit_entity_form = EntityForm(data=request.POST, instance=entity)
+
+        if edit_entity_form.is_valid():
+            entity = edit_entity_form.save(commit=False)
+            entity.status = 0
+            entity.save()
+            messages.add_message(request, messages.SUCCESS, "The entity has been re-forged. Awaiting Mimir's approval")
+            return redirect("archive")
 
 
-    return render(request, "the_entity_archive/entity_profile.html", {"entity": entity})
+    return render(request, "the_entity_archive/entity_profile.html", {"entity": entity, "edit_entity_form": edit_entity_form})

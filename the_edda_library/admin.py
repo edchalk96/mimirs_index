@@ -10,6 +10,7 @@ class LoreAdmin(SummernoteModelAdmin):
     search_fields = ('title', 'primary_source', 'author__username',)
     list_filter = ('status', 'is_deletion_pending',)
     actions = ['approve_deletion', 'publish_lore_entry',]
+    filter_horizontal = ('entities',)
 
     @admin.action(description='Confirm and delete selected lore entries')
     def approve_deletion (self, request, queryset):
