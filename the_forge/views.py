@@ -27,6 +27,7 @@ def forge_form(request):
                 lore = lore_form.save(commit=False)
                 lore.author = request.user
                 lore.save()
+                lore_form.save_m2m()
                 messages.add_message(request, messages.SUCCESS, "Your lore entry has been submitted and is awaiting approval.")
                 return redirect('home')
             

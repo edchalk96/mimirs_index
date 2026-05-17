@@ -51,7 +51,7 @@
                             <img src="{{ lore.featured_image.url }}" alt="{{ lore.title }} icon">
                             {% endif %}
                             <h5 class="card-title">{{ lore.title }}</h5>
-                            <p class="card-text">Entities: {{ lore.entities.all|join:", " }}</p>
+                            <p class="card-text">Entities: {{ lore.entities.all|join:", "|default:"None associtated...yet" }}</p>
                             <p class="card-text">{{ lore.excerpt }}</p>
                             <h5>Read Full Entry</h5>
                         </a>
