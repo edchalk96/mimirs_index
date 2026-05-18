@@ -32,17 +32,17 @@
         <!-- Entity Archive cards -->
         <div class="row">
             {% for entity in entity_list %}
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <a href="{% url 'entity_profile' entity.name %}" class="nav-card">
+            <div class="col-md-6 py-4 px-4 px-md-3 px-lg-4">
+                <div class="card archive-card h-100 mx-md-4">
+                    <div class="card-body text-center d-flex flex-column justify-content-center">
+                        <a href="{% url 'entity_profile' entity.name %}" class="px-md-2">
                             {% if "placeholder" in entity.featured_image.url %}
-                            <img src="{% static 'images/entity-default.png' %}" alt="placeholder icon">
+                            <img class="card-icon card-img-fixed rounded mx-auto" src="{% static 'images/entity-default.png' %}" alt="placeholder icon">
                             {% else %}
-                            <img src="{{ entity.featured_image.url }}" alt="{{ entity.name }} icon">
+                            <img class="card-icon card-img-fixed rounded mx-auto" src="{{ entity.featured_image.url }}" alt="{{ entity.name }} icon">
                             {% endif %}
-                            <h5 class="card-title">{{ entity.name }}</h5>
-                            <p class="card-text">{{ entity.epithets|join:", " }}</p>
+                            <h3 class="card-title my-3">{{ entity.name }}</h3>
+                            <p class="card-text">Epithets: {{ entity.epithets|join:", "|default:"None"}}</p>
                             <p class="card-text">Lore Entries: {{ entity.lore_count }}</p>
                         </a>
                     </div>

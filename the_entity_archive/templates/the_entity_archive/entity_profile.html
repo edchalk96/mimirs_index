@@ -6,31 +6,31 @@
     
 <!-- Entity Profile Content -->
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
+    <div class="row py-3">
+        <div class="col-md-12 text-center d-flex flex-column align-items-center">
             {% if "placeholder" in entity.featured_image.url %}
-            <img src="{% static 'images/entity-default.png' %}" alt="default entity image" class="img-fluid mb-4 entity-detail-image">
+            <img src="{% static 'images/entity-default.png' %}" alt="default entity image" class="mb-4 entity-detail-image rounded">
             {% else %}
-            <img src="{{ entity.featured_image.url }}" alt="{{ entity.name }}" class="img-fluid mb-4 entity-detail-image">
+            <img src="{{ entity.featured_image.url }}" alt="{{ entity.name }}" class="mb-4 entity-detail-image rounded">
             {% endif %}
-            <h1 class="">{{ entity.name }}</h1>
-            <h3 class="">{{ entity.epithets|join:", " }}</h3>
+            <h1 id="entityTitle">{{ entity.name }}</h1>
+            <h2 id="entityEpithets">{{ entity.epithets|join:", " }}</h2>
         </div>
     </div>
 </div>
 
-<div class="container">
+<div class="container entity-detail-wrapper">
     <div class="row">
-        <div class="col-md-12">
-            <h2>Biography</h2>
-            <p>{{ entity.biography | safe }}</p>
+        <div class="col-md-12 text-center">
+            <h3 class="pb-3">Biography</h3>
+            <p class="entity-content p-3">{{ entity.biography | safe }}</p>
         </div>
-        <div class="col-md-12">
-            <p>Created on: {{ entity.created_on }}</p>
+        <div class="col-md-12 entity-dates">
+            <p class="mb-0">Created on: {{ entity.created_on }}</p>
             <p>Last updated: {{ entity.updated_on }}</p>
         </div>
         {% if user.is_authenticated %}
-            <div class="col-md-12">
+            <div class="col-md-12 d-flex justify-content-center gap-3 mb-4">
                 <button class="btn edit-btn" type="button" data-bs-toggle="modal" data-bs-target="#editEntityModal">Update the Entity</button>
                 <button class="btn delete-btn {% if entity.is_deletion_pending %}d-none{% endif %}" type="button" data-bs-toggle="modal" data-bs-target="#deleteEntityModal">Remove from the Archive</button>
             </div>
@@ -44,7 +44,7 @@
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="modal-body">
-                            <h5>Re-forging the Entity</h5>
+                            <h5 class="text-center">Re-forging the Entity</h5>
                             {{ edit_entity_form | crispy }}
                         </div>
                         <div class="modal-footer">
@@ -79,16 +79,15 @@
             {% csrf_token %}
         </form>
 
-    <div class="row justify-content-center">
-        <div class="col-md-12 text-center">
-            <h2>Lore Appearances</h2>
-            <ul class="appearances-list d-inline-block text-start">
+    <div class="row justify-content-center m-3">
+        <div class="col-md-12 text-center lore-appearances px-0 py-2">
+            <h3 class="py-2">Lore Appearances</h3>
+            <ul class="appearances-list d-inline-block text-start p-0">
                 {% if entity.appearances.all %}
                     {% for lore in entity.appearances.all %}
                         <li class="mb-2">
                             <div class="d-inline-flex align-items-center">
-                                <p class="mb-0">{{ lore.title }} |</p>
-                                <p class="mb-0">{{ lore.excerpt }} |</p>
+                                <p class="mb-0 px-2">{{ lore.title }}</p>
                                 <a href="{% url 'lore_detail' lore.slug %}">View Full Lore</a>
                             </div>
                         </li>

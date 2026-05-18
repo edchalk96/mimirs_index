@@ -67,7 +67,7 @@
                     <p>{{ random_lore.excerpt }}</p>
 
                     <div>
-                        <p>The following entities are mentioned:</p>
+                        <p class="py-2">The following entities are mentioned:</p>
 
                         {% for entity in random_lore.entities.all %}
                             <a href="{% url 'entity_profile' entity.name %}">{{ entity.name }}</a>
@@ -77,7 +77,7 @@
                     </div>
 
                     <div>
-                        <a class="btn open-scroll-btn" href="{% url 'lore_detail' random_lore.slug %}" role="button">Open the Scroll!</a>
+                        <a class="btn pt-3" id="openScroll" href="{% url 'lore_detail' random_lore.slug %}" role="button">Open the Scroll!</a>
                     </div>
 
                 {% else %}

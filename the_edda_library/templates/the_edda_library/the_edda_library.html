@@ -24,7 +24,7 @@
         </div>
 
         <!-- Sort function -->
-        <div class="row sorting-wrapper">
+        <div class="row sorting-wrapper mb-3">
             <div class="col-md-8 justify-content-start">
                 <form method="get" action="." id="sort-form">
                     <label for="sort">Sort Lore</label>
@@ -41,24 +41,24 @@
         <!-- Edda Library entries cards -->
         <div class="row">
             {% for lore in lore_list %}
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <a href="{% url 'lore_detail' lore.slug %}" class="nav-card">
+            <div class="col-md-6 py-4 px-4 px-md-3 px-lg-4">
+                <div class="card library-card h-100">
+                    <div class="card-body text-center d-flex flex-column justify-content-center">
+                        <a href="{% url 'lore_detail' lore.slug %}" class="px-md-2">
                             {% if "placeholder" in lore.featured_image.url %}
-                            <img class="card-icon" src="{% static 'images/lore-default.png' %}" alt="placeholder icon">
+                            <img class="card-icon card-img-fixed rounded mx-auto" src="{% static 'images/lore-default.png' %}" alt="placeholder icon">
                             {% else %}
-                            <img src="{{ lore.featured_image.url }}" alt="{{ lore.title }} icon">
+                            <img class="card-icon card-img-fixed rounded mx-auto" src="{{ lore.featured_image.url }}" alt="{{ lore.title }} icon">
                             {% endif %}
-                            <h5 class="card-title">{{ lore.title }}</h5>
-                            <p class="card-text">Entities: {{ lore.entities.all|join:", "|default:"None associtated...yet" }}</p>
-                            <p class="card-text">{{ lore.excerpt }}</p>
+                            <h4 class="card-title my-3">{{ lore.title }}</h4>
+                            <p class="card-text card-entities">Entities: {{ lore.entities.all|join:", "|default:"None associtated...yet" }}</p>
+                            <p class="card-text card-excerpt px-lg-3">{{ lore.excerpt }}</p>
                             <h5>Read Full Entry</h5>
                         </a>
                     </div>
                 </div>
             </div>
-            {% if forloop.counter|divisibleby:3 %}
+            {% if forloop.counter|divisibleby:4 %}
         </div>
         <div class="row">
             {% endif %}

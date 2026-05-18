@@ -7,34 +7,34 @@
 <!-- Lore Detail Content -->
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
+    <div class="row py-3">
+        <div class="col-md-12 text-center d-flex flex-column align-items-center">
             {% if "placeholder" in lore.featured_image.url %}
-            <img src="{% static 'images/lore-default.png' %}" alt="default lore image" class="img-fluid mb-4 lore-detail-image">
+            <img src="{% static 'images/lore-default.png' %}" alt="default lore image" class="mb-4 lore-detail-image rounded">
             {% else %}
-            <img src="{{ lore.featured_image.url }}" alt="{{ lore.title }}" class="img-fluid mb-4 lore-detail-image">
+            <img src="{{ lore.featured_image.url }}" alt="{{ lore.title }}" class="mb-4 lore-detail-image rounded">
             {% endif %}
-            <h1 class="">{{ lore.title }}</h1>
+            <h1 id="loreTitle">{{ lore.title }}</h1>
         </div>
     </div>
 </div>
 
-<div class="container">
+<div class="container lore-detail-wrapper">
     <div class="row">
-        <div class="col-md-12">
-            <p>{{ lore.content | safe }}</p>
+        <div class="col-md-12 text-center">
+            <p class="lore-content p-3">{{ lore.content | safe }}</p>
         </div>
-        <div class="col-md-12">
-            <p>Entities: {{ lore.entities.all|join:", " }}</p>
+        <div class="col-md-12 text-center">
+            <p id="loreEntities">Entities: {{ lore.entities.all|join:", " }}</p>
             <p>Primary Source: {{ lore.primary_source }}</p>
             <p>Notes: {{ lore.notes }}</p>
         </div>
-        <div class="col-md-12">
-            <p>Created on: {{ lore.created_on }}</p>
+        <div class="col-md-12 lore-dates">
+            <p class="mb-0">Created on: {{ lore.created_on }}</p>
             <p>Last updated: {{ lore.updated_on }}</p>
         </div>
         {% if user.is_authenticated %}
-            <div class="col-md-12">
+            <div class="col-md-12 d-flex justify-content-center gap-3 mb-4">
                 <button class="btn edit-btn" type="button" data-bs-toggle="modal" data-bs-target="#editLoreModal">Update the Lore</button>
                 <button class="btn delete-btn {% if lore.is_deletion_pending %}d-none{% endif %}" type="button" data-bs-toggle="modal" data-bs-target="#deleteLoreModal">Remove from the Library</button>
             </div>
@@ -48,7 +48,7 @@
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="modal-body">
-                            <h5>Re-forging the Lore</h5>
+                            <h5 class="text-center">Re-forging the Lore</h5>
                             {{ edit_lore_form | crispy }}
                         </div>
                         <div class="modal-footer">
@@ -65,7 +65,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deleteLoreModalLabel">Delete Lore Entry?</h5>
+                        <h5 class="modal-title text-center" id="deleteLoreModalLabel">Delete Lore Entry?</h5>
                     </div>
                     <div class="modal-body">
                         <p>Are you sure you want to summon the Valkyries for this lore entry?</p>
@@ -88,9 +88,9 @@
 
 <!-- Comments Section - Credit to Tom Dekan (https://tomdekan.com/articles/comment-threads) for creation of comments thread --> 
 
-<div class="container comments-section">
+<div class="container comments-section mt-2">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 text-center">
             <h2>Skaldic Comments</h2>
             <strong><i class="fa-solid fa-comments"></i> {{ comment_count }}</strong>
         </div>
@@ -108,10 +108,10 @@
     </div>
 
     <!-- Comment Form-->
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-md-8">
             {% if user.is_authenticated %}
-            <h3>Add a Comment:</h3>
+            <h3 id="commentHeading">Add a Comment:</h3>
             <p>Posting as: {{ user.username }}</p>
             <form method="post" id="commentForm">
                 {% csrf_token %}
@@ -138,8 +138,8 @@
                 This action cannot be undone.
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-                <a id="deleteConfirm" href="#" class="btn btn-delete">Delete</a>
+                <button type="button" class="btn close-btn" data-bs-dismiss="modal">Close</button>
+                <a id="deleteConfirm" href="#" class="btn delete-btn">Delete</a>
             </div>
         </div>
     </div>

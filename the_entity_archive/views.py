@@ -8,7 +8,7 @@ from django.contrib import messages
 class EntityList(generic.ListView):
     queryset = Entity.objects.filter(status=1)
     template_name = "the_entity_archive/the_entity_archive.html"
-    paginate_by = 8
+    paginate_by = 6
 
     # Code for the search functionality in the entity archive
     def get_queryset(self):

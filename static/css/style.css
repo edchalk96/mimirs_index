@@ -118,8 +118,12 @@ main {
     }
 }
 
-.modal li::marker, .select2-container li::marker {
+.modal li::marker, .select2-container li::marker, .pagination li::marker {
     content: none !important;
+}
+
+.modal-content {
+    background-color: #F8F4E8;
 }
 
 /*-- Navbar --*/
@@ -610,6 +614,11 @@ main {
     padding-top: 0.75rem;
 }
 
+.mimirs-whispers h3 {
+    font-family: Norse, serif;
+    color: #333333;
+}
+
 .mimirs-whispers p {
     font-family: 'EB Garamond', serif;
     color: #333333;
@@ -617,9 +626,25 @@ main {
     font-size: 1rem;
 }
 
+#openScroll {
+    font-family: NorseBold, serif;
+    font-size: 1.5rem;
+}
+
+.mimirs-whispers a {
+    font-family: Norse, serif;
+    color: #2C3E50;
+    font-size: 1.25rem;
+}
+
 .random-lore {
     border: 3px solid #2C3E50;
     border-radius: 8px;
+}
+
+.mimirs-whispers a:hover {
+    color: #D4AF37;
+    text-decoration: underline;
 }
 
 @media screen and (min-width:767.98px) {
@@ -705,6 +730,84 @@ main {
 .edda-library-content h3 {
     font-family: Norse, serif;
     color: #333333;
+}
+
+.card-img-fixed {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    display: block;
+}
+
+@media screen and (min-width:991.98px) {
+    .card-img-fixed {
+        width: 80%;
+    }
+}
+
+.library-card {
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+.library-card a {
+    color: #F8F4E8;
+    text-decoration: none;
+}
+
+.library-card h4 {
+    font-family: NorseBold, serif;
+    text-decoration: underline;
+}
+
+.card-entities {
+    font-family: Norse, serif;
+    font-size: 1.2rem;
+}
+
+.library-card h5 {
+    font-family: NorseBold, serif;
+    text-decoration: underline;
+}
+
+.library-card:hover {
+    box-shadow: rgb(212, 175, 55, 0.8) 0px 20px 30px -10px;
+
+    & h4 {
+        color: #D4AF37;
+    }
+
+    & h5 {
+        color: #D4AF37;
+    }
+}
+
+@media screen and (min-width:767.98px){
+    #sort-form {
+    font-size: 1.25rem;
+    }
+}
+
+.pagination a {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1.25rem;
+    border: none;
+}
+
+.pagination a:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+@media screen and (min-width:991.98px){
+    .pagination a {
+        font-size: 1.5rem;
+    }
 }
 
 /*------ End of Edda Library ------*/
@@ -814,6 +917,35 @@ main {
 @media screen and (min-width:991.98px){
     .search-container form {
         font-size: 1.5rem;
+    }
+}
+
+.archive-card {
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+.archive-card a {
+    color: #F8F4E8;
+    text-decoration: none;
+}
+
+.archive-card h3 {
+    font-family: NorseBold, serif;
+    text-decoration: underline;
+}
+
+.archive-card:hover {
+    box-shadow: rgb(212, 175, 55, 0.8) 0px 20px 30px -10px;
+
+    & h3 {
+        color: #D4AF37;
+    }
+}
+
+@media screen and (min-width:991.98px) {
+    .archive-card p {
+        font-size: 1.25rem;
     }
 }
 
@@ -1000,6 +1132,373 @@ main {
     max-height: calc(var(--bs-border-width) + 8rem );
 }
 /*------ End of The Forge ------*/
+
+/*------ Start of Lore Detail page ------*/
+
+.lore-detail-image {
+    width: 80%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+}
+
+@media screen and (min-width:767.98px){
+    .lore-detail-image {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width:991.98px){
+    .lore-detail-image {
+        width: 40%;
+    }
+}
+
+#loreTitle {
+    font-family: NorseBold, serif;
+    color: #2C3E50;
+}
+
+.lore-detail-wrapper {
+    font-family: 'EB Garamond', serif;
+    color: #333333;
+}
+
+.lore-content {
+    border: #2C3E50;
+    border-style: ridge;
+}
+
+#loreEntities {
+    font-family: Norse, serif;
+    font-size: 1.25rem;
+}
+
+.lore-dates {
+    font-size: 0.75rem;
+}
+
+@media screen and (min-width:991.98px) {
+    .lore-detail-wrapper {
+        font-size: 1.25rem;
+    }
+
+    #loreEntities {
+        font-size: 1.5rem;
+    }
+
+    .lore-dates {
+        font-size: 1rem;
+    }
+}
+
+.edit-btn {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1rem;
+}
+
+.delete-btn {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1rem;
+}
+
+.edit-btn:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+.delete-btn:hover {
+    font-family: NorseBold, serif;
+    background-color: #7B241C;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+@media screen and (min-width:991.98px) {
+    .edit-btn {
+        font-size: 1.25rem;
+    }
+
+    .delete-btn {
+        font-size: 1.25rem;
+    }
+}
+
+.comments-section h2 {
+    font-family: NorseBold, serif;
+    color: #2C3E50;
+}
+
+.comments-section strong {
+    font-size: 1.25rem;
+    color: #2C3E50;
+}
+
+.comments-section {
+    color: #333333;
+    font-family: 'EB Garamond', serif;
+}
+
+#div_id_body textarea {
+    max-height: calc(var(--bs-border-width) + 8rem );
+}
+
+#submitButton {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1rem;
+}
+
+#submitButton:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+@media screen and (min-width:991.98px) {
+    #submitButton {
+        font-size: 1.25rem;
+    }
+}
+
+.comment-delete-btn {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1rem;
+}
+
+.comment-delete-btn:hover {
+    font-family: NorseBold, serif;
+    background-color: #7B241C;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+@media screen and (min-width:991.98px) {
+    .comment-delete-btn {
+        font-size: 1.25rem;
+    }
+}
+
+#replyButton {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    color: #2C3E50;
+}
+
+#replyButton:hover {
+    color: #D4AF37;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#editLoreModal h5 {
+    font-family: NorseBold, serif;
+}
+
+#editLoreModal label {
+    font-family: Norse, serif;
+}
+
+#editLoreModal {
+    font-family: 'EB Garamond', serif;
+}
+
+#editLoreModal button {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1rem;
+}
+
+#editLoreModal button:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+#deleteLoreModal {
+    font-family: 'EB Garamond', serif;
+}
+
+#deleteLoreModal h5 {
+    font-family: NorseBold, serif;
+}
+
+.cancel-btn {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1rem;
+}
+
+.cancel-btn:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+@media screen and (min-width:991.98px) {
+    .cancel-btn {
+        font-size: 1.25rem;
+    }
+}
+
+#deleteCommentModal {
+    font-family: 'EB Garamond', serif;
+}
+
+#deleteCommentModal h5 {
+    font-family: NorseBold, serif;
+}
+
+#deleteCommentModal .close-btn {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1rem;
+}
+
+#deleteCommentModal .close-btn:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+@media screen and (min-width:991.98px) {
+    #deleteCommentModal .close-btn {
+        font-size: 1.25rem;
+    }
+}
+
+/*------ End of Lore Detail page ------*/
+
+/*------ Start of Entity Profile page ------*/
+
+.entity-detail-image {
+    width: 80%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+}
+
+@media screen and (min-width:767.98px){
+    .entity-detail-image {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width:991.98px){
+    .entity-detail-image {
+        width: 40%;
+    }
+}
+
+#entityTitle {
+    font-family: NorseBold, serif;
+    color: #2C3E50;
+}
+
+#entityEpithets {
+    font-family: Norse, serif;
+    color: #2C3E50;
+}
+
+.entity-detail-wrapper {
+    font-family: 'EB Garamond', serif;
+    color: #333333;
+}
+
+.entity-detail-wrapper h3 {
+    font-family: Norse, serif;
+    color: #2C3E50;
+}
+
+.entity-content {
+    border: #2C3E50;
+    border-style: ridge;
+}
+
+.entity-dates {
+    font-size: 0.75rem;
+}
+
+@media screen and (min-width:991.98px) {
+    .entity-detail-wrapper {
+        font-size: 1.25rem;
+    }
+
+    .entity-dates {
+        font-size: 1rem;
+    }
+}
+
+.lore-appearances {
+    border: #2C3E50;
+    border-style: ridge;
+}
+
+.lore-appearances a {
+    color: #2C3E50;
+    font-family: Norse, serif;
+}
+
+.lore-appearances a:hover {
+    color: #D4AF37;
+    font-family: NorseBold, serif;
+}
+
+#editEntityModal h5 {
+    font-family: NorseBold, serif;
+}
+
+#editEntityModal label {
+    font-family: Norse, serif;
+}
+
+#editEntityModal {
+    font-family: 'EB Garamond', serif;
+}
+
+#editEntityModal button {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1rem;
+}
+
+#editEntityModal button:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+#deleteEntityModal {
+    font-family: 'EB Garamond', serif;
+}
+
+#deleteEntityModal h5 {
+    font-family: NorseBold, serif;
+}
 
 /*-- 404 and 505 pages --*/
 

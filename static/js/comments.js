@@ -9,6 +9,7 @@ const editButtons = document.getElementsByClassName("edit-btn");
 const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
 const submitButton = document.getElementById("submitButton");
+const commentHeading = document.getElementById("commentHeading")
 
 const deleteModal = new bootstrap.Modal(document.getElementById("deleteCommentModal"));
 const deleteButtons = document.getElementsByClassName("comment-delete-btn");
@@ -22,6 +23,7 @@ for (let button of editButtons) {
         let commentContent = document.getElementById(`body-${commentId}`).innerText.trim();
         commentText.value = commentContent;
         submitButton.innerText = "Update";
+        commentHeading.innerText = "Update Comment"
         commentForm.setAttribute("action", `edit_comment/${commentId}`);
         commentForm.scrollIntoView({ behavior: 'smooth' });
     })
