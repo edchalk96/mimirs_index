@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1',]
+ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1', ]
 
 
 # Application definition
@@ -135,7 +135,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Allauth relevant settings - Credit to Travilabs - https://medium.com/@travilabs/email-register-confirmation-django-django-allauth-299c4427726f
+# Allauth relevant settings - Credit to Travilabs -
+# https://medium.com/@travilabs/email-register-confirmation-django-django-allauth-299c4427726f
 ACCOUNT_EMAIL_VERIFICATION = "optional"
 ACCOUNT_SIGNUP_FIELDS = ['username*', 'email*', 'password1*', 'password2*']
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True

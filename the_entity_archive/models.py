@@ -5,6 +5,7 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
+
 # Create your models here.
 class Entity(models.Model):
     name = models.CharField(max_length=20, unique=True)
@@ -13,17 +14,23 @@ class Entity(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    author = models.ForeignKey(User, related_name="user_entity_entries", on_delete=models.PROTECT)
+    author = models.ForeignKey(User,
+                               related_name="user_entity_entries",
+                               on_delete=models.PROTECT)
     is_deletion_pending = models.BooleanField(default=False)
-    featured_image = CloudinaryField('image', default='placeholder', blank=True)
+    featured_image = CloudinaryField('image',
+                                     default='placeholder', blank=True)
 
     class Meta:
         ordering = ['name']
 
-    # Credit to Real Python for explanation and use of the @property decorator - https://realpython.com/python-property/
+    # Credit to Real Python for explanation and
+    # use of the @property decorator -
+    # https://realpython.com/python-property/
     @property
     def lore_count(self):
         return self.appearances.count()
 
     def __str__(self):
-        return f"{self.name} {'PENDING DELETION' if self.is_deletion_pending else ''}"
+        return f"{self.name} {'PENDING DELETION'
+                              if self.is_deletion_pending else ''}"

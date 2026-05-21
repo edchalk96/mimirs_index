@@ -88,7 +88,7 @@
                                             <a class="btn account-btn ps-3 {% if request.path == logout_url %}active{% endif %}" href="{% url 'account_logout' %}" role="button">Log Out</a>
                                         </div>
                                         <div>
-                                            <p id="welcome-message" class="mb-0 ps-3">TEST Skál! {{ user.username }}</p>
+                                            <p id="welcome-message" class="mb-0 ps-3">Skál! {{ user.username }}</p>
                                         </div>
                                     {% endif %}
                                 {% else %}
@@ -214,6 +214,7 @@
                 <p>Knowledge is a drink from the well.</p>
             </div>
         </div>
+    </footer>
     {% block extras %}
     {% endblock %}
 

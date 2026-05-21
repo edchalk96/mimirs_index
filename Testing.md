@@ -53,6 +53,144 @@ Manual testing was selected over automated testing for this project because it o
 | **FUNCTION & EXPECTED OUTCOME** | **TESTING RESULT** | **STATUS** |
 | --- | --- | --- |
 | Paginated list of all lore entries is generated | User is presented with a paginated list of all published lore entries in the database | Working |
-| Paginated list can be sorted | Sort function succeessfuully sorts list on A-Z, Z-A, Newest and Oldest | Working |
+| Paginated list can be sorted | Sort function succeessfully sorts list on A-Z, Z-A, Newest and Oldest | Working |
 | User can see next page of the list | Clicking "Next" or "Previous" succcesfully navigates user in the paginated list | Working |
-| Redirection to specific lore entry page | Clicking on a lore enry card redirects user to specific lore entry page | Working |
+| Redirection to specific lore entry page | Clicking on a lore entry card redirects user to specific lore entry page | Working |
+
+### the_entity_archive.html
+
+| **FUNCTION & EXPECTED OUTCOME** | **TESTING RESULT** | **STATUS** |
+| --- | --- | --- |
+| Paginated list of all entities is generated | User is presented with a paginated list of all published entities in the database | Working |
+| Search function for published entities | User is abl to search for specific entities succeessfully | Working |
+| User can see next page of the list | Clicking "Next" or "Previous" succcesfully navigates user in the paginated list | Working |
+| Redirection to specific entitiy profile | Clicking on a entity card redirects user to specific entity profile | Working |
+
+### lore_detail.html
+
+| **FUNCTION & EXPECTED OUTCOME** | **TESTING RESULT** | **STATUS** |
+| --- | --- | --- |
+| Upon clicking specific lore entry link, relevant lore page can be viewed | Successfully renders a lore specific page when clicking on specfic lore link | Working |
+| Ability to update lore entry | "Update the Lore" button pops out modal form to update lore entry and successfully submit for review | Working |
+| Ability to suggest lore entry is removed the database | "Remove from the library" button pops out delete confirmation modal which then sends a request for entry to be removed | Working |
+| Ability to leave a comment | Comment text area at the bottom of page + "carve your thoughts" button successfuly submits comment for review | Working |
+| Ability to update user specific comment | "Edit" button successfully updates the bottom comments section to reflect the comment is being updated | Working |
+| Ability to delete user specific comment | "Delete" button pops out delete confirmation modal and successfully deletes comment | Working |
+| Ability to reply to a previous comment | "Reply" button reveals text area to reply to specific comment and submitting sends it for review | Working |
+
+### entity_profile.html
+
+| **FUNCTION & EXPECTED OUTCOME** | **TESTING RESULT** | **STATUS** |
+| --- | --- | --- |
+| Upon clicking specific entity link, relevant entity profile can be viewed | Successfully renders an entity specific page when clicking entity link | Working |
+| Ability to update entity | "Update the Entity" button pops out modal form to update entity and successfully submit for review | Working |
+| Ability to suggest entity is removed the database | "Remove from the library" button pops out delete confirmation modal which then sends a request for entity to be removed | Working |
+| View lore entries that this entity is mentioned | "Lore Appeances" section generates a list, if any, lore entries the entity has been mentioned and linked to | Working |
+| Ability to navigate to lore entry from "Lore Appearances" section | User is able to be redirected to lore page relevant to entity through "View Full Lore" link | Working |
+
+### the_forge.html
+
+| **FUNCTION & EXPECTED OUTCOME** | **TESTING RESULT** | **STATUS** |
+| --- | --- | --- |
+| Fast navigation to forge a lore entry | Clicking "Forge a Lore Entry" button scrolls user to relevant section on page | Working |
+| Fast navigation to forge an entity | Clicking "Forge an Entity" button scrolls user to relevant section on page | Working |
+| Ability to submit a lore entry | User is able to submit a new lore entry for review | Working |
+| Ability to link entities to new lore entry | User is able to link entities mentioned in new lore entry submission | Working |
+| Ability to submit an entity | User is able to submit a new entity for review | Working |
+| Ability to attach a relevant image to lore or entity | User is able to attach image to entry/entity | Working |
+
+## User Story Validation
+
+The functionality and outcomes outlined above directly align with the [User Stories](./README.md/#user-stories) established during the strategy plane of this project. Every user story has been successfully addressed through these features, with the exception of those previously mentioned in the [Scope Plane](./README.md/#scope-plane), which are slated for implementation during the next phase of development.
+
+## Validator Testing
+
+### HTML
+
+- [W3C Markup Validator](https://validator.w3.org/#validate_by_input)
+  - base.html | [Result](./documentation/images/testing/base-html-test.png)
+    - 23/26 hidden messages realted to python specific tags. 2/26 related to duplicated id, due to if-else function. 1 due to no h1 heading which is present in index.html.
+  - index.html | [Result](./documentation/images/testing/index-html-test.png)
+    - All 11 hidden messages related to lack of head element which is in the base.html.
+  - the_edda_library.html | [Result](./documentation/images/testing/the-edda-library-html-test.png)
+    - All messages related to python relevant code not recognised by validator.
+  - the_entity_archive.html | [Result](./documentation/images/testing/the-entity-archive-html-test.png)
+    - All messages related to python relevant code not recognised by validator.
+  - lore_detail.html | [Result](./documentation/images/testing/lore-detail-html-test.png)
+    - All messages related to python relevant code not recognised by validator and skipped heading levels due to modals.
+  - entity_profile.html | [Result](./documentation/images/testing/entity-profile-html-test.png)
+    - All messages related to python relevant code not recognised by validator and skipped heading levels due to modals.
+  - the_forge.html | [Result](./documentation/images/testing/the-forge-html-test.png)
+    - All messages related to python relevant code not recognised by validator.
+  - 404.html | [Result](./documentation/images/testing/404-html-test.png)
+    - All messages related to python relevant code not recognised by validator.
+  - 500.html | [Result](./documentation/images/testing/500-html-test.png)
+    - All messages related to python relevant code not recognised by validator.
+
+### CSS
+
+- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) | [Result](./documentation/images/testing/css-validation.png)
+  - Warnings from this validator are all dynamic nature warnings as well as vendor extension warnings
+
+### JavaScript
+
+- [JSHint](https://jshint.com/) - JavaScript Validator
+  - base.js | [Result](./documentation/images/testing/base-js-test.png)
+    - Warning related to bootstap element
+  - comments.js | [Result](./documentation/images/testing/comments-js-test.png)
+    - Warning related to bootstap element and function variable used in html code
+  - lore-detail.js | [Result](./documentation/images/testing/lore-detail-js-test.png)
+    - Undefined variable warnings on "$" occuring due to validator looking at JS file in isolation, mistaking external tools, like jQuery's $, for code errors.
+
+### Python
+
+- [PEP8 Python Validator](https://pep8ci.herokuapp.com/)
+  - Home App:
+    - urls.py | [Result](./documentation/images/testing/home-app-urls-py-test.png)
+    - views.py | [Result](./documentation/images/testing/home-app-views-py-test.png)
+      - E501 error due to long line (>79 characters). Unable to shortern this line as it breaks the code.
+  - Mimir's Index:
+    - settings.py | [Result](./documentation/images/testing/settings-py-test.png)
+      - E501 error due to long line (>79 characters). Unable to shortern this line as it breaks the code.
+    - urls.py | [Result](./documentation/images/testing/mimirs-index-urls-py-test.png)
+    - wsgi.py | [Result](./documentation/images/testing/mimirs-index-wsgi-py-test.png)
+  - The Edda Library App:
+    - admin.py | [Result](./documentation/images/testing/the-edda-library-admin-py-test.png)
+      - E501 error due to long line (>79 characters). Unable to shortern this line as it breaks the code.
+    - forms.py | [Result](./documentation/images/testing/the-edda-library-forms-py-test.png)
+      - E501 error due to long line (>79 characters). Unable to shortern this line as it breaks the code.
+    - models.py | [Result](./documentation/images/testing/the-edda-library-models-py-test.png)
+      - E501 error due to long line (>79 characters). Unable to shortern this line as it breaks the code.
+    - urls.py | [Result](./documentation/images/testing/the-edda-library-urls-py-test.png)
+    - views.py | [Result](./documentation/images/testing/the-edda-library-views-py-test.png)
+      - E501 error due to long line (>79 characters). Unable to shortern this line as it breaks the code.
+  - The Entity Archive App:
+    - admin.py | [Result](./documentation/images/testing/the-entity_archive-admin-py-test.png)
+      - E501 error due to long line (>79 characters). Unable to shortern this line as it breaks the code.
+    - forms.py | [Result](./documentation/images/testing/the-entity_archive-forms-py-test.png)
+      - E501 error due to long line (>79 characters). Unable to shortern this line as it breaks the code.
+    - models.py | [Result](./documentation/images/testing/the-entity_archive-models-py-test.png)
+    - urls.py | [Result](./documentation/images/testing/the-entity_archive-urls-py-test.png)
+    - views.py | [Result](./documentation/images/testing/the-entity_archive-views-py-test.png)
+  - The Forge App:
+    - forms.py | [Result](./documentation/images/testing/the-forge-forms-py-test.png)
+    - urls.py | [Result](./documentation/images/testing/the-forge-forms-py-test.png)
+    - views.py | [Result](./documentation/images/testing/the-forge-views-py-test.png)
+      - E501 error due to long line (>79 characters). Unable to shortern this line as it breaks the code.
+
+## Further Testing
+
+This site was designed for and tested across the following web browsers:
+    - Google Chrome
+    - Microsoft Edge
+    - Mozilla Firefox
+    - Opera
+    - Safari
+
+### Lighthouse Testing
+
+## Known Bugs and Fixes
+
+The below bugs and relevant fixes were seen durng development of the project as we all in testing:
+
+## Future Improvements

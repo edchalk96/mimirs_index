@@ -19,107 +19,109 @@ body {
     background-color: #F8F4E8;
 }
 
-/*-- Bulleted lists markers except modals- Credit to W3 Schools for the Unicode characters: https://www.w3schools.com/charsets/ref_utf_runic.asp --*/
-main {
-    li:nth-child(24n + 1)::marker {
-        content: "\16A0";
-    }
-
-    li:nth-child(24n + 2)::marker {
-        content: "\16A2";
-    }
-
-    li:nth-child(24n + 3)::marker {
-        content: "\16A6";
-    }
-
-    li:nth-child(24n + 4)::marker {
-        content: "\16A8";
-    }
-
-    li:nth-child(24n + 5)::marker {
-        content: "\16B1";
-    }
-
-    li:nth-child(24n + 6)::marker {
-        content: "\16B2";
-    }
-
-    li:nth-child(24n + 7)::marker {
-        content: "\16B7";
-    }
-
-    li:nth-child(24n + 8)::marker {
-        content: "\16B9";
-    }
-
-    li:nth-child(24n + 9)::marker {
-        content: "\16BA";
-    }
-
-    li:nth-child(24n + 10)::marker {
-        content: "\16BE";
-    }
-
-    li:nth-child(24n + 11)::marker {
-        content: "\16C1";
-    }
-
-    li:nth-child(24n + 12)::marker {
-        content: "\16C3";
-    }
-
-    li:nth-child(24n + 13)::marker {
-        content: "\16C7";
-    }
-
-    li:nth-child(24n + 14)::marker {
-        content: "\16C8";
-    }
-
-    li:nth-child(24n + 15)::marker {
-        content: "\16C9";
-    }
-
-    li:nth-child(24n + 16)::marker {
-        content: "\16CA";
-    }
-
-    li:nth-child(24n + 17)::marker {
-        content: "\16CF";
-    }
-
-    li:nth-child(24n + 18)::marker {
-        content: "\16D2";
-    }
-
-    li:nth-child(24n + 19)::marker {
-        content: "\16D6";
-    }
-
-    li:nth-child(24n + 20)::marker {
-        content: "\16D7";
-    }
-
-    li:nth-child(24n + 21)::marker {
-        content: "\16DA";
-    }
-
-    li:nth-child(24n + 22)::marker {
-        content: "\16DC";
-    }
-
-    li:nth-child(24n + 23)::marker {
-        content: "\16DF";
-    }
-
-    li:nth-child(24n)::marker {
-        content: "\16DE";
-    }
+/*-- Bulleted lists markers except modals- Credit to W3 Schools for the Unicode characters: https://www.w3schools.com/charsets/ref_utf_runic.asp --*/ 
+main li:nth-child(24n + 1)::marker {
+    content: "\16A0";
 }
 
-.modal li::marker, .select2-container li::marker {
+main li:nth-child(24n + 2)::marker {
+    content: "\16A2";
+}
+
+main li:nth-child(24n + 3)::marker {
+    content: "\16A6";
+}
+
+main li:nth-child(24n + 4)::marker {
+    content: "\16A8";
+}
+
+main li:nth-child(24n + 5)::marker {
+    content: "\16B1";
+}
+
+main li:nth-child(24n + 6)::marker {
+    content: "\16B2";
+}
+
+main li:nth-child(24n + 7)::marker {
+    content: "\16B7";
+}
+
+main li:nth-child(24n + 8)::marker {
+    content: "\16B9";
+}
+
+main li:nth-child(24n + 9)::marker {
+    content: "\16BA";
+}
+
+main li:nth-child(24n + 10)::marker {
+    content: "\16BE";
+}
+main 
+li:nth-child(24n + 11)::marker {
+    content: "\16C1";
+}
+
+main li:nth-child(24n + 12)::marker {
+    content: "\16C3";
+}
+
+main li:nth-child(24n + 13)::marker {
+    content: "\16C7";
+}
+
+main li:nth-child(24n + 14)::marker {
+    content: "\16C8";
+}
+
+main li:nth-child(24n + 15)::marker {
+    content: "\16C9";
+}
+
+main li:nth-child(24n + 16)::marker {
+    content: "\16CA";
+}
+
+main li:nth-child(24n + 17)::marker {
+    content: "\16CF";
+}
+
+main li:nth-child(24n + 18)::marker {
+    content: "\16D2";
+}
+
+main li:nth-child(24n + 19)::marker {
+    content: "\16D6";
+}
+
+main li:nth-child(24n + 20)::marker {
+    content: "\16D7";
+}
+
+main li:nth-child(24n + 21)::marker {
+    content: "\16DA";
+}
+
+main li:nth-child(24n + 22)::marker {
+    content: "\16DC";
+}
+
+main li:nth-child(24n + 23)::marker {
+    content: "\16DF";
+}
+
+main li:nth-child(24n)::marker {
+    content: "\16DE";
+}
+
+.modal li::marker, .select2-container li::marker, .pagination li::marker {
     content: none !important;
+}
+
+.modal-content {
+    background-color: #F8F4E8;
 }
 
 /*-- Navbar --*/
@@ -427,7 +429,7 @@ main {
 
 .account-content button:hover {
     font-size: 1.5rem;
-    box-shadow: rgb(212, 175, 55, 0.8) 0px 20px 30px -10px;
+    box-shadow: rgba(212, 175, 55, 0.8) 0px 20px 30px -10px;
     color: #D4AF37;
     background-color: #2C3E50;
     border: none;
@@ -551,15 +553,15 @@ main {
 }
 
 .nav-card:hover {
-    box-shadow: rgb(212, 175, 55, 0.8) 0px 20px 30px -10px;
+    box-shadow: rgba(212, 175, 55, 0.8) 0px 20px 30px -10px;
+}
 
-    .nav-link-text {
+.nav-card .nav-link-text:hover {
         text-decoration: underline;
         color: #D4AF37;
         font-size: 1.5rem;
         font-weight: bold;
     }
-}
 
 .card-icon {
     max-height: 100%;
@@ -576,10 +578,8 @@ main {
     font-size: 1rem;
     }
 
-    .nav-card:hover {
-        .nav-link-text {
-            font-size: 1.25rem;
-        }
+    .nav-card .nav-link-text:hover {
+        font-size: 1.25rem;
     }
 }
 
@@ -593,10 +593,8 @@ main {
     font-size: 1.4rem;
     }
 
-    .nav-card:hover {
-        .nav-link-text {
-            font-size: 1.6rem;
-        }
+    .nav-card .nav-link-text:hover {
+        font-size: 1.6rem;
     }
 }
 
@@ -610,6 +608,11 @@ main {
     padding-top: 0.75rem;
 }
 
+.mimirs-whispers h3 {
+    font-family: Norse, serif;
+    color: #333333;
+}
+
 .mimirs-whispers p {
     font-family: 'EB Garamond', serif;
     color: #333333;
@@ -617,9 +620,25 @@ main {
     font-size: 1rem;
 }
 
+#openScroll {
+    font-family: NorseBold, serif;
+    font-size: 1.5rem;
+}
+
+.mimirs-whispers a {
+    font-family: Norse, serif;
+    color: #2C3E50;
+    font-size: 1.25rem;
+}
+
 .random-lore {
     border: 3px solid #2C3E50;
     border-radius: 8px;
+}
+
+.mimirs-whispers a:hover {
+    color: #D4AF37;
+    text-decoration: underline;
 }
 
 @media screen and (min-width:767.98px) {
@@ -707,7 +726,95 @@ main {
     color: #333333;
 }
 
+.card-img-fixed {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    display: block;
+}
+
+@media screen and (min-width:991.98px) {
+    .card-img-fixed {
+        width: 80%;
+    }
+}
+
+.library-card {
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+.library-card a {
+    color: #F8F4E8;
+    text-decoration: none;
+}
+
+.library-card h4 {
+    font-family: NorseBold, serif;
+    text-decoration: underline;
+}
+
+.card-entities {
+    font-family: Norse, serif;
+    font-size: 1.2rem;
+}
+
+.library-card h5 {
+    font-family: NorseBold, serif;
+    text-decoration: underline;
+}
+
+.library-card:hover {
+    box-shadow: rgba(212, 175, 55, 0.8) 0px 20px 30px -10px;
+}
+
+.library-card:hover h4 {
+        color: #D4AF37;
+}
+
+.library-card:hover h5 {
+        color: #D4AF37;
+}
+
+@media screen and (min-width:767.98px){
+    #sort-form {
+    font-size: 1.25rem;
+    }
+}
+
+.pagination a {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1.25rem;
+    border: none;
+}
+
+.pagination a:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+@media screen and (min-width:991.98px){
+    .pagination a {
+        font-size: 1.5rem;
+    }
+}
+
 /*------ End of Edda Library ------*/
+
+/* ------ Lore Detail page ------*/
+
+.select2-container--open {
+    z-index: 1065 !important; 
+}
+
+.select2-container {
+    pointer-events: auto !important;
+}
 
 /*------ Entity Archive ------*/
 
@@ -804,6 +911,35 @@ main {
 @media screen and (min-width:991.98px){
     .search-container form {
         font-size: 1.5rem;
+    }
+}
+
+.archive-card {
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+.archive-card a {
+    color: #F8F4E8;
+    text-decoration: none;
+}
+
+.archive-card h3 {
+    font-family: NorseBold, serif;
+    text-decoration: underline;
+}
+
+.archive-card:hover {
+    box-shadow: rgba(212, 175, 55, 0.8) 0px 20px 30px -10px;
+}
+
+.archive-card:hover h3 {
+        color: #D4AF37;
+}
+
+@media screen and (min-width:991.98px) {
+    .archive-card p {
+        font-size: 1.25rem;
     }
 }
 
@@ -991,6 +1127,373 @@ main {
 }
 /*------ End of The Forge ------*/
 
+/*------ Start of Lore Detail page ------*/
+
+.lore-detail-image {
+    width: 80%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+}
+
+@media screen and (min-width:767.98px){
+    .lore-detail-image {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width:991.98px){
+    .lore-detail-image {
+        width: 40%;
+    }
+}
+
+#loreTitle {
+    font-family: NorseBold, serif;
+    color: #2C3E50;
+}
+
+.lore-detail-wrapper {
+    font-family: 'EB Garamond', serif;
+    color: #333333;
+}
+
+.lore-content {
+    border: #2C3E50;
+    border-style: ridge;
+}
+
+#loreEntities {
+    font-family: Norse, serif;
+    font-size: 1.25rem;
+}
+
+.lore-dates {
+    font-size: 0.75rem;
+}
+
+@media screen and (min-width:991.98px) {
+    .lore-detail-wrapper {
+        font-size: 1.25rem;
+    }
+
+    #loreEntities {
+        font-size: 1.5rem;
+    }
+
+    .lore-dates {
+        font-size: 1rem;
+    }
+}
+
+.edit-btn {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1rem;
+}
+
+.delete-btn {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1rem;
+}
+
+.edit-btn:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+.delete-btn:hover {
+    font-family: NorseBold, serif;
+    background-color: #7B241C;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+@media screen and (min-width:991.98px) {
+    .edit-btn {
+        font-size: 1.25rem;
+    }
+
+    .delete-btn {
+        font-size: 1.25rem;
+    }
+}
+
+.comments-section h2 {
+    font-family: NorseBold, serif;
+    color: #2C3E50;
+}
+
+.comments-section strong {
+    font-size: 1.25rem;
+    color: #2C3E50;
+}
+
+.comments-section {
+    color: #333333;
+    font-family: 'EB Garamond', serif;
+}
+
+#div_id_body textarea {
+    max-height: calc(var(--bs-border-width) + 8rem );
+}
+
+#submitButton {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1rem;
+}
+
+#submitButton:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+@media screen and (min-width:991.98px) {
+    #submitButton {
+        font-size: 1.25rem;
+    }
+}
+
+.comment-delete-btn {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1rem;
+}
+
+.comment-delete-btn:hover {
+    font-family: NorseBold, serif;
+    background-color: #7B241C;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+@media screen and (min-width:991.98px) {
+    .comment-delete-btn {
+        font-size: 1.25rem;
+    }
+}
+
+#replyButton {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    color: #2C3E50;
+}
+
+#replyButton:hover {
+    color: #D4AF37;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+#editLoreModal h5 {
+    font-family: NorseBold, serif;
+}
+
+#editLoreModal label {
+    font-family: Norse, serif;
+}
+
+#editLoreModal {
+    font-family: 'EB Garamond', serif;
+}
+
+#editLoreModal button {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1rem;
+}
+
+#editLoreModal button:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+#deleteLoreModal {
+    font-family: 'EB Garamond', serif;
+}
+
+#deleteLoreModal h5 {
+    font-family: NorseBold, serif;
+}
+
+.cancel-btn {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1rem;
+}
+
+.cancel-btn:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+@media screen and (min-width:991.98px) {
+    .cancel-btn {
+        font-size: 1.25rem;
+    }
+}
+
+#deleteCommentModal {
+    font-family: 'EB Garamond', serif;
+}
+
+#deleteCommentModal h5 {
+    font-family: NorseBold, serif;
+}
+
+#deleteCommentModal .close-btn {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1rem;
+}
+
+#deleteCommentModal .close-btn:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+@media screen and (min-width:991.98px) {
+    #deleteCommentModal .close-btn {
+        font-size: 1.25rem;
+    }
+}
+
+/*------ End of Lore Detail page ------*/
+
+/*------ Start of Entity Profile page ------*/
+
+.entity-detail-image {
+    width: 80%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+}
+
+@media screen and (min-width:767.98px){
+    .entity-detail-image {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width:991.98px){
+    .entity-detail-image {
+        width: 40%;
+    }
+}
+
+#entityTitle {
+    font-family: NorseBold, serif;
+    color: #2C3E50;
+}
+
+#entityEpithets {
+    font-family: Norse, serif;
+    color: #2C3E50;
+}
+
+.entity-detail-wrapper {
+    font-family: 'EB Garamond', serif;
+    color: #333333;
+}
+
+.entity-detail-wrapper h3 {
+    font-family: Norse, serif;
+    color: #2C3E50;
+}
+
+.entity-content {
+    border: #2C3E50;
+    border-style: ridge;
+}
+
+.entity-dates {
+    font-size: 0.75rem;
+}
+
+@media screen and (min-width:991.98px) {
+    .entity-detail-wrapper {
+        font-size: 1.25rem;
+    }
+
+    .entity-dates {
+        font-size: 1rem;
+    }
+}
+
+.lore-appearances {
+    border: #2C3E50;
+    border-style: ridge;
+}
+
+.lore-appearances a {
+    color: #2C3E50;
+    font-family: Norse, serif;
+}
+
+.lore-appearances a:hover {
+    color: #D4AF37;
+    font-family: NorseBold, serif;
+}
+
+#editEntityModal h5 {
+    font-family: NorseBold, serif;
+}
+
+#editEntityModal label {
+    font-family: Norse, serif;
+}
+
+#editEntityModal {
+    font-family: 'EB Garamond', serif;
+}
+
+#editEntityModal button {
+    font-family: Norse, serif;
+    background-color: #2C3E50;
+    color: #F8F4E8;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+    font-size: 1rem;
+}
+
+#editEntityModal button:hover {
+    font-family: NorseBold, serif;
+    color: #D4AF37;
+    background-color: #2C3E50;
+    box-shadow: rgb(51, 51, 51) 0px 20px 30px -10px;
+}
+
+#deleteEntityModal {
+    font-family: 'EB Garamond', serif;
+}
+
+#deleteEntityModal h5 {
+    font-family: NorseBold, serif;
+}
+
 /*-- 404 and 505 pages --*/
 
 .error-page-content h1 {
@@ -1018,7 +1521,7 @@ main {
 }
 
 .error-page-content .btn:hover {
-    box-shadow: rgb(212, 175, 55, 0.8) 0px 20px 30px -10px;
+    box-shadow: rgba(212, 175, 55, 0.8) 0px 20px 30px -10px;
     color: #D4AF37;
     background-color: #2C3E50;
     border: none;

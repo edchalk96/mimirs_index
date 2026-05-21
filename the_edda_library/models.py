@@ -7,27 +7,31 @@ from cloudinary.models import CloudinaryField
 STATUS = ((0, "Draft"), (1, "Published"))
 
 # Create your models here.
+
+
 class Lore(models.Model):
     title = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True, blank=True)
+    slug = models.SlugField(max_length=200, unique=True,
+                            blank=True)
     content = models.TextField()
-    entities = models.ManyToManyField(Entity, related_name="appearances", blank=True)
+    entities = models.ManyToManyField(Entity, related_name="appearances",
+                                      blank=True)
     excerpt = models.TextField(editable=False, blank=True)
     primary_source = models.CharField(max_length=200)
     notes = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    author = models.ForeignKey(User, related_name="user_lore_entries", on_delete=models.PROTECT)
+    author = models.ForeignKey(User, related_name="user_lore_entries",
+                               on_delete=models.PROTECT)
     is_deletion_pending = models.BooleanField(default=False)
-    featured_image = CloudinaryField('image', default='placeholder', blank=True)
+    featured_image = CloudinaryField('image', default='placeholder',
+                                     blank=True)
 
     def save(self, *args, **kwargs):
-        #Automated slug field
         if not self.slug:
             self.slug = slugify(self.title)
 
-        #Automated excerpt field
         if self.content:
             self.excerpt = Truncator(self.content).words(30, html=True)
         else:
@@ -41,14 +45,19 @@ class Lore(models.Model):
     def __str__(self):
         return f"{self.title} from {self.primary_source} {'PENDING DELETION' if self.is_deletion_pending else ''}"
 
+
 class Comment(models.Model):
-    lore = models.ForeignKey(Lore, related_name="comments", on_delete=models.CASCADE)
-    author = models.ForeignKey(User, related_name="user_comments", on_delete=models.CASCADE)
+    lore = models.ForeignKey(Lore, related_name="comments",
+                             on_delete=models.CASCADE)
+    author = models.ForeignKey(User, related_name="user_comments",
+                               on_delete=models.CASCADE)
     body = models.TextField()
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
-    # Credit to Tom Dekan for for parent field in creating comments thread - https://tomdekan.com/articles/comment-threads 
-    parent = models.ForeignKey('self', null=True, blank=True, related_name='replies', on_delete=models.CASCADE)
+    # Credit to Tom Dekan for for parent field in creating comments thread -
+    # https://tomdekan.com/articles/comment-threads
+    parent = models.ForeignKey('self', null=True, blank=True,
+                               related_name='replies', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['created_on']
