@@ -1,14 +1,12 @@
 # Mimir's Index
 
-![Mimir's Index](PLACEHOLDER)
-
 ## By Ed Chalk
 
-[View the live project here](PLACEHOLDER)
+[View the live project here](https://mimirs-index-6dc4f5597185.herokuapp.com/)
 
 [View the repository here](https://github.com/edchalk96/mimirs_index)
 
-![Responsive website image](PLACEHOLDER)
+![Responsive website image](./documentation/images/amiresponsive-mimirs-index.png)
 
 ## Table of Contents
 
@@ -191,11 +189,153 @@ To maintain thematic consistency, all visual assets are carefully selected to al
 
 - **Runic Symbology**: In place of standard bullet points, unordered lists will utilise UTF-8 runic characters (sourced from [W3Schools](https://www.w3schools.com/charsets/ref_utf_runic.asp)). This subtle typographic detail reinforces the norse mythology and ancient manuscript aesthetic in every corner of the interface.
 
-#### ERD
+#### Database Architecture
 
-![Lore ERD](./documentation/images/lore-erd.png)
-![Entity ERD](./documentation/images/entity-erd.png)
-![Comments ERD](./documentation/images/comments-erd.png)
+The project utilizes Neon, a serverless cloud platform, to host and manage the PostgreSQL relational database for the site.
+
+The following data models will be implemented to support the core functionality of this project:
+
+#### *User*
+
+The standard Django User model will be integrated with Django-Allauth to manage user registration and authentication. While account creation triggers an automated verification email, email confirmation is configured as optional, allowing users immediate access to their accounts.
+
+- username | CharField
+
+    Utilizes Django's native validation to enforce uniqueness and a 150-character limit. It accepts alphanumeric characters, underscores (_), at symbols (@), plus signs (+), periods (.), and hyphens (-). This field is configured as strictly required.
+
+- email | EmailField
+
+    Utilizes Django's built-in email formatting validation and is configured as a mandatory field in the project settings.
+
+- password | CharField
+
+    Leverages Django's core password validation rules. The registration flow requires users to input their password twice to confirm accuracy, adhering to the security standards outlined by Django-Allauth's default signup forms.
+
+#### *Lore* | [ERD](./documentation/images/lore-erd.png)
+
+This custom model stores user-submitted information regarding Norse mythology, such as stanzas from historical text and related lore entries as well as other relevant information. Class Meta is set to ensure the lore is ordered alphabetically, by title, in the paginated list by default.
+
+- title | CharField
+
+    A mandatory, unique field restricted to a maximum of 200 characters.
+
+- slug | SlugField
+
+    A unique field with a maximum of 200 characters, automatically generated from the title field to create URL-friendly strings.
+
+- content | TextField
+
+    A mandatory field with no maximum length restriction, configured to store the primary body text of the lore entry.
+
+- entities | ManyToManyField
+
+    An optional relationship field that links to the Entity model, allowing multiple entities to be associated with a single lore entry. It includes a related_name="appearances" attribute to track and count how many lore entries a specific entity is associated with.
+
+- excerpt | TextField
+
+    An automatically generated preview field that extracts and truncates the first 30 words from the content field.
+
+- primary_source | CharField
+
+    A mandatory field with a maximum of 200 characters, used to cite historical references and ensure content validity.
+
+- notes | TextField
+
+    An optional field that allows users to provide additional context, such as translation details or historical background.
+
+- created_on | DateTimeField
+
+    Automatically captures the precise date and time when the lore entry is first created (auto_now_add=True).
+
+- updated_on | DateTimeField
+
+    Automatically updates with the date and time whenever the lore entry is modified (auto_now=True).
+
+- status | IntegerField
+
+    Controls publication visibility using integer choices. It defaults to 0 (Draft), requiring admin review and approval before transitioning to 1 (Published) to make it visible on the live site.
+
+- author | ForeignKey
+
+    Establishes a many-to-one relationship with Django's built-in User model to attribute the data entry to the creator.
+
+- is_deletion_pending | BooleanField
+
+    Defaults to False. It switches to True when a user flags an entry for removal, serving as an administrative indicator so an admin can review and confirm the deletion before data is permanently purged.
+
+- featured_image | CloudinaryField
+
+    Integrates with Cloudinary to handle user-submitted image uploads. The stored image asset is dynamically linked and displayed alongside the published content on the site.
+
+#### *Entity* | [ERD](./documentation/images/entity-erd.png)
+
+This custom model stores detailed information regarding specific entities within Norse mythology—such as deities, giants, legendary weapons, or mythical creatures. It connects to the Lore model via a ManyToManyField. The model includes a Meta class configured to sort entities alphabetically by name within the paginated list view, alongside a `@property` decorator designed to dynamically count how many lore entries are linked to that specific entity.
+
+- name | CharField
+
+    A mandatory field restricted to a maximum of 20 characters. It must be unique and serves as the identifier for the entity's URL slug path.
+
+- epithets | ArrayField
+
+    An optional list field used to store alternative names, titles, or kennings by which the entity is known throughout Norse mythology.
+
+- biography | TextFiled
+
+    A mandatory field with no maximum length restriction, configured to hold the primary body text describing the entity's history and background.
+
+- created_on | DateTimeField
+
+    Automatically captures the precise date and time when the entity is first created (auto_now_add=True).
+
+- updated_on | DateTimeField
+
+    Automatically updates with the date and time whenever the entity is modified (auto_now=True).
+
+- status | IntegerField
+
+    Controls publication visibility using integer choices. It defaults to 0 (Draft), requiring admin review and approval before transitioning to 1 (Published) to make it visible on the live site.
+
+- author | ForeignKey
+
+    Establishes a many-to-one relationship with Django's built-in User model to attribute the data entry to the creator.
+
+- is_deletion_pending | BooleanField
+
+    Defaults to False. It switches to True when a user flags an entry for removal, serving as an administrative indicator so an admin can review and confirm the deletion before data is permanently purged.
+
+- featured_image | CloudinaryField
+
+    Integrates with Cloudinary to handle user-submitted image uploads. The stored image asset is dynamically linked and displayed alongside the published content on the site.
+
+#### *Comment* | [ERD](./documentation/images/comments-erd.png)
+
+This custom model functions alongside the Lore model to provide a commented discussion section for each lore entry. To support nested conversation threads, the model includes a self-referential parent field allowing users to reply directly to individual comments. Additionally, a Meta class is implemented to chronologically order comments by their creation date.
+
+- lore | ForeignKey
+
+    Establishes a many-to-one relationship with the Lore model, linking each comment directly to its corresponding lore entry.
+
+- author | ForeignKey
+
+    Establishes a many-to-one relationship with Django's built-in User model to attribute the comment to its creator and display their username on the site.
+
+- body | TextField
+
+    A mandatory field with no maximum length restriction, configured to store the text content of the user's comment.
+
+- approved | BooleanField
+
+    Defaults to False, serving as a moderation mechanism that requires administrative approval before the comment is published to the live site.
+
+- created_on | DateTimeField
+
+    Automatically captures the precise date and time when the comment is submitted (auto_now_add=True)
+
+- parent | ForeignKey
+
+    A self-referential foreign key (self) that enables threaded replies. This field remains blank or null for top-level comments, as they do not have a parent comment to reference.
+
+Please note, some of the above fields were added to the data models during development and after the ERDs were originally created.
 
 ---
 
@@ -361,7 +501,19 @@ The Forge serves as a centralized contribution hub, allowing authenticated users
 
 ## Deployment
 
-PLACEHOLDER
+The project is deployed to Heroku using the following procedure. This process assumes you have an active Heroku account and your project repository is hosted on GitHub:
+
+1. Create a New App: Log in to Heroku and create a new application from the dashboard.
+2. Link the Repository: Navigate to the Deploy tab of your new app, select GitHub as the deployment method, and connect the relevant project repository.
+3. Configure Environment Variables: Go to the Settings tab and click Reveal Config Vars. Input all key-value pairs required for the application that are stored locally in your environment file (e.g., database URLs, secret keys, API credentials).
+4. Create a Procfile: In your local development environment, create a file named Procfile (with no file extension) in the root directory and add the following production command:
+    - `web: gunicorn <your app name>.wsgi:application`
+5. Apply Database Migrations: Ensure your remote database schema is up to date by running the following migration commands in your terminal:
+    - `python manage.py makemigrations` or `python3 manage.py makemigrations`
+    - `python manage.py migrate` or `python3 manage.py migrate`
+6. Disable Debug Mode: Set `DEBUG=False` within your project's settings.py file to secure the application for production
+7. Push Changes to GitHub: Commit and push all final updates—including the Procfile and configuration changes—to your remote GitHub repository.
+8. Trigger Manual Deployment: Return to the Deploy tab in Heroku, scroll down to the Manual deploy section, and click Deploy Branch to launch the site.
 
 ### Forking the GitHub Repository
 

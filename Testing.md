@@ -140,7 +140,7 @@ The functionality and outcomes outlined above directly align with the [User Stor
   - comments.js | [Result](./documentation/images/testing/comments-js-test.png)
     - Warning related to bootstap element and function variable used in html code
   - lore-detail.js | [Result](./documentation/images/testing/lore-detail-js-test.png)
-    - Undefined variable warnings on "$" occuring due to validator looking at JS file in isolation, mistaking external tools, like jQuery's $, for code errors.
+    - Undefined variable warnings occuring due to validator looking at JS file in isolation, mistaking external tools, like jQuery's $, for code errors.
 
 ### Python
 
@@ -189,8 +189,54 @@ This site was designed for and tested across the following web browsers:
 
 ### Lighthouse Testing
 
-## Known Bugs and Fixes
+- [Home](./documentation/images/testing/home-page-lighthouse.png)
+  - The Lighthouse audit for the homepage (index.html) reflects strong overall performance across key metrics. The slightly lower performance score is primarily driven by the Largest Contentful Paint (LCP), resulting from image rendering times and external CDN dependencies; consequently, no immediate modifications were made based on this initial report.
+- [The Edda Library](./documentation/images/testing/the-edda-library-lighthouse.png)
+  - This page also demonstrates a strong overall score, with the exception of performance; this minor dip is driven entirely by the LCP, stemming from the same external asset and rendering factors identified on the homepage.
+- [The Entity Archive](./documentation/images/testing/the-entity-archive-lighthouse.png)
+  - This page also returned a strong Lighthouse report, with the performance rating impacted solely by the LCP.
+- [The Forge](./documentation/images/testing/the-forge-lighthouse.png)
+  - This page also returned a strong Lighthouse report, with the performance rating impacted solely by the LCP.
+- [Lore Detail](./documentation/images/testing/lore-detail-lighthouse.png)
+  - This page also returned a strong Lighthouse report, with the performance rating impacted solely by the LCP.
+- [Entity Profile](./documentation/images/testing/entity-profile-lighthouse.png)
+  - This page also returned a strong Lighthouse report, with the performance rating impacted solely by the LCP.
+- [Log In](./documentation/images/testing/log-in-lighthouse.png)
+  - This page also returned a strong Lighthouse report, with the performance rating impacted solely by the LCP.
+- [Log Out](./documentation/images/testing/log-out-lighthouse.png)
+  - This page also returned a strong Lighthouse report, with the performance rating impacted solely by the LCP.
+- [Register](./documentation/images/testing/register-lighthouse.png)
+  - This page achieves high scores across all four Lighthouse parameters due to its minimal layout and lightweight footprint.
 
-The below bugs and relevant fixes were seen durng development of the project as we all in testing:
+## Bugs and Fixes
 
-## Future Improvements
+The following bugs and their corresponding fixes were identified and resolved during both the active development and formal testing phases of the project:
+
+| **Bug** | **Cause** | **Fix** |
+| --- | --- | --- |
+| Server would not run | Caused by incorrect identifier in url path in urls.py | Amended path identifier from `<name:name>/` to `<str:name>/` |
+| Superuser unable to sign back in | Caused by change in settings for email verification required | Fixed by going to django admin panel and manually verifying the email address |
+| The Forge forms would not submit correctly | Caused by having two forms on the same page | Resolved by crating one relevant function in combination with a name element on the button which is then used in an if elif statement of the relevant function |
+| Unable to access The Forge without being logged in | Caused by `@login_required` decorator in views.py, intended to prevent non-authenticated users from making posts | Removed this decorator and reverted to a different logic to get the desired outcome |
+| Unable to see the SVG icon/s in in the forge submit button | Different ID's betweeen use tag and the SVG file | Updated ID's to match |
+| Contact Developer form not functioning - email would not send | Caused by antivirus that contained an email shield function and causing a certification error | Turned off email shield |
+| Contact developer message would be recieved as if the site has sent the email. In ability to reply to user who sent the email | Caused by functionality when using `send_mail` | Reverted to using `EmailMessage` which enabled a `reply_to` function |
+| Submitting a Lore entry resulted in a reverse error | Caused by the slug not automatically populating | Updated the model to include slugify and self-populate to automatically generate this field |
+| Mimir's Whispers section always rendering the default text | Caused by the `count()` logic being performed prior to `filter(status=1)` | Updated the function so the filter is performed before the count logic |
+| Every entity in the database adding to the entities field for lore entries | Caused by logic with the ManytoManyfield | Implemented Select2 django package to improve functionality and resolve the issue |
+| Edda Library sort function had the select items sat outside of dropdown box and weren't able to be selected | Caused by incorrect placement of `</select>` tag | Removed the tag |
+| Clicking edit after clicking reply in comments section prepopulated the reply text area with the parent comment text with no text prepopulating the update comment text area | Caused by an issue with the JavaScript code logic | Updated JavaScript to get the specific comments text and injecting that into the update form. Also added in function to clear the reply text area when reply button is clicked |
+| Clicking Next or Previous in the Edda Library resulted in the current sort selection reseting | Caused by a lack of code logic | Passed the current sort selection into the `href` link of the next/previous links |
+
+## Future Improvements & Known Bugs
+
+Future enhancements for the site will focus on optimizing user experience, streamlining the content moderation workflow, and resolving minor technical constraints identified during testing. These improvements include:
+
+- *Non-Disruptive Content Edits*
+  - Modifying the content moderation workflow so that edited lore entries or entity profiles remain publicly visible while their updates await review. Once approved, the new edits will seamlessly overwrite the live data, replacing the current system that reverts active posts to drafts during the approval process.
+- *Modal Scroll Behavior Optimization*
+  - Resolving a UI constraint in the lore update modal where interacting with the entity selection dropdown locks the scroll container, requiring users to click outside the selection field to resume scrolling.
+- *Performance and LCP Enhancement*
+  - Investigating and implementing optimization strategies to improve the site's overall Lighthouse performance rating, specifically focusing on reducing the Largest Contentful Paint (LCP) metric.
+- *Advanced Relational Search* & *Kenning Search/Analysis*
+  - Implement the pending features outlined in the [Scope Plane](./README.md/#scope-plane) that were deferred during the initial development phase of the project.
